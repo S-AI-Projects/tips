@@ -1,0 +1,27 @@
+{
+  "initial_branch": "main",
+  "author": "Course Student <student@example.invalid>",
+  "commit_A": {
+    "message": "A",
+    "files": {
+      "notes.txt": "alpha\n"
+    }
+  },
+  "commit_B": {
+    "message": "B",
+    "append": {
+      "notes.txt": "beta\n"
+    }
+  },
+  "topic_branch": "topic",
+  "topic_created_at": "B",
+  "commit_C": {
+    "message": "C",
+    "files": {
+      "todo.txt": "one\n"
+    }
+  },
+  "subtree_prefix": "vendor/project",
+  "remote": "second local bare repository, addressed by file:// URL",
+  "repeatability": "two independent temporary directory trees; fixed commit timestamps"
+}

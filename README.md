@@ -1391,7 +1391,31 @@ git subtree push --prefix subfolder_name origin branch_name
 
 ### Adding a project to repo using subtree
 ```sh
-git subtree add --prefix=<directory_name>/<project_name> --squash git@github.com:<username>/<project_name>.git master
+# Build a local project with a main branch and a topic branch at B, then add it to a host repo.
+tmp=$(mktemp -d)
+git init --bare --initial-branch=main "$tmp/project.git"
+git init --initial-branch=main "$tmp/project"
+cd "$tmp/project"
+git config user.name "Course Student"
+git config user.email "student@example.invalid"
+printf 'alpha\n' > notes.txt
+git add notes.txt && git commit -m A
+printf 'beta\n' >> notes.txt
+git add notes.txt && git commit -m B
+git branch topic
+git checkout main
+printf 'one\n' > todo.txt
+git add todo.txt && git commit -m C
+git remote add origin "file://$tmp/project.git"
+git push --all origin
+
+git init --initial-branch=main "$tmp/host"
+cd "$tmp/host"
+git config user.name "Course Student"
+git config user.email "student@example.invalid"
+printf 'Host project\n' > README.md
+git add README.md && git commit -m "Host project"
+git subtree add --prefix=vendor/project --squash "file://$tmp/project.git" main
 ```
 
 ### Get latest changes in your repo for a linked project using subtree

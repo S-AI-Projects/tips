@@ -1,0 +1,75 @@
+{
+  "runs": [
+    {
+      "commit_ids": {
+        "A": "233f639c127c6ee957c566e360a57e8af3348e95",
+        "B": "f98cf9b0965a00cd5bc9f5c1ba2f65bd40506a64",
+        "C": "fb709ef9501de9f2abfab1ffac4d71233f6a2087",
+        "topic": "f98cf9b0965a00cd5bc9f5c1ba2f65bd40506a64",
+        "subtree_add": "67182bc817381112a54ca26c1a28bb5531352bda"
+      },
+      "authors": {
+        "main": "Course Student <student@example.invalid>",
+        "main^": "Course Student <student@example.invalid>",
+        "main^^": "Course Student <student@example.invalid>"
+      },
+      "source_main_messages": [
+        "C",
+        "B",
+        "A"
+      ],
+      "source_topic_messages": [
+        "B",
+        "A"
+      ],
+      "topic_ref_equals_commit_B": true,
+      "commit_C_parent_equals_commit_B": true,
+      "source_files": {
+        "notes.txt": "alpha\nbeta\n",
+        "todo.txt": "one\n"
+      },
+      "host_subtree_files": {
+        "vendor/project/notes.txt": "alpha\nbeta\n",
+        "vendor/project/todo.txt": "one\n"
+      },
+      "host_worktree_clean_after_add": true,
+      "host_subtree_add_subject": "Merge commit 'da1a2720054508d32ff90aae4cab18e01deee1d7' as 'vendor/project'"
+    },
+    {
+      "commit_ids": {
+        "A": "233f639c127c6ee957c566e360a57e8af3348e95",
+        "B": "f98cf9b0965a00cd5bc9f5c1ba2f65bd40506a64",
+        "C": "fb709ef9501de9f2abfab1ffac4d71233f6a2087",
+        "topic": "f98cf9b0965a00cd5bc9f5c1ba2f65bd40506a64",
+        "subtree_add": "67182bc817381112a54ca26c1a28bb5531352bda"
+      },
+      "authors": {
+        "main": "Course Student <student@example.invalid>",
+        "main^": "Course Student <student@example.invalid>",
+        "main^^": "Course Student <student@example.invalid>"
+      },
+      "source_main_messages": [
+        "C",
+        "B",
+        "A"
+      ],
+      "source_topic_messages": [
+        "B",
+        "A"
+      ],
+      "topic_ref_equals_commit_B": true,
+      "commit_C_parent_equals_commit_B": true,
+      "source_files": {
+        "notes.txt": "alpha\nbeta\n",
+        "todo.txt": "one\n"
+      },
+      "host_subtree_files": {
+        "vendor/project/notes.txt": "alpha\nbeta\n",
+        "vendor/project/todo.txt": "one\n"
+      },
+      "host_worktree_clean_after_add": true,
+      "host_subtree_add_subject": "Merge commit 'da1a2720054508d32ff90aae4cab18e01deee1d7' as 'vendor/project'"
+    }
+  ],
+  "same_object_ids_across_separate_temp_dirs": true
+}
