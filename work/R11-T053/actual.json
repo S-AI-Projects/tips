@@ -1,0 +1,74 @@
+{
+  "commit_ids": {
+    "A": "c9cab5bbbb0a5b6c9eea4e7fe06f75715054f085",
+    "B": "35d47a0692fa655b6054cb3c89cf9eaa74e9ffac",
+    "C": "4802600f87db331e4bb92427d156c68c77273786"
+  },
+  "before": {
+    "head": "4802600f87db331e4bb92427d156c68c77273786",
+    "head_ref": "refs/heads/main",
+    "branch_refs": [
+      "refs/heads/main 4802600f87db331e4bb92427d156c68c77273786",
+      "refs/heads/topic 35d47a0692fa655b6054cb3c89cf9eaa74e9ffac"
+    ],
+    "tree": "70d571a7a75867c09d38254b1252d5e2402adaa6",
+    "index_tree": "70d571a7a75867c09d38254b1252d5e2402adaa6",
+    "staged_files": [],
+    "unstaged_files": [],
+    "working_tree_files": {
+      "notes.txt": "alpha\nbeta\n",
+      "todo.txt": "one\n"
+    },
+    "status": ""
+  },
+  "after_mistake": {
+    "head": "4802600f87db331e4bb92427d156c68c77273786",
+    "head_ref": "refs/heads/main",
+    "branch_refs": [
+      "refs/heads/main 4802600f87db331e4bb92427d156c68c77273786",
+      "refs/heads/topic 35d47a0692fa655b6054cb3c89cf9eaa74e9ffac"
+    ],
+    "tree": "70d571a7a75867c09d38254b1252d5e2402adaa6",
+    "index_tree": "70d571a7a75867c09d38254b1252d5e2402adaa6",
+    "staged_files": [],
+    "unstaged_files": [],
+    "working_tree_files": {
+      "notes.txt": "alpha\nbeta\n",
+      "todo.txt": null
+    },
+    "status": ""
+  },
+  "tracked_paths_in_commit_c": [
+    "notes.txt",
+    "todo.txt"
+  ],
+  "after_recovery": {
+    "head": "4802600f87db331e4bb92427d156c68c77273786",
+    "head_ref": "refs/heads/main",
+    "branch_refs": [
+      "refs/heads/main 4802600f87db331e4bb92427d156c68c77273786",
+      "refs/heads/topic 35d47a0692fa655b6054cb3c89cf9eaa74e9ffac"
+    ],
+    "tree": "70d571a7a75867c09d38254b1252d5e2402adaa6",
+    "index_tree": "70d571a7a75867c09d38254b1252d5e2402adaa6",
+    "staged_files": [],
+    "unstaged_files": [],
+    "working_tree_files": {
+      "notes.txt": "alpha\nbeta\n",
+      "todo.txt": "one\n"
+    },
+    "status": ""
+  },
+  "sparse_patterns_after_recovery": [
+    "notes.txt",
+    "todo.txt"
+  ],
+  "assertions": {
+    "mistake_hid_todo_without_removing_it_from_commit": true,
+    "mistake_did_not_change_head_refs_or_index_tree": true,
+    "head_and_branch_refs_unchanged": true,
+    "saved_tree_restored": true,
+    "expected_files_restored_and_clean": true,
+    "sparse_list_contains_both_files": true
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "mistake": "todo.txt is absent from the sparse working tree but remains in commit C.",
+  "recovery": "Both committed files return with their expected contents; HEAD, branch refs, and committed tree remain unchanged.",
+  "limitation": "Sparse checkout cannot recover uncommitted edits to a path removed from the working tree."
+}

@@ -526,6 +526,43 @@ git push --mirror https://github.com/exampleuser/new-repository.git
 ```sh
 git clone --filter=blob:none --sparse <url> && cd <repo> && git sparse-checkout set <dir1> <dir2>
 ```
+#### Recovery exercise: restore files excluded by sparse checkout
+
+**Recovery point:** The example repository has commit C checked out on `main`, `topic` points to commit B, and both root files are present. Save the current commit, its tree, and the topic branch tip before changing the sparse list:
+
+```sh
+recovery_head=$(git rev-parse HEAD)
+recovery_tree=$(git rev-parse 'HEAD^{tree}')
+recovery_topic=$(git rev-parse topic)
+```
+
+The mistaken sparse pattern below hides `todo.txt` from the working tree; it does not remove the file from commit C. Because this exercise uses root-level files, use non-cone patterns to name them:
+
+```sh
+git sparse-checkout set --no-cone notes.txt
+```
+
+Restore the committed files by setting the sparse list again:
+
+```sh
+git sparse-checkout set --no-cone notes.txt todo.txt
+```
+
+This file-pattern form is only for the root-level exercise. For normal sparse checkouts, use cone mode and select directories; see the [official sparse-checkout documentation](https://git-scm.com/docs/git-sparse-checkout).
+
+Verify the saved commit, tree, and branch tip are unchanged, the sparse list includes both files, and the working tree is clean:
+
+```sh
+test "$(git rev-parse HEAD)" = "$recovery_head"
+test "$(git rev-parse 'HEAD^{tree}')" = "$recovery_tree"
+test "$(git rev-parse topic)" = "$recovery_topic"
+git sparse-checkout list
+git status --short
+cat notes.txt todo.txt
+```
+
+The files should contain `alpha\nbeta\n` and `one\n`. This restores committed file contents from the checked-out commit. It cannot recover uncommitted edits to a path removed from the sparse working tree; save or commit those edits before changing the sparse list.
+
 
 ### Show output in columns
 ```sh
