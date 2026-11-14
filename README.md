@@ -11,6 +11,17 @@
 
 P.S: All these commands are tested on `git version 2.7.4 (Apple Git-66)`.
 
+### Search history by content without changing repository state
+
+`git log -S'beta' -- notes.txt` finds commits where the number of occurrences of `beta` changes in `notes.txt`. It only reads history.
+
+| State | Before search | After search |
+| --- | --- | --- |
+| HEAD | `main` at C | `main` at C |
+| Branch refs | `main` at C; `topic` at B | `main` at C; `topic` at B |
+| Index / staged files | Clean; none staged | Clean; none staged |
+| Working tree | Clean; `notes.txt`, `todo.txt` | Clean; `notes.txt`, `todo.txt` |
+
 ## Table of Contents
 
 * [Basic Operations](#basic-operations)
@@ -662,8 +673,10 @@ git help -g
 
 ### Search change by content
 ```sh
-git log -S'<a term in the source>'
+git log -S'beta' -- notes.txt
 ```
+Finds commits where the number of occurrences of the exact string 'beta' changes in notes.txt. This pickaxe search reads history; it does not move HEAD or change refs, the index, or working-tree files.
+
 
 ### Show changes over time for specific file
 ```sh

@@ -11,7 +11,8 @@
     },
     {
         "title": "Search change by content",
-        "tip": "git log -S'<a term in the source>'",
+        "tip": "git log -S'beta' -- notes.txt",
+        "description": "Finds commits where the number of occurrences of the exact string 'beta' changes in notes.txt. This pickaxe search reads history; it does not move HEAD or change refs, the index, or working-tree files.",
         "category": "Log and History"
     },
     {

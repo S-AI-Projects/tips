@@ -1,0 +1,51 @@
+{
+  "commit_ids": {
+    "A": "c6282229dea21ce61eef5aee4d80acde7319620f",
+    "B": "7f8d5ff7b3ac623ec81d754c624c612225807f80",
+    "C": "645fba3d6c67fcbae36081861c46a40f8bfcc44e"
+  },
+  "search_output_commit_ids": [
+    "7f8d5ff7b3ac623ec81d754c624c612225807f80"
+  ],
+  "search_output": "commit 7f8d5ff7b3ac623ec81d754c624c612225807f80\nAuthor: Course Student <student@example.invalid>\nDate:   Sun Nov 15 00:13:45 2026 +0530\n\n    B: add beta",
+  "before": {
+    "head": "645fba3d6c67fcbae36081861c46a40f8bfcc44e",
+    "head_ref": "refs/heads/main",
+    "branch_refs": [
+      "refs/heads/main 645fba3d6c67fcbae36081861c46a40f8bfcc44e",
+      "refs/heads/topic 7f8d5ff7b3ac623ec81d754c624c612225807f80"
+    ],
+    "index_tree": "70d571a7a75867c09d38254b1252d5e2402adaa6",
+    "staged_files": [],
+    "unstaged_files": [],
+    "untracked_files": [],
+    "working_tree_files_hex": {
+      "notes.txt": "616c7068610a626574610a",
+      "todo.txt": "6f6e650a"
+    },
+    "status": ""
+  },
+  "after": {
+    "head": "645fba3d6c67fcbae36081861c46a40f8bfcc44e",
+    "head_ref": "refs/heads/main",
+    "branch_refs": [
+      "refs/heads/main 645fba3d6c67fcbae36081861c46a40f8bfcc44e",
+      "refs/heads/topic 7f8d5ff7b3ac623ec81d754c624c612225807f80"
+    ],
+    "index_tree": "70d571a7a75867c09d38254b1252d5e2402adaa6",
+    "staged_files": [],
+    "unstaged_files": [],
+    "untracked_files": [],
+    "working_tree_files_hex": {
+      "notes.txt": "616c7068610a626574610a",
+      "todo.txt": "6f6e650a"
+    },
+    "status": ""
+  },
+  "assertions": {
+    "only_commit_b_found": true,
+    "main_head_at_c_and_topic_at_b": true,
+    "index_clean_before_search": true,
+    "repository_state_unchanged": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "command": "git log -S'beta' -- notes.txt",
+  "author": {
+    "name": "Course Student",
+    "email": "student@example.invalid"
+  },
+  "commits": {
+    "A": "create notes.txt containing alpha\\n",
+    "B": "append beta\\n to notes.txt",
+    "C": "create todo.txt containing one\\n"
+  },
+  "branch": "main",
+  "topic_points_to": "commit B"
+}

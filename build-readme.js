@@ -14,6 +14,17 @@ const header = `## git-tips
 
 P.S: All these commands are tested on \`git version 2.7.4 (Apple Git-66)\`.
 
+### Search history by content without changing repository state
+
+\`git log -S'beta' -- notes.txt\` finds commits where the number of occurrences of \`beta\` changes in \`notes.txt\`. It only reads history.
+
+| State | Before search | After search |
+| --- | --- | --- |
+| HEAD | \`main\` at C | \`main\` at C |
+| Branch refs | \`main\` at C; \`topic\` at B | \`main\` at C; \`topic\` at B |
+| Index / staged files | Clean; none staged | Clean; none staged |
+| Working tree | Clean; \`notes.txt\`, \`todo.txt\` | Clean; \`notes.txt\`, \`todo.txt\` |
+
 `;
 
 let toc = "## Table of Contents\n\n";
@@ -36,6 +47,7 @@ Object.keys(categories).sort().forEach(cat => {
         
         content += `\n### ${tip.title}\n`;
         content += `\`\`\`sh\n${tip.tip}\n\`\`\`\n`;
+        if (tip.description) content += `${tip.description}\n\n`;
         if (tip.alternatives) {
             content += `**Alternatives:**\n`;
             let alts = Array.isArray(tip.alternatives) ? tip.alternatives : [tip.alternatives];
