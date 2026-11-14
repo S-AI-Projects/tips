@@ -1,0 +1,18 @@
+{
+  "clone_command": "git clone --filter=blob:none --sparse <file-url> <checkout>",
+  "mistake": "git sparse-checkout set --no-cone notes.txt",
+  "recovery": "git sparse-checkout set --no-cone notes.txt todo.txt",
+  "author": {
+    "name": "Course Student",
+    "email": "student@example.invalid"
+  },
+  "commits": {
+    "A": "create notes.txt containing alpha\\n",
+    "B": "append beta\\n to notes.txt",
+    "C": "create todo.txt containing one\\n"
+  },
+  "branches": {
+    "main": "commit C",
+    "topic": "commit B"
+  }
+}
