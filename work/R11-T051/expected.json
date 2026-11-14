@@ -1,0 +1,29 @@
+{
+  "authors": {
+    "main": "Course Student <student@example.invalid>",
+    "main^": "Course Student <student@example.invalid>",
+    "main^^": "Course Student <student@example.invalid>"
+  },
+  "source_main_messages": [
+    "C",
+    "B",
+    "A"
+  ],
+  "source_topic_messages": [
+    "B",
+    "A"
+  ],
+  "topic_ref_equals_commit_B": true,
+  "commit_C_parent_equals_commit_B": true,
+  "source_files": {
+    "notes.txt": "alpha\nbeta\n",
+    "todo.txt": "one\n"
+  },
+  "subtree_prefix": "vendor/project",
+  "host_subtree_files": {
+    "vendor/project/notes.txt": "alpha\nbeta\n",
+    "vendor/project/todo.txt": "one\n"
+  },
+  "host_worktree_clean_after_add": true,
+  "two_runs_have_same_git_object_ids": true
+}

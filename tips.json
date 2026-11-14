@@ -449,7 +449,7 @@
     },
     {
         "title": "Adding a project to repo using subtree",
-        "tip": "git subtree add --prefix=<directory_name>/<project_name> --squash git@github.com:<username>/<project_name>.git master",
+        "tip": "# Build a local project with a main branch and a topic branch at B, then add it to a host repo.\ntmp=$(mktemp -d)\ngit init --bare --initial-branch=main \"$tmp/project.git\"\ngit init --initial-branch=main \"$tmp/project\"\ncd \"$tmp/project\"\ngit config user.name \"Course Student\"\ngit config user.email \"student@example.invalid\"\nprintf 'alpha\\n' > notes.txt\ngit add notes.txt && git commit -m A\nprintf 'beta\\n' >> notes.txt\ngit add notes.txt && git commit -m B\ngit branch topic\ngit checkout main\nprintf 'one\\n' > todo.txt\ngit add todo.txt && git commit -m C\ngit remote add origin \"file://$tmp/project.git\"\ngit push --all origin\n\ngit init --initial-branch=main \"$tmp/host\"\ncd \"$tmp/host\"\ngit config user.name \"Course Student\"\ngit config user.email \"student@example.invalid\"\nprintf 'Host project\\n' > README.md\ngit add README.md && git commit -m \"Host project\"\ngit subtree add --prefix=vendor/project --squash \"file://$tmp/project.git\" main",
         "category": "Submodules and Subtrees"
     },
     {
