@@ -1,0 +1,18 @@
+{
+  "author": {
+    "name": "Course Student",
+    "email": "student@example.invalid"
+  },
+  "commits": {
+    "A": "create notes.txt with alpha\\n and sample data/release notes.txt",
+    "B": "append beta\\n to notes.txt on topic",
+    "C": "create todo.txt with one\\n on main"
+  },
+  "branches": {
+    "main": "commit C",
+    "topic": "commit B"
+  },
+  "spaced_path": "sample data/release notes.txt",
+  "excluded_author_command": "git log --perl-regexp --author='^((?!Course Student).*)$' -- 'sample data/release notes.txt'",
+  "path_check_command": "git log --format=%s -- 'sample data/release notes.txt'"
+}

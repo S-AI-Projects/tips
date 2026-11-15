@@ -36,6 +36,7 @@ Object.keys(categories).sort().forEach(cat => {
         
         content += `\n### ${tip.title}\n`;
         content += `\`\`\`sh\n${tip.tip}\n\`\`\`\n`;
+        if (tip.description) content += `${tip.description}\n\n`;
         if (tip.alternatives) {
             content += `**Alternatives:**\n`;
             let alts = Array.isArray(tip.alternatives) ? tip.alternatives : [tip.alternatives];

@@ -1,0 +1,57 @@
+{
+  "commit_ids": {
+    "A": "f4a6ebc5da3e47bc925d01039290668e9b6efb62",
+    "B": "413b3b19f1d39b56c76892d0fda292b1d09e83dc",
+    "C": "30a12da91b918d89dca0bb3e07ad12a01473ad97"
+  },
+  "before_search": {
+    "head": "30a12da91b918d89dca0bb3e07ad12a01473ad97",
+    "head_ref": "refs/heads/main",
+    "branch_refs": [
+      "refs/heads/main 30a12da91b918d89dca0bb3e07ad12a01473ad97",
+      "refs/heads/topic 413b3b19f1d39b56c76892d0fda292b1d09e83dc"
+    ],
+    "tree": "442f023b92717b61cb4fb4ad3943673b4abe36f3",
+    "index_tree": "442f023b92717b61cb4fb4ad3943673b4abe36f3",
+    "staged_files": [],
+    "unstaged_files": [],
+    "untracked_files": [],
+    "files": {
+      "notes.txt": "alpha\n",
+      "todo.txt": "one\n",
+      "sample data/release notes.txt": "release notes\n"
+    },
+    "status": ""
+  },
+  "unfiltered_path_subjects": [
+    "A: add release notes"
+  ],
+  "excluded_author_output": "",
+  "after_search": {
+    "head": "30a12da91b918d89dca0bb3e07ad12a01473ad97",
+    "head_ref": "refs/heads/main",
+    "branch_refs": [
+      "refs/heads/main 30a12da91b918d89dca0bb3e07ad12a01473ad97",
+      "refs/heads/topic 413b3b19f1d39b56c76892d0fda292b1d09e83dc"
+    ],
+    "tree": "442f023b92717b61cb4fb4ad3943673b4abe36f3",
+    "index_tree": "442f023b92717b61cb4fb4ad3943673b4abe36f3",
+    "staged_files": [],
+    "unstaged_files": [],
+    "untracked_files": [],
+    "files": {
+      "notes.txt": "alpha\n",
+      "todo.txt": "one\n",
+      "sample data/release notes.txt": "release notes\n"
+    },
+    "status": ""
+  },
+  "assertions": {
+    "quoted_spaced_path_finds_only_commit_a": true,
+    "course_student_author_is_excluded": true,
+    "main_head_and_topic_ref_are_expected": true,
+    "log_search_leaves_refs_index_and_files_unchanged": true,
+    "working_tree_is_clean_after_search": true,
+    "no_remote_was_needed": true
+  }
+}
