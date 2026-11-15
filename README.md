@@ -883,8 +883,20 @@ git reflog
 
 ### Compare two versions of a rebased branch
 ```sh
-git range-diff <base>..<old-tip> <base>..<new-tip>
+git range-diff <old-base>..<old-topic> <new-base>..<topic>
 ```
+#### Comparing a topic branch before and after rebase
+
+Here `main` is the local default branch, `origin/main` is its remote-tracking ref, and your current branch is `topic`. Save the old topic tip, replay the topic commit on top of `origin/main`, then compare the old and new commit series. In this history, `origin/main^` names the old base (commit A), while `origin/main` names the new base after commit C was added:
+
+```sh
+git branch topic-before-rebase topic
+git rebase origin/main
+git range-diff origin/main^..topic-before-rebase origin/main..topic
+```
+
+The output pairs the old commit B with its rewritten commit on local `topic`. The `=` marker means their changes are equivalent, even though the commit IDs differ. `git rebase origin/main` moves local `topic`; local `main`, remote-tracking `origin/main`, and saved local `topic-before-rebase` stay where they were. `git range-diff` only compares the two ranges: it does not move `HEAD`, update refs, stage changes, or edit working files. The checker uses a temporary bare repository through a `file://` URL to create `origin/main`; no public remote or personal branch is used.
+
 **Alternatives:**
 ```sh
 git range-diff <rev1>...<rev2>

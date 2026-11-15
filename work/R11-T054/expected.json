@@ -1,0 +1,5 @@
+{
+  "rebase": "local topic moves to a rewritten commit on origin/main; local main, origin/main, and topic-before-rebase stay fixed.",
+  "range_diff": "The old and rebased beta commits are paired as equivalent (the output line contains '='); range-diff itself changes no refs, index, or working-tree files.",
+  "remote": "Only a temporary local file:// remote is configured; no public remote or personal branch is used."
+}
