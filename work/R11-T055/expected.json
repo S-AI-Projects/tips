@@ -1,0 +1,9 @@
+{
+  "unfiltered_path_subjects": [
+    "A: add release notes"
+  ],
+  "excluded_author_output": "",
+  "head_after_search": "HEAD stays on main at commit C",
+  "topic_ref": "stays at commit B",
+  "search_side_effects": "HEAD, refs, index, and working-tree files are unchanged."
+}

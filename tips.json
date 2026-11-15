@@ -872,7 +872,8 @@
     },
     {
         "title": "Exclude author from logs",
-        "tip": "git log --perl-regexp --author='^((?!excluded-author-regex).*)$'",
+        "tip": "git log --perl-regexp --author='^((?!excluded-author-regex).*)$' -- 'sample data/release notes.txt'",
+        "description": "#### Quoting a path with spaces\n\nReplace `excluded-author-regex` with the author text or regular expression you want to exclude. Quote the path so the shell passes `sample data/release notes.txt` as one argument. Put `--` before the path to mark it as a pathspec rather than a revision or option; this also avoids ambiguity if a path could be mistaken for a revision.\n\nIn the exercise, the release-notes file is added in commit A by `Course Student`. To confirm Git sees the spaced path, run:\n\n```sh\ngit log --format=%s -- 'sample data/release notes.txt'\n```\n\nIts exact output is `A: add release notes`. With the author-exclusion command above and `excluded-author-regex` replaced by `Course Student`, the exact output is empty: the only matching commit is excluded. No error occurs. See the [git log documentation](https://git-scm.com/docs/git-log) for the `--` path separator and author filter.",
         "category": "Log and History"
     },
     {

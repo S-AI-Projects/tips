@@ -868,8 +868,20 @@ git log --since='FEB 1 2017' --until='FEB 14 2017'
 
 ### Exclude author from logs
 ```sh
-git log --perl-regexp --author='^((?!excluded-author-regex).*)$'
+git log --perl-regexp --author='^((?!excluded-author-regex).*)$' -- 'sample data/release notes.txt'
 ```
+#### Quoting a path with spaces
+
+Replace `excluded-author-regex` with the author text or regular expression you want to exclude. Quote the path so the shell passes `sample data/release notes.txt` as one argument. Put `--` before the path to mark it as a pathspec rather than a revision or option; this also avoids ambiguity if a path could be mistaken for a revision.
+
+In the exercise, the release-notes file is added in commit A by `Course Student`. To confirm Git sees the spaced path, run:
+
+```sh
+git log --format=%s -- 'sample data/release notes.txt'
+```
+
+Its exact output is `A: add release notes`. With the author-exclusion command above and `excluded-author-regex` replaced by `Course Student`, the exact output is empty: the only matching commit is excluded. No error occurs. See the [git log documentation](https://git-scm.com/docs/git-log) for the `--` path separator and author filter.
+
 
 ### View expanded details of changes in last commit
 ```sh
