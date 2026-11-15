@@ -1,0 +1,21 @@
+[Command]: git clean -fd --dry-run
+[Expected Output]:
+Would remove scratch.txt
+Would remove untracked_dir/
+
+[Command]: git status --short
+[Expected Output]:
+?? scratch.txt
+?? untracked_dir/
+
+[Command]: git log --all --graph --oneline --decorate
+[Expected Output]:
+* <hash> (HEAD -> main) Commit C: todo.txt with one
+* <hash> (topic) Commit B: append beta
+* <hash> Commit A: notes.txt with alpha
+
+[Verification]:
+scratch.txt exists: True
+untracked_dir exists: True
+untracked_dir/temp.log exists: True
+Assertion: Nothing is deleted by git clean -fd --dry-run.

@@ -1,0 +1,39 @@
+# Inputs for reproducible git clean -fd --dry-run demonstration (Issue #4, R11-T031)
+
+# 1. Initialize temporary repository with branch main
+git init -b main
+git config user.name "Course Student"
+git config user.email "student@example.invalid"
+
+# 2. Commit A: notes.txt containing alpha
+echo "alpha" > notes.txt
+git add notes.txt
+git commit -m "Commit A: notes.txt with alpha"
+
+# 3. Commit B: append beta to notes.txt
+echo "beta" >> notes.txt
+git add notes.txt
+git commit -m "Commit B: append beta"
+
+# 4. Create branch topic at commit B
+git branch topic
+
+# 5. Commit C: todo.txt containing one
+echo "one" > todo.txt
+git add todo.txt
+git commit -m "Commit C: todo.txt with one"
+
+# 6. Add untracked files and directories
+echo "temporary notes" > scratch.txt
+mkdir untracked_dir
+echo "log data" > untracked_dir/temp.log
+
+# 7. Run git clean dry-run
+git clean -fd --dry-run
+
+# 8. Verification checks
+test -f scratch.txt
+test -d untracked_dir
+test -f untracked_dir/temp.log
+git status --short
+git log --all --graph --oneline --decorate

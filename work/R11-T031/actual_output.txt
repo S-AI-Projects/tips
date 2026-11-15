@@ -1,0 +1,21 @@
+[Command]: git clean -fd --dry-run
+[Actual Output]:
+Would remove scratch.txt
+Would remove untracked_dir/
+
+[Command]: git status --short
+[Actual Output]:
+?? scratch.txt
+?? untracked_dir/
+
+[Command]: git log --all --graph --oneline --decorate
+[Actual Output]:
+* a346222 (HEAD -> main) Commit C: todo.txt with one
+* f61cf06 (topic) Commit B: append beta
+* 9309a0d Commit A: notes.txt with alpha
+
+[Verification]:
+scratch.txt exists: True
+untracked_dir exists: True
+untracked_dir/temp.log exists: True
+All assertions passed successfully!
