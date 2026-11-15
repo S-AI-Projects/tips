@@ -1,0 +1,18 @@
+{
+  "author": {
+    "name": "Course Student",
+    "email": "student@example.invalid"
+  },
+  "history": {
+    "A": "main starts at A: notes.txt contains alpha\\n",
+    "B": "topic adds beta\\n to notes.txt",
+    "C": "main adds todo.txt containing one\\n"
+  },
+  "comparison_command": "git range-diff --no-color origin/main^..topic-before-rebase origin/main..topic",
+  "local_branches": [
+    "main",
+    "topic",
+    "topic-before-rebase"
+  ],
+  "remote_tracking_ref": "origin/main (from a temporary file:// bare repository)"
+}
