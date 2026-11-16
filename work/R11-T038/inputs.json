@@ -1,0 +1,12 @@
+{
+  "branch": "main",
+  "author": "Course Student",
+  "email": "student@example.invalid",
+  "commits": [
+    "A: alpha",
+    "B: beta",
+    "C: todo one"
+  ],
+  "topic_branch": "commit B",
+  "command": "git config --global core.editor '$EDITOR'"
+}

@@ -1164,6 +1164,9 @@ git config --global core.ignorecase false
 ### Add custom editors.
 ```sh
 git config --global core.editor '$EDITOR'
+
+Run the automated guide check:
+python3 tests/guides/add_custom_editors.py
 ```
 
 ### Auto correct typos.
@@ -1403,7 +1406,20 @@ git subtree pull --prefix=<directory_name>/<project_name> --squash git@github.co
 
 ### Create local tag
 ```sh
-git tag <tag-name>
+# Switch to topic (which points to commit B):
+git switch topic
+
+# Create a local tag at commit B:
+git tag topic-at-B
+
+# Tag commit C on main without switching branches:
+git tag main-at-C main
+
+# View local tags:
+git show-ref --tags
+
+# Push a tag explicitly when you want to share it:
+git push origin topic-at-B
 ```
 
 ### Delete local tag
