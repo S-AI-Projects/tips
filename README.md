@@ -1352,6 +1352,92 @@ git stash drop <stash@{n}>
 git stash push --keep-index
 ```
 
+<!-- R11-T035 START -->
+
+<!-- R11-T035 START -->
+
+### R11-T035: Stash only unstaged changes
+
+Use `git stash push --keep-index` when you want to stash unstaged
+changes while keeping already staged changes in your working tree
+and index.
+
+Example with filenames and directories containing spaces:
+
+```bash
+git add -- "release notes.txt"
+
+# Make further unstaged edits to the file and sample data directory.
+
+git stash push --keep-index -- "release notes.txt" "sample data"
+```
+
+**Important syntax:**
+
+- Quote `"release notes.txt"` so the shell treats it as one path.
+- Quote `"sample data"` for the same reason. It is a directory pathspec.
+- `--` ends option parsing and separates the options from the pathspecs.
+- The command operates on the specified paths, not every modified file.
+- `--keep-index` preserves staged changes while stashing unstaged changes.
+
+For commands accepting both revisions and paths, `--` also separates
+the revision from the path. For example:
+
+```bash
+git diff HEAD -- "release notes.txt"
+```
+
+Here `HEAD` is the revision and `"release notes.txt"` is the path.
+
+Inspect the resulting stash with:
+
+```bash
+git stash list
+git stash show -p "stash@{0}"
+```
+
+<!-- R11-T035 END -->
+### R11-T035: Stash only unstaged changes
+
+Use `git stash push --keep-index` when you want to stash unstaged
+changes while keeping already staged changes in your working tree
+and index.
+
+Example with filenames and directories containing spaces:
+
+```bash
+git add -- "release notes.txt"
+
+# Make further unstaged edits to the file and sample data directory.
+
+git stash push --keep-index -- "release notes.txt" "sample data"
+```
+
+**Important syntax:**
+
+- Quote `"release notes.txt"` so the shell treats it as one path.
+- Quote `"sample data"` for the same reason. It is a directory pathspec.
+- `--` ends option parsing and separates the options from the pathspecs.
+- The command operates on the specified paths, not every modified file.
+- `--keep-index` preserves staged changes while stashing unstaged changes.
+
+For commands accepting both revisions and paths, `--` also separates
+the revision from the path. For example:
+
+```bash
+git diff HEAD -- "release notes.txt"
+```
+
+Here `HEAD` is the revision and `"release notes.txt"` is the path.
+
+Inspect the resulting stash with:
+
+```bash
+git stash list
+git stash show -p "stash@{0}"
+```
+
+<!-- R11-T035 END -->
 ### Stash specific files
 ```sh
 git stash push -m '<message>' <file1> <file2>
@@ -1403,7 +1489,20 @@ git subtree pull --prefix=<directory_name>/<project_name> --squash git@github.co
 
 ### Create local tag
 ```sh
-git tag <tag-name>
+# Switch to topic (which points to commit B):
+git switch topic
+
+# Create a local tag at commit B:
+git tag topic-at-B
+
+# Tag commit C on main without switching branches:
+git tag main-at-C main
+
+# View local tags:
+git show-ref --tags
+
+# Push a tag explicitly when you want to share it:
+git push origin topic-at-B
 ```
 
 ### Delete local tag
