@@ -19,3 +19,4 @@ scratch.txt exists: True
 untracked_dir exists: True
 untracked_dir/temp.log exists: True
 All assertions passed successfully!
+

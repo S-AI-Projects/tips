@@ -37,3 +37,4 @@ test -d untracked_dir
 test -f untracked_dir/temp.log
 git status --short
 git log --all --graph --oneline --decorate
+
