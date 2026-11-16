@@ -225,6 +225,7 @@
         "alternatives": [
             "git branch --contains <commit-ish>"
         ],
+        "recovery": "#### Recovery from Accidental Branch Deletion or Hard Reset\n\n- **Recovery Point:** Find the commit hash of the lost state via `git reflog`\n- **Commands Used:**\n  - Recover deleted branch: `git branch <branch-name> <commit-hash>`\n  - Recover hard reset: `git reset --hard HEAD@{1}`\n- **Verification Steps:**\n  - Verify branch reference: `git rev-parse <branch-name>`\n  - Verify restored tree state: `git rev-parse <branch-name>^{tree}`\n  - Verify working tree files and `git status`\n- **What Can and Cannot Be Recovered:**\n  - *Can recover:* Any committed revision present in `.git/objects` and referenced in `git reflog`.\n  - *Cannot recover:* Uncommitted working-tree edits that were not staged or committed prior to a destructive operation, or commits pruned after reflog expiry (`gc.reflogExpire`).",
         "category": "Branching"
     },
     {
