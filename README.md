@@ -573,6 +573,17 @@ git branch -vv
 
 ### Track upstream branch
 ```sh
+# Prerequisites:
+# - Run inside an existing Git repository.
+# - The local branch mybranch must exist.
+# - The remote origin must be configured.
+# - Fetch the remote branch before setting the upstream.
+# - Switch to the local branch you want to configure.
+# - Check staged changes with git diff --cached.
+
+# Example:
+git switch mybranch
+git fetch origin
 git branch -u origin/mybranch
 ```
 

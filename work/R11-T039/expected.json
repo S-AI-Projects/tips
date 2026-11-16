@@ -1,0 +1,5 @@
+{
+  "upstream": "origin/topic",
+  "remote": "origin",
+  "merge": "refs/heads/topic"
+}

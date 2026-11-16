@@ -100,7 +100,7 @@
     },
     {
         "title": "Track upstream branch",
-        "tip": "git branch -u origin/mybranch",
+        "tip": "# Prerequisites:\n# - Run inside an existing Git repository.\n# - The local branch mybranch must exist.\n# - The remote origin must be configured.\n# - Fetch the remote branch before setting the upstream.\n# - Switch to the local branch you want to configure.\n# - Check staged changes with git diff --cached.\n\n# Example:\ngit switch mybranch\ngit fetch origin\ngit branch -u origin/mybranch",
         "category": "Branching"
     },
     {
@@ -508,7 +508,7 @@
         "category": "Log and History"
     },
     {
-        "title": "Don’t consider changes for tracked file.",
+        "title": "Don\u2019t consider changes for tracked file.",
         "tip": "git update-index --assume-unchanged <file_name>",
         "category": "Miscellaneous"
     },
@@ -952,7 +952,7 @@
     },
     {
         "title": "Send a collection of patches as emails",
-        "tip": "git send-email [<options>] <file|directory>…\n\ngit send-email [<options>] <format-patch options>",
+        "tip": "git send-email [<options>] <file|directory>\u2026\n\ngit send-email [<options>] <format-patch options>",
         "category": "Miscellaneous"
     },
     {
