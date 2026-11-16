@@ -1143,11 +1143,50 @@ git config --global alias.st status
 
 ### Always rebase instead of merge on pull.
 ```sh
+# Set default pull behavior to rebase for all tracking branches:
 git config --global pull.rebase true
+
+# Configure newly created tracking branches to always rebase on pull:
+git config --global branch.autosetuprebase always
+
+# ==============================================================================
+# Worked Prediction-and-Verification Exercise: Always Rebase on Pull
+# ==============================================================================
+#
+# 1. Normal Pull vs. Rebase on Pull:
+#    - Normally, when your local branch and the remote branch diverge, 'git pull'
+#      performs a 3-way merge, generating a non-linear merge commit with two parents.
+#    - With 'pull.rebase true', 'git pull' fetches the upstream commits and replays
+#      your local commits on top of the fetched tip, producing a clean, linear history.
+#
+# 2. What Configuration Options Control:
+#    - 'pull.rebase true': Directly instructs 'git pull' to rebase local commits
+#      instead of merging.
+#    - 'branch.autosetuprebase always': Automatically configures any newly created
+#      tracking branch with 'branch.<name>.rebase true' upon creation.
+#    - Why history changes: Rebasing rewrites commit ancestry. Because parent hashes
+#      change, replayed commits receive brand-new SHA-1 hashes.
+#    - Scope: Flags with '--global' write to ~/.gitconfig and affect all repositories;
+#      use '--local' to isolate configuration to a single repository.
+#
+# 3. Prediction & State Transition:
+#    - Setup: Remote 'main' has commits A -> B -> C. Local 'topic' diverged at B with D.
+#    - Predict HEAD: 'topic' moves to new rebased commit D' on top of C.
+#    - Predict Ancestry: Strictly linear: A -> B -> C -> D' (0 merge commits).
+#    - Predict Parent: HEAD^ points to remote commit C.
+#    - Predict Index & Worktree: Clean, containing files from A, B, C, and D.
+#
+# 4. Verification Commands:
+#    git config branch.autosetuprebase
+#    git config branch.topic.rebase
+#    git pull
+#    git log --oneline --graph
+#    git rev-parse HEAD^
+#    git status --short
 ```
 **Alternatives:**
 ```sh
-#git < 1.7.9
+# For Git < 1.7.9:
 git config --global branch.autosetuprebase always
 ```
 
