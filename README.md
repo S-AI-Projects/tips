@@ -1468,6 +1468,64 @@ git clean -X -f
 git clean -fd --dry-run
 ```
 
+**Reproducible Example:**
+
+A complete, reproducible example demonstrating `git clean -fd --dry-run`:
+
+```sh
+# 1. Initialize temporary repository with branch 'main'
+git init -b main
+git config user.name "Course Student"
+git config user.email "student@example.invalid"
+
+# 2. Commit A: notes.txt containing alpha
+echo "alpha" > notes.txt
+git add notes.txt
+git commit -m "Commit A: notes.txt with alpha"
+
+# 3. Commit B: append beta to notes.txt
+echo "beta" >> notes.txt
+git add notes.txt
+git commit -m "Commit B: append beta"
+
+# 4. Create branch topic at commit B
+git branch topic
+
+# 5. Commit C: todo.txt containing one
+echo "one" > todo.txt
+git add todo.txt
+git commit -m "Commit C: todo.txt with one"
+
+# 6. Add untracked files and directories
+echo "temporary notes" > scratch.txt
+mkdir untracked_dir
+echo "log data" > untracked_dir/temp.log
+
+# 7. Perform dry-run clean
+git clean -fd --dry-run
+```
+
+**Expected Output:**
+```
+Would remove scratch.txt
+Would remove untracked_dir/
+```
+
+**Explanation:**
+- `-f` (force) overrides Git's default requirement for forced clean (`clean.requireForce`).
+- `-d` includes untracked directories in addition to untracked files.
+- `--dry-run` simulates the clean operation to preview removals without deleting anything.
+- Verification that nothing is deleted:
+```sh
+test -f scratch.txt && echo "scratch.txt exists"
+test -d untracked_dir && echo "untracked_dir exists"
+git status --short
+# Output shows both items remain untracked:
+# ?? scratch.txt
+# ?? untracked_dir/
+```
+
+
 ### Unstaging Staged file
 ```sh
 git reset HEAD <file-name>
