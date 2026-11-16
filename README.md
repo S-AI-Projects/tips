@@ -1164,6 +1164,9 @@ git config --global core.ignorecase false
 ### Add custom editors.
 ```sh
 git config --global core.editor '$EDITOR'
+
+Run the automated guide check:
+python3 tests/guides/add_custom_editors.py
 ```
 
 ### Auto correct typos.

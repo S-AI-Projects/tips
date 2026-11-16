@@ -552,7 +552,7 @@
     },
     {
         "title": "Add custom editors.",
-        "tip": "git config --global core.editor '$EDITOR'",
+        "tip": "git config --global core.editor '$EDITOR'\n\nRun the automated guide check:\npython3 tests/guides/add_custom_editors.py",
         "category": "Setup and Config"
     },
     {
