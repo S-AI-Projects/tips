@@ -1,0 +1,25 @@
+{
+  "command_output": "branch 'topic' set up to track 'origin/topic'.",
+  "actual": {
+    "current_branch": "topic",
+    "upstream": "origin/topic",
+    "remote": "origin",
+    "merge": "refs/heads/topic",
+    "topic_matches_origin": true,
+    "main_at_C": true,
+    "staged_empty": true,
+    "working_tree_clean": true
+  },
+  "checks": {
+    "current branch is topic": true,
+    "upstream is origin/topic": true,
+    "remote is origin": true,
+    "merge branch is refs/heads/topic": true,
+    "topic matches origin/topic": true,
+    "main remains at commit C": true,
+    "staged changes remain empty": true,
+    "working tree remains clean": true
+  },
+  "passed": 8,
+  "total": 8
+}

@@ -1,0 +1,8 @@
+{
+  "normal_test": "PASS: All custom editor assertions\n",
+  "omitted_command_exit_code": 1,
+  "versions": {
+    "python": "3.15.2",
+    "git": "git version 2.50.1 (Apple Git-155)"
+  }
+}

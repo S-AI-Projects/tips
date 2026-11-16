@@ -1,0 +1,6 @@
+{
+  "commit_B": "5f1a6de45a35e85ab360b087e2b52223a47021ae",
+  "commit_C": "ee4858f45aa94140e92f5d9fbfedacc7390666f9",
+  "command": "git branch -u origin/topic",
+  "remote": "file:///var/folders/05/mdvyyv_x6zzczfby668c5jm40000gn/T/tmp1td4f5_w/remote.git"
+}
