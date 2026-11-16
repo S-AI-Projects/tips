@@ -1,0 +1,10 @@
+{
+  "topic_upstream": "origin/main",
+  "branch_topic_rebase": "true",
+  "pull_rebase": "true",
+  "post_pull_parent": "1845235891d98b7d7d204b4d27db8a5f9892687f",
+  "merge_commits_count": 0,
+  "main_commit": "1845235891d98b7d7d204b4d27db8a5f9892687f",
+  "working_tree_clean": true,
+  "staged_empty": true
+}

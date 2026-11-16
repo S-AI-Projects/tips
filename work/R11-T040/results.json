@@ -1,0 +1,31 @@
+{
+  "pull_output": "Rebasing (1/1)\nSuccessfully rebased and updated refs/heads/topic.",
+  "actual": {
+    "commit_A": "e8dbe938e2dd4ccdcaf28f85d1f570ab78dd5315",
+    "commit_B": "8cc90f160d9b975b080907432d12ee45e9443c31",
+    "commit_C": "1845235891d98b7d7d204b4d27db8a5f9892687f",
+    "old_topic_commit": "50f7259ab39961fbd59f598d1a0771bf18be1cb6",
+    "new_topic_commit": "f2e0ee0bcb9aa8afe60380ac8799e2cbf138b3fe",
+    "post_pull_parent": "1845235891d98b7d7d204b4d27db8a5f9892687f",
+    "merge_commits": "",
+    "main_ref": "1845235891d98b7d7d204b4d27db8a5f9892687f",
+    "working_tree_clean": true,
+    "staged_empty": true
+  },
+  "checks": {
+    "branch.autosetuprebase is set to always": true,
+    "topic branch upstream is configured to origin/main": true,
+    "branch.topic.rebase was automatically set to true": true,
+    "pull.rebase is configured to true": true,
+    "pre-pull topic commit had parent Commit B": true,
+    "git pull rebased topic onto Commit C (parent is Commit C)": true,
+    "rebased topic commit hash changed from pre-pull commit": true,
+    "zero merge commits created (strictly linear history)": true,
+    "local main branch remains pointing to Commit C": true,
+    "index contains no staged changes": true,
+    "working tree is clean": true,
+    "all expected files exist with correct contents": true
+  },
+  "passed": 12,
+  "total": 12
+}
