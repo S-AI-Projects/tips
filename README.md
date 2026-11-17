@@ -1026,6 +1026,31 @@ git name-rev --name-only <SHA-1>
 ```sh
 git check-ignore *
 ```
+#### Automated integration test for `git check-ignore *`
+
+**How to test:**
+This integration check validates that Git correctly classifies ignored versus tracked files according to `.gitignore` rules:
+
+```sh
+# 1. Set up ignore rule:
+echo "*.log" > .gitignore
+git add .gitignore && git commit -m "Add gitignore"
+
+# 2. Create sample files:
+echo "log content" > debug.log
+echo "normal file" > tracked.txt
+
+# 3. Verify check-ignore returns only ignored files:
+git check-ignore *
+# Output: debug.log
+```
+
+**Assertion requirements:**
+- `git check-ignore *` exits with status `0` when matching ignored files are found.
+- Non-ignored files (`tracked.txt`) are excluded from the output.
+- If no files match the ignore pattern, `git check-ignore` exits with status `1`.
+- The command is strictly read-only and does not modify the index or working tree.
+
 
 ### Count unpacked number of objects and their disk consumption.
 ```sh

@@ -1,0 +1,11 @@
+{
+  "res_returncode": 0,
+  "res_stdout": "debug.log",
+  "res_tracked_returncode": 1,
+  "assertions_passed": [
+    "check-ignore exits 0 and prints ignored file debug.log",
+    "check-ignore excludes tracked.txt from ignored matches",
+    "check-ignore exits 1 when run exclusively on non-ignored files",
+    "working tree and status confirm debug.log is ignored"
+  ]
+}

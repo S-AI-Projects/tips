@@ -1,0 +1,9 @@
+{
+  "exit_code": 0,
+  "ignored_matches": [
+    "debug.log"
+  ],
+  "non_ignored_excluded": [
+    "tracked.txt"
+  ]
+}

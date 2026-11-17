@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -591,7 +593,8 @@
     {
         "title": "List ignored files.",
         "tip": "git check-ignore *",
-        "category": "Miscellaneous"
+        "category": "Miscellaneous",
+        "description": "#### Automated integration test for `git check-ignore *`\n\n**How to test:**\nThis integration check validates that Git correctly classifies ignored versus tracked files according to `.gitignore` rules:\n\n```sh\n# 1. Set up ignore rule:\necho \"*.log\" > .gitignore\ngit add .gitignore && git commit -m \"Add gitignore\"\n\n# 2. Create sample files:\necho \"log content\" > debug.log\necho \"normal file\" > tracked.txt\n\n# 3. Verify check-ignore returns only ignored files:\ngit check-ignore *\n# Output: debug.log\n```\n\n**Assertion requirements:**\n- `git check-ignore *` exits with status `0` when matching ignored files are found.\n- Non-ignored files (`tracked.txt`) are excluded from the output.\n- If no files match the ignore pattern, `git check-ignore` exits with status `1`.\n- The command is strictly read-only and does not modify the index or working tree."
     },
     {
         "title": "Status of ignored files.",
