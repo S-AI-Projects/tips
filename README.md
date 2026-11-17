@@ -485,6 +485,54 @@ git fetch origin master:refs/remotes/origin/mymaster
 ```sh
 git request-pull v1.0 https://git.ko.xz/project master:for-linus
 ```
+#### Reproducible command example
+
+**Overview:**
+`git request-pull <start> <url> [<end>]` generates a summary of commits between a base revision `<start>` and an endpoint `<end>` (default `HEAD`) that have been published to a public repository at `<url>`.
+
+**Preconditions:**
+1. A base release or tag exists in the upstream project (e.g., tag `v1.0` pointing to commit A).
+2. The topic branch containing changes to be pulled (commit B) is published to an accessible remote repository at `<url>`.
+3. The local repository has both the base revision and the topic branch.
+
+**Start-to-finish walkthrough:**
+```sh
+# 1. Initialize a bare public repository (remote destination):
+git init --bare /path/to/public-repo.git
+
+# 2. In your working repository, publish the base tag and topic branch:
+git remote add public file:///path/to/public-repo.git
+git push public v1.0 topic
+
+# 3. Generate the request-pull summary for upstream maintainers:
+git request-pull v1.0 file:///path/to/public-repo.git topic
+```
+
+**Expected output:**
+```text
+The following changes since commit <commit_A>:
+
+  A: add alpha (<date>)
+
+are available in the Git repository at:
+
+  file:///path/to/public-repo.git topic
+
+for you to fetch changes up to <commit_B>:
+
+  B: add beta (<date>)
+
+----------------------------------------------------------------
+Course Student (1):
+      B: add beta
+
+ notes.txt | 1 +
+ 1 file changed, 1 insertion(+)
+```
+
+**State verification:**
+`git request-pull` is strictly an inspection tool: HEAD, branch references (`main`, `topic`), the index, and working tree files remain unchanged.
+
 
 ### Show git status short
 ```sh

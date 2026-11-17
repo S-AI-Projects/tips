@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -878,7 +880,8 @@
     {
         "title": "Generates a summary of pending changes",
         "tip": "git request-pull v1.0 https://git.ko.xz/project master:for-linus",
-        "category": "Basic Operations"
+        "category": "Basic Operations",
+        "description": "#### Reproducible command example\n\n**Overview:**\n`git request-pull <start> <url> [<end>]` generates a summary of commits between a base revision `<start>` and an endpoint `<end>` (default `HEAD`) that have been published to a public repository at `<url>`.\n\n**Preconditions:**\n1. A base release or tag exists in the upstream project (e.g., tag `v1.0` pointing to commit A).\n2. The topic branch containing changes to be pulled (commit B) is published to an accessible remote repository at `<url>`.\n3. The local repository has both the base revision and the topic branch.\n\n**Start-to-finish walkthrough:**\n```sh\n# 1. Initialize a bare public repository (remote destination):\ngit init --bare /path/to/public-repo.git\n\n# 2. In your working repository, publish the base tag and topic branch:\ngit remote add public file:///path/to/public-repo.git\ngit push public v1.0 topic\n\n# 3. Generate the request-pull summary for upstream maintainers:\ngit request-pull v1.0 file:///path/to/public-repo.git topic\n```\n\n**Expected output:**\n```text\nThe following changes since commit <commit_A>:\n\n  A: add alpha (<date>)\n\nare available in the Git repository at:\n\n  file:///path/to/public-repo.git topic\n\nfor you to fetch changes up to <commit_B>:\n\n  B: add beta (<date>)\n\n----------------------------------------------------------------\nCourse Student (1):\n      B: add beta\n\n notes.txt | 1 +\n 1 file changed, 1 insertion(+)\n```\n\n**State verification:**\n`git request-pull` is strictly an inspection tool: HEAD, branch references (`main`, `topic`), the index, and working tree files remain unchanged."
     },
     {
         "title": "List references in a remote repository",

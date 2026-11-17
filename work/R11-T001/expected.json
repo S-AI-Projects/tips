@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "contains": [
+    "topic",
+    "v1.0",
+    "Course Student",
+    "notes.txt | 1 +"
+  ],
+  "state_unchanged": true
+}

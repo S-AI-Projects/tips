@@ -1,0 +1,13 @@
+{
+  "command": "git request-pull v1.0 <url> topic",
+  "author": {
+    "name": "Course Student",
+    "email": "student@example.invalid"
+  },
+  "history": {
+    "A": "main creates notes.txt containing alpha\n and tagged v1.0",
+    "B": "topic appends beta\n to notes.txt",
+    "C": "main adds todo.txt containing one\n"
+  },
+  "remote": "local bare repository accessed via file:// URL"
+}
