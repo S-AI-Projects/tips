@@ -1,0 +1,32 @@
+{
+  "returncode": 0,
+  "stdout_summary": [
+    "The following changes since commit a1255d415afe2f47e4f961f5a9624dd9b25c2881:",
+    "",
+    "  A: add alpha (2026-11-17 18:29:26 +0530)",
+    "",
+    "are available in the Git repository at:"
+  ],
+  "state_before": {
+    "head": "4cf5388a5dadc2afa5de841ca1f8713ad444e79e",
+    "topic": "b0c3d8da7ddcfc2441b5bf3c3b4595541849b5f5",
+    "main": "4cf5388a5dadc2afa5de841ca1f8713ad444e79e",
+    "index_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+    "status": ""
+  },
+  "state_after": {
+    "head": "4cf5388a5dadc2afa5de841ca1f8713ad444e79e",
+    "topic": "b0c3d8da7ddcfc2441b5bf3c3b4595541849b5f5",
+    "main": "4cf5388a5dadc2afa5de841ca1f8713ad444e79e",
+    "index_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+    "status": ""
+  },
+  "reproducible_across_runs": true,
+  "assertions_passed": [
+    "git request-pull exits 0",
+    "output identifies target branch topic and base v1.0",
+    "output includes diffstat notes.txt | 1 + and author Course Student",
+    "local repository state (HEAD, refs, index, worktree) is preserved",
+    "reproducible in independent temporary directories"
+  ]
+}
