@@ -1,0 +1,230 @@
+{
+  "commit_ids": {
+    "clear_fixture": {
+      "A": "4f24904ff3a1f9b4a799589b98814fbf1eec4416",
+      "B": "79c9c90d5df696b59534ac861a1af5ed33a8e972",
+      "C": "179851d6e0ef2e147f5c41da35da20d8ae1e63ca"
+    },
+    "drop_fixture": {
+      "A": "4f24904ff3a1f9b4a799589b98814fbf1eec4416",
+      "B": "79c9c90d5df696b59534ac861a1af5ed33a8e972",
+      "C": "179851d6e0ef2e147f5c41da35da20d8ae1e63ca"
+    }
+  },
+  "equivalent_initial_fixture_signature": {
+    "head_ref": "refs/heads/main",
+    "head_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+    "branch_names": [
+      "refs/heads/main",
+      "refs/heads/topic"
+    ],
+    "branch_trees": {
+      "main": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+      "topic": "f85b72cccab2aab0cfca333f78ab1ff302be5f7b"
+    },
+    "index_tree": "ba938ce9e81dc4fda4aa09229c81e288b800db36",
+    "staged_files": [
+      "notes.txt"
+    ],
+    "unstaged_files": [
+      "notes.txt"
+    ],
+    "untracked_files": [],
+    "files": {
+      "notes.txt": "alpha\ncurrent-staged\ncurrent-unstaged\n",
+      "todo.txt": "one\n"
+    },
+    "status": "MM notes.txt",
+    "stash_count": 3,
+    "stash_subjects": [
+      "On main: saved-change-3",
+      "On main: saved-change-2",
+      "On main: saved-change-1"
+    ]
+  },
+  "clear_workflow": {
+    "before": {
+      "git_state": {
+        "head": "179851d6e0ef2e147f5c41da35da20d8ae1e63ca",
+        "head_ref": "refs/heads/main",
+        "head_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+        "branch_refs": [
+          "refs/heads/main 179851d6e0ef2e147f5c41da35da20d8ae1e63ca",
+          "refs/heads/topic 79c9c90d5df696b59534ac861a1af5ed33a8e972"
+        ],
+        "branch_trees": {
+          "main": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+          "topic": "f85b72cccab2aab0cfca333f78ab1ff302be5f7b"
+        },
+        "index_tree": "ba938ce9e81dc4fda4aa09229c81e288b800db36",
+        "staged_files": [
+          "notes.txt"
+        ],
+        "unstaged_files": [
+          "notes.txt"
+        ],
+        "untracked_files": [],
+        "files": {
+          "notes.txt": "alpha\ncurrent-staged\ncurrent-unstaged\n",
+          "todo.txt": "one\n"
+        },
+        "status": "MM notes.txt"
+      },
+      "stash_ids": [
+        "dfcdee824e5e3a119646829f4615c9a7c0ee5430",
+        "437299ad1366e94c6cfa7c6fbf08ef73ed5ee989",
+        "c2d1fb75170f3ac4212b9d7469c6270560b76569"
+      ],
+      "stash_subjects": [
+        "On main: saved-change-3",
+        "On main: saved-change-2",
+        "On main: saved-change-1"
+      ],
+      "stash_ref": "dfcdee824e5e3a119646829f4615c9a7c0ee5430"
+    },
+    "command_output": "",
+    "after": {
+      "git_state": {
+        "head": "179851d6e0ef2e147f5c41da35da20d8ae1e63ca",
+        "head_ref": "refs/heads/main",
+        "head_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+        "branch_refs": [
+          "refs/heads/main 179851d6e0ef2e147f5c41da35da20d8ae1e63ca",
+          "refs/heads/topic 79c9c90d5df696b59534ac861a1af5ed33a8e972"
+        ],
+        "branch_trees": {
+          "main": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+          "topic": "f85b72cccab2aab0cfca333f78ab1ff302be5f7b"
+        },
+        "index_tree": "ba938ce9e81dc4fda4aa09229c81e288b800db36",
+        "staged_files": [
+          "notes.txt"
+        ],
+        "unstaged_files": [
+          "notes.txt"
+        ],
+        "untracked_files": [],
+        "files": {
+          "notes.txt": "alpha\ncurrent-staged\ncurrent-unstaged\n",
+          "todo.txt": "one\n"
+        },
+        "status": "MM notes.txt"
+      },
+      "stash_ids": [],
+      "stash_subjects": [],
+      "stash_ref": null
+    }
+  },
+  "drop_workflow": {
+    "before": {
+      "git_state": {
+        "head": "179851d6e0ef2e147f5c41da35da20d8ae1e63ca",
+        "head_ref": "refs/heads/main",
+        "head_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+        "branch_refs": [
+          "refs/heads/main 179851d6e0ef2e147f5c41da35da20d8ae1e63ca",
+          "refs/heads/topic 79c9c90d5df696b59534ac861a1af5ed33a8e972"
+        ],
+        "branch_trees": {
+          "main": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+          "topic": "f85b72cccab2aab0cfca333f78ab1ff302be5f7b"
+        },
+        "index_tree": "ba938ce9e81dc4fda4aa09229c81e288b800db36",
+        "staged_files": [
+          "notes.txt"
+        ],
+        "unstaged_files": [
+          "notes.txt"
+        ],
+        "untracked_files": [],
+        "files": {
+          "notes.txt": "alpha\ncurrent-staged\ncurrent-unstaged\n",
+          "todo.txt": "one\n"
+        },
+        "status": "MM notes.txt"
+      },
+      "stash_ids": [
+        "dfcdee824e5e3a119646829f4615c9a7c0ee5430",
+        "437299ad1366e94c6cfa7c6fbf08ef73ed5ee989",
+        "c2d1fb75170f3ac4212b9d7469c6270560b76569"
+      ],
+      "stash_subjects": [
+        "On main: saved-change-3",
+        "On main: saved-change-2",
+        "On main: saved-change-1"
+      ],
+      "stash_ref": "dfcdee824e5e3a119646829f4615c9a7c0ee5430"
+    },
+    "steps": [
+      {
+        "dropped_id": "dfcdee824e5e3a119646829f4615c9a7c0ee5430",
+        "command_output": "Dropped stash@{0} (dfcdee824e5e3a119646829f4615c9a7c0ee5430)",
+        "remaining_ids": [
+          "437299ad1366e94c6cfa7c6fbf08ef73ed5ee989",
+          "c2d1fb75170f3ac4212b9d7469c6270560b76569"
+        ],
+        "remaining_count": 2,
+        "stash_ref": "437299ad1366e94c6cfa7c6fbf08ef73ed5ee989",
+        "git_state_unchanged": true
+      },
+      {
+        "dropped_id": "437299ad1366e94c6cfa7c6fbf08ef73ed5ee989",
+        "command_output": "Dropped stash@{0} (437299ad1366e94c6cfa7c6fbf08ef73ed5ee989)",
+        "remaining_ids": [
+          "c2d1fb75170f3ac4212b9d7469c6270560b76569"
+        ],
+        "remaining_count": 1,
+        "stash_ref": "c2d1fb75170f3ac4212b9d7469c6270560b76569",
+        "git_state_unchanged": true
+      },
+      {
+        "dropped_id": "c2d1fb75170f3ac4212b9d7469c6270560b76569",
+        "command_output": "Dropped stash@{0} (c2d1fb75170f3ac4212b9d7469c6270560b76569)",
+        "remaining_ids": [],
+        "remaining_count": 0,
+        "stash_ref": null,
+        "git_state_unchanged": true
+      }
+    ],
+    "after": {
+      "git_state": {
+        "head": "179851d6e0ef2e147f5c41da35da20d8ae1e63ca",
+        "head_ref": "refs/heads/main",
+        "head_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+        "branch_refs": [
+          "refs/heads/main 179851d6e0ef2e147f5c41da35da20d8ae1e63ca",
+          "refs/heads/topic 79c9c90d5df696b59534ac861a1af5ed33a8e972"
+        ],
+        "branch_trees": {
+          "main": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+          "topic": "f85b72cccab2aab0cfca333f78ab1ff302be5f7b"
+        },
+        "index_tree": "ba938ce9e81dc4fda4aa09229c81e288b800db36",
+        "staged_files": [
+          "notes.txt"
+        ],
+        "unstaged_files": [
+          "notes.txt"
+        ],
+        "untracked_files": [],
+        "files": {
+          "notes.txt": "alpha\ncurrent-staged\ncurrent-unstaged\n",
+          "todo.txt": "one\n"
+        },
+        "status": "MM notes.txt"
+      },
+      "stash_ids": [],
+      "stash_subjects": [],
+      "stash_ref": null
+    }
+  },
+  "assertions": {
+    "fixtures_start_equivalent": true,
+    "clear_removes_all_stashes_at_once": true,
+    "drop_removes_one_entry_per_step": true,
+    "stash_ref_advances_between_drops": true,
+    "clear_preserves_head_branches_index_and_worktree": true,
+    "drop_preserves_head_branches_index_and_worktree_each_step": true,
+    "both_workflows_reach_the_same_empty_stash_state": true
+  }
+}

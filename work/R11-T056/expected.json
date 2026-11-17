@@ -1,0 +1,6 @@
+{
+  "starting_condition": "Both temporary repositories have the same main/topic history, three stashes, and equivalent staged and unstaged edits.",
+  "clear": "All three stash entries and refs/stash disappear in one command.",
+  "drop": "Each command removes one top entry; the list counts go 2, 1, 0 and refs/stash advances to the next entry before disappearing.",
+  "shared_result": "HEAD, branch refs, commit tree, index, and working-tree files are unchanged by either workflow."
+}

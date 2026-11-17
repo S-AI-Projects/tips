@@ -1,0 +1,18 @@
+{
+  "author": {
+    "name": "Course Student",
+    "email": "student@example.invalid"
+  },
+  "history": {
+    "A": "main creates notes.txt containing alpha\\n",
+    "B": "topic appends beta\\n to notes.txt",
+    "C": "main adds todo.txt containing one\\n"
+  },
+  "initial_stashes": 3,
+  "comparison": [
+    "git stash clear",
+    "repeat git stash drop 'stash@{0}' until git stash list is empty"
+  ],
+  "current_worktree_before_removal": "notes.txt has staged and unstaged edits; stash deletion must preserve both.",
+  "remote": "none; all operations run in temporary repositories"
+}
