@@ -1,0 +1,34 @@
+{
+  "git_author_ident": "Course Student <student@example.invalid> 1794920439 +0530",
+  "variables_listed": [
+    "credential.helper",
+    "user.name",
+    "user.email",
+    "core.repositoryformatversion",
+    "core.filemode",
+    "core.bare",
+    "core.logallrefupdates",
+    "core.ignorecase",
+    "core.precomposeunicode",
+    "user.name",
+    "user.email",
+    "GIT_COMMITTER_IDENT",
+    "GIT_AUTHOR_IDENT",
+    "GIT_EDITOR",
+    "GIT_SEQUENCE_EDITOR",
+    "GIT_PAGER",
+    "GIT_DEFAULT_BRANCH",
+    "GIT_SHELL_PATH",
+    "GIT_ATTR_SYSTEM",
+    "GIT_ATTR_GLOBAL",
+    "GIT_CONFIG_SYSTEM",
+    "GIT_CONFIG_GLOBAL",
+    "GIT_CONFIG_GLOBAL"
+  ],
+  "assertions_passed": [
+    "git var GIT_AUTHOR_IDENT returns configured Course Student identity",
+    "git var -l lists logical variables including GIT_AUTHOR_IDENT and GIT_COMMITTER_IDENT",
+    "configuration was isolated to local repository config",
+    "repository working tree remained pristine"
+  ]
+}

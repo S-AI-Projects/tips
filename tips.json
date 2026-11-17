@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -853,7 +855,8 @@
     {
         "title": "Show a Git logical variable.",
         "tip": "git var -l | <variable>",
-        "category": "Log and History"
+        "category": "Log and History",
+        "description": "#### Preconditions and minimal setup for Git logical variables\n\n**Preconditions Checklist:**\n- [x] **Local user identity:** `user.name` and `user.email` must be set in local repository config (`git config user.name ...`, `git config user.email ...`) or available via environment variables (`GIT_AUTHOR_NAME`, `GIT_AUTHOR_EMAIL`). Without identity configuration, querying `GIT_AUTHOR_IDENT` or `GIT_COMMITTER_IDENT` fails.\n- [x] **Local isolation:** All configuration should be scoped to local repository config (`git config`) to avoid mutating global user settings (`~/.gitconfig`).\n- [x] **Repository context:** `git var -l` works in any valid Git repository; no commits or staged files are required.\n\n**Example usage:**\n```sh\n# Set local configuration:\ngit config user.name \"Course Student\"\ngit config user.email \"student@example.invalid\"\n\n# List all logical variables:\ngit var -l\n\n# Query a specific logical variable:\ngit var GIT_AUTHOR_IDENT\n# Output: Course Student <student@example.invalid> 1794919126 +0530\n```"
     },
     {
         "title": "Preformatted patch file.",
