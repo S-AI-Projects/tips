@@ -1301,6 +1301,16 @@ git stash push -m <message>
 ```sh
 git stash push --message <message>
 ```
+#### Troubleshooting: command run outside a repository
+
+**Trigger:** Run `git stash push -m "save point"` from a directory that is not inside a Git working tree. The command fails because Git has no repository context. Git exits with a nonzero status and reports that this is not a Git repository; exact diagnostic wording can vary by Git version.
+
+| State before running the command | Result | Smallest correction |
+| --- | --- | --- |
+| Current directory is outside the repository; no Git working tree is selected. | The stash command fails and does not stash the repository's edits. | Change into the repository, make sure there are changes to save, then run `git stash push -m "save point"`. |
+
+In the example below, the failing command runs from the temporary parent directory. The corrected command runs inside the repository after an edit to tracked `notes.txt`. Verify it with `git stash list` and `git status --short`. The correction saves the edit as a stash and leaves the working tree clean.
+
 
 ### Saving current state of all files (ignored, untracked, and tracked)
 ```sh

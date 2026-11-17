@@ -1,0 +1,5 @@
+{
+  "bad_case": "Command exits nonzero outside a working tree and leaves the repository state unchanged.",
+  "corrected_case": "The same named stash command succeeds in the repository, records the edit, and leaves the working tree clean.",
+  "stable_check": "Check the nonzero status and unchanged state rather than matching a full version-specific diagnostic."
+}

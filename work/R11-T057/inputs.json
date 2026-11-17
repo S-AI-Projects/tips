@@ -1,0 +1,15 @@
+{
+  "author": {
+    "name": "Course Student",
+    "email": "student@example.invalid"
+  },
+  "history": {
+    "A": "main creates notes.txt containing alpha\\n",
+    "B": "topic appends beta\\n to notes.txt",
+    "C": "main adds todo.txt containing one\\n"
+  },
+  "operation": "git stash push -m 'save point'",
+  "violated_precondition": "The command is run from the temporary parent directory, outside the Git working tree.",
+  "correction": "Run the stash command with cwd set to the repository, while there is a tracked edit to save.",
+  "remote": "none; all Git operations use the temporary local repository"
+}
