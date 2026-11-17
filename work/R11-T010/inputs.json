@@ -1,0 +1,4 @@
+{
+  "command": "git config --global --unset custom.setting",
+  "mock_global_config": true
+}

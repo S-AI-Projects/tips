@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -644,7 +646,8 @@
     {
         "title": "Remove entry in the global config.",
         "tip": "git config --global --unset <entry-name>",
-        "category": "Setup and Config"
+        "category": "Setup and Config",
+        "description": "#### Prediction and verification exercise: unsetting a global config entry\n\n**Exercise Scenario:**\nA configuration key (e.g., `custom.setting`) was set in the global Git configuration. We run:\n```sh\ngit config --global --unset custom.setting\n```\n\n**Step 1 \u2014 Predict the resulting Git state:**\n- **Configuration state:** The entry `custom.setting` will be removed from the global config file. Future queries (`git config --global --get custom.setting`) will return exit code `1`.\n- **Repository state:** `HEAD`, branch references (`refs/heads/*`), the commit graph, the index tree (`git write-tree`), and working-tree files will remain **100% untouched**.\n\n**Step 2 \u2014 Execute and verify:**\n```sh\n# Verify entry is removed:\ngit config --global --get custom.setting  # Exits 1 (not found)\n\n# Verify repository refs and status remain pristine:\ngit status --porcelain=v1                 # Outputs nothing (clean)\n```"
     },
     {
         "title": "Checkout a new branch without any history",
