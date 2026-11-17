@@ -1,0 +1,11 @@
+{
+  "original_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+  "recovered_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+  "commit_recovered": "bb899a76c685dfe61212837ed35490e766160293",
+  "assertions_passed": [
+    "accidental reset moved HEAD to commit A",
+    "git gc --prune=now preserved commit C due to active reflog",
+    "git reset --hard HEAD@{1} recovered original commit C",
+    "recovered tree hash and file contents match expected exactly"
+  ]
+}

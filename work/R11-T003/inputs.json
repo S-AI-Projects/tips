@@ -1,0 +1,5 @@
+{
+  "command": "git gc --prune=now --aggressive",
+  "mistake": "git reset --hard HEAD~1",
+  "recovery_mechanism": "git reset --hard HEAD@{1}"
+}
