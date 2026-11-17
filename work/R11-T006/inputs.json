@@ -1,0 +1,7 @@
+{
+  "commands": [
+    "git diff --color-words",
+    "git diff --word-diff=plain"
+  ],
+  "file_modification": "notes.txt: 'alpha' -> 'alpha modified'"
+}

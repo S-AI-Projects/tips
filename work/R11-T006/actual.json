@@ -1,0 +1,25 @@
+{
+  "plain_diff_output": "diff --git a/notes.txt b/notes.txt\nindex 4a58007..ad07266 100644\n--- a/notes.txt\n+++ b/notes.txt\n@@ -1 +1 @@\nalpha {+modified+}",
+  "color_diff_output_length": 168,
+  "state_before": {
+    "head": "59e332914f5da970389ca0e8e732e128ab7e8a25",
+    "branches": [
+      "refs/heads/main 59e332914f5da970389ca0e8e732e128ab7e8a25",
+      "refs/heads/topic 4efcfae550cb9634aa768b02ffc8f016a7d19946"
+    ],
+    "index_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731"
+  },
+  "state_after": {
+    "head": "59e332914f5da970389ca0e8e732e128ab7e8a25",
+    "branches": [
+      "refs/heads/main 59e332914f5da970389ca0e8e732e128ab7e8a25",
+      "refs/heads/topic 4efcfae550cb9634aa768b02ffc8f016a7d19946"
+    ],
+    "index_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731"
+  },
+  "assertions_passed": [
+    "--word-diff=plain outputs inline bracketed markers without ANSI codes",
+    "--color-words executes cleanly with exit code 0",
+    "both workflows preserve HEAD, branch references, and index tree"
+  ]
+}

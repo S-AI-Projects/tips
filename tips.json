@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -1146,6 +1148,7 @@
         "alternatives": [
             "git diff --word-diff=color"
         ],
-        "category": "Log and History"
+        "category": "Log and History",
+        "description": "#### Comparison: word-level diff (`--color-words`) vs plain word diff (`--word-diff=plain`)\n\n**Overview:**\nBoth commands inspect inline word-level changes between commits, the index, or the working tree, but format differences differently for terminal displays versus scripts/logs:\n\n| Feature / Aspect | `git diff --color-words` | `git diff --word-diff=plain` | Standard `git diff` |\n| --- | --- | --- | --- |\n| Granularity | Word-level | Word-level | Line-level |\n| Delimiters | ANSI color escape sequences | Bracketed markers `[-deleted-]` and `{+added+}` | Prefixes `-` and `+` per line |\n| Terminal color required | Yes (raw ANSI colors) | No (plain text readable everywhere) | Optional |\n| Automation / Scripting | Harder to parse due to ANSI codes | Clean for regex / text processing | Standard patch format |\n| Repository state effect | **Read-only**: leaves HEAD, index, and worktree unchanged | **Read-only**: leaves HEAD, index, and worktree unchanged | **Read-only** |\n\n**Reproducible example:**\nGiven a file `notes.txt` with line `alpha`: changing it to `alpha modified` yields:\n- `git diff --word-diff=plain` -> `alpha {+modified+}`\n- Standard `git diff` -> `-alpha` followed by `+alpha modified`"
     }
 ]
