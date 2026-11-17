@@ -698,6 +698,26 @@ git diff --staged
 ```sh
 git diff HEAD
 ```
+#### Troubleshooting: command failure in repository before initial commit
+
+**Triggering state:**
+Running `git diff HEAD` in a newly initialized Git repository where no commits have been made yet (an unborn branch with staged or unstaged files).
+
+**Error diagnostic:**
+```text
+fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+```
+Git exits with status code `128` because the reference `HEAD` does not yet point to an existing commit object.
+
+**Smallest correction:**
+- To inspect changes against an empty repository state prior to initial commit, diff against Git's well-known empty tree SHA-1 hash (`4b825dc642cb6eb9a060e54bf8d69288fbee4904`):
+  ```sh
+  git diff 4b825dc642cb6eb9a060e54bf8d69288fbee4904
+  ```
+- Alternatively, create the initial commit (`git commit -m "Initial commit"`), after which `git diff HEAD` succeeds normally.
+
 
 ### What changed since two weeks?
 ```sh
