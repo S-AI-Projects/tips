@@ -1,0 +1,5 @@
+{
+  "default_clone_has_only_main": true,
+  "default_clone_depth": 1,
+  "topic_branch_not_fetched_by_default": true
+}
