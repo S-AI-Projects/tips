@@ -613,6 +613,24 @@ git branch -m [<old-branch-name>] <new-branch-name>
 ```sh
 git archive master --format=zip --output=master.zip
 ```
+#### Git state transition: archiving a branch
+
+**Overview:**
+`git archive <tree-ish> --format=zip --output=<filename>.zip` reads the directory tree of a specified commit or branch reference and packages it into a single archive file without modifying repository metadata.
+
+**Before/After State Comparison:**
+
+| Component | Before Archiving | After Archiving | Observable Transition |
+| --- | --- | --- | --- |
+| `HEAD` | Points to current branch ref (e.g., `refs/heads/main`) | Points to current branch ref | **Unchanged**: active branch stays intact |
+| Branch refs | `refs/heads/main` -> commit C<br>`refs/heads/topic` -> commit B | `refs/heads/main` -> commit C<br>`refs/heads/topic` -> commit B | **Unchanged**: commit ancestry is untouched |
+| Index (`write-tree`) | Clean staged tree matching HEAD | Clean staged tree matching HEAD | **Unchanged**: staging area is not modified |
+| Tracked files | `notes.txt`, `todo.txt` | `notes.txt`, `todo.txt` | **Unchanged**: tracked working tree contents untouched |
+| Working tree files | Working tree without archive | Working tree with archive file created | **New file**: archive zip generated in directory |
+
+**Archive Contents:**
+The created archive contains the exact file snapshot of the target commit (`notes.txt` and `todo.txt`) and deliberately omits the `.git` directory and metadata.
+
 
 ### Delete local branches that has been squash and merged in the remote.
 ```sh

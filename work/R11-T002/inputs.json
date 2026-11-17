@@ -1,0 +1,8 @@
+{
+  "command": "git archive main --format=zip --output=main.zip",
+  "author": {
+    "name": "Course Student",
+    "email": "student@example.invalid"
+  },
+  "target_ref": "main"
+}

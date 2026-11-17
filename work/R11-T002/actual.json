@@ -1,0 +1,34 @@
+{
+  "archive_path": "/var/folders/j3/ys14wffd5hx88p9pl9tn8nk80000gn/T/R11-T002-oi11crz_/repo/main.zip",
+  "archive_namelist": [
+    "notes.txt",
+    "todo.txt"
+  ],
+  "state_before": {
+    "head": "408cd1a54021765570e7b536e46a664998721090",
+    "head_ref": "refs/heads/main",
+    "branches": [
+      "refs/heads/main 408cd1a54021765570e7b536e46a664998721090",
+      "refs/heads/topic 6a80133c6892f10767cdc9cfb00cbe6a78419c12"
+    ],
+    "index_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+    "staged": "",
+    "status": ""
+  },
+  "state_after": {
+    "head": "408cd1a54021765570e7b536e46a664998721090",
+    "head_ref": "refs/heads/main",
+    "branches": [
+      "refs/heads/main 408cd1a54021765570e7b536e46a664998721090",
+      "refs/heads/topic 6a80133c6892f10767cdc9cfb00cbe6a78419c12"
+    ],
+    "index_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+    "staged": "",
+    "status": "?? main.zip"
+  },
+  "assertions_passed": [
+    "archive created successfully with format zip",
+    "archive unzips to match commit C file contents exactly",
+    "HEAD, branch refs, ancestry, and index tree remain identical before and after"
+  ]
+}

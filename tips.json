@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -395,7 +397,8 @@
     {
         "title": "Archive the `master` branch",
         "tip": "git archive master --format=zip --output=master.zip",
-        "category": "Branching"
+        "category": "Branching",
+        "description": "#### Git state transition: archiving a branch\n\n**Overview:**\n`git archive <tree-ish> --format=zip --output=<filename>.zip` reads the directory tree of a specified commit or branch reference and packages it into a single archive file without modifying repository metadata.\n\n**Before/After State Comparison:**\n\n| Component | Before Archiving | After Archiving | Observable Transition |\n| --- | --- | --- | --- |\n| `HEAD` | Points to current branch ref (e.g., `refs/heads/main`) | Points to current branch ref | **Unchanged**: active branch stays intact |\n| Branch refs | `refs/heads/main` -> commit C<br>`refs/heads/topic` -> commit B | `refs/heads/main` -> commit C<br>`refs/heads/topic` -> commit B | **Unchanged**: commit ancestry is untouched |\n| Index (`write-tree`) | Clean staged tree matching HEAD | Clean staged tree matching HEAD | **Unchanged**: staging area is not modified |\n| Tracked files | `notes.txt`, `todo.txt` | `notes.txt`, `todo.txt` | **Unchanged**: tracked working tree contents untouched |\n| Working tree files | Working tree without archive | Working tree with archive file created | **New file**: archive zip generated in directory |\n\n**Archive Contents:**\nThe created archive contains the exact file snapshot of the target commit (`notes.txt` and `todo.txt`) and deliberately omits the `.git` directory and metadata."
     },
     {
         "title": "Modify previous commit without modifying the commit message",
