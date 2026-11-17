@@ -1,0 +1,5 @@
+{
+  "git_author_ident_contains": "Course Student <student@example.invalid>",
+  "global_config_untouched": true,
+  "git_var_list_succeeds": true
+}

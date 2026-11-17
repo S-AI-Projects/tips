@@ -855,6 +855,27 @@ git blame -L <start>,<end>
 ```sh
 git var -l | <variable>
 ```
+#### Preconditions and minimal setup for Git logical variables
+
+**Preconditions Checklist:**
+- [x] **Local user identity:** `user.name` and `user.email` must be set in local repository config (`git config user.name ...`, `git config user.email ...`) or available via environment variables (`GIT_AUTHOR_NAME`, `GIT_AUTHOR_EMAIL`). Without identity configuration, querying `GIT_AUTHOR_IDENT` or `GIT_COMMITTER_IDENT` fails.
+- [x] **Local isolation:** All configuration should be scoped to local repository config (`git config`) to avoid mutating global user settings (`~/.gitconfig`).
+- [x] **Repository context:** `git var -l` works in any valid Git repository; no commits or staged files are required.
+
+**Example usage:**
+```sh
+# Set local configuration:
+git config user.name "Course Student"
+git config user.email "student@example.invalid"
+
+# List all logical variables:
+git var -l
+
+# Query a specific logical variable:
+git var GIT_AUTHOR_IDENT
+# Output: Course Student <student@example.invalid> 1794919126 +0530
+```
+
 
 ### Get the repo name.
 ```sh

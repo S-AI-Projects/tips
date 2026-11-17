@@ -1,0 +1,8 @@
+{
+  "command": "git var -l",
+  "specific_var": "git var GIT_AUTHOR_IDENT",
+  "preconditions": [
+    "local user.name",
+    "local user.email"
+  ]
+}
