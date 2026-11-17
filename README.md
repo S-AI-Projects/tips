@@ -1342,9 +1342,22 @@ git stash apply stash@{0} && git stash drop stash@{0}
 ```sh
 git stash clear
 ```
+#### Compare clearing all stashes with dropping them one at a time
+
+Start both workflows with the same three saved stashes and the same current staged and unstaged edits. Check the list before and after each workflow:
+
+| Workflow | Preconditions | Stash result | HEAD, index, working tree |
+| --- | --- | --- | --- |
+| `git stash clear` | Any number of stashes; one command clears the entire list. | `refs/stash` and its entries are removed together. | HEAD and branch refs stay put. The current index and working files, including pending edits, stay as they were. |
+| Repeat `git stash drop 'stash@{0}'` | A selected stash exists; each command drops only the current top entry. | The list loses one entry per command; `stash@{0}` then refers to the next entry. Repeat until the list is empty. | HEAD and other branch refs stay put. The index and working files stay as they were. |
+
+With three stashes, `git stash clear` goes from three entries to zero in one step. The drop workflow shows two entries after the first drop, one after the second, and zero after the third. That intermediate list is the observable difference; both workflows leave the current commit, index, and working tree unchanged. The checker verifies those refs and states in equivalent temporary repositories.
+
+Both commands discard stash entries; do not use them as a way to apply saved work. Stash commits can become unreachable and may eventually be pruned. Read the [git stash documentation](https://git-scm.com/docs/git-stash) before clearing stashes you may need.
+
 **Alternatives:**
 ```sh
-git stash drop <stash@{n}>
+git stash drop 'stash@{0}'
 ```
 
 ### Stash only unstaged changes
