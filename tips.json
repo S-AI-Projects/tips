@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -728,7 +730,8 @@
     {
         "title": "Clone a shallow copy of a repository",
         "tip": "git clone https://github.com/user/repo.git --depth 1",
-        "category": "Basic Operations"
+        "category": "Basic Operations",
+        "description": "#### Branch and remote semantics in shallow clones\n\n**Default branch vs explicit branch behavior:**\nWhen cloning with `--depth 1` from a remote repository that contains multiple branches (e.g., default branch `main` and feature branch `topic`):\n\n| Clone Command | Cloned Local Ref | Cloned Remote Tracking Ref | Unrelated Remote Branches (`topic`) | Commit Depth |\n| --- | --- | --- | --- | --- |\n| `git clone <url> --depth 1` | `refs/heads/main` | `refs/remotes/origin/main` | **Not fetched**: `refs/remotes/origin/topic` does not exist | Exactly 1 commit on `main` |\n| `git clone <url> --depth 1 --branch topic` | `refs/heads/topic` | `refs/remotes/origin/topic` | **Not fetched**: `refs/remotes/origin/main` does not exist | Exactly 1 commit on `topic` |\n\n**Key rules:**\n1. Git shallow clones default to `--single-branch` targeting the remote's `HEAD` (default branch).\n2. To fetch all branches at depth 1, pass `--no-single-branch`:\n   ```sh\n   git clone <url> --depth 1 --no-single-branch\n   ```"
     },
     {
         "title": "Search Commit log across all branches for given text",

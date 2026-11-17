@@ -1,0 +1,19 @@
+{
+  "clone1_branches": [
+    "* main",
+    "  remotes/origin/HEAD -> origin/main",
+    "  remotes/origin/main"
+  ],
+  "clone1_depth": 1,
+  "clone2_branches": [
+    "* topic",
+    "  remotes/origin/topic"
+  ],
+  "clone2_depth": 1,
+  "assertions_passed": [
+    "shallow clone without branch flag clones only remote default branch (main)",
+    "shallow clone commit history depth is limited to 1",
+    "unrelated branch (topic) is not fetched into local refs or remote-tracking refs",
+    "explicit --branch topic clone fetches only the topic ref"
+  ]
+}

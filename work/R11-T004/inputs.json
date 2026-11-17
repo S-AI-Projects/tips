@@ -1,0 +1,5 @@
+{
+  "command": "git clone <url> --depth 1",
+  "remote_default_branch": "main",
+  "remote_other_branch": "topic"
+}

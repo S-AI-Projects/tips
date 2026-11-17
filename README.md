@@ -445,6 +445,23 @@ git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads/
 ```sh
 git clone https://github.com/user/repo.git --depth 1
 ```
+#### Branch and remote semantics in shallow clones
+
+**Default branch vs explicit branch behavior:**
+When cloning with `--depth 1` from a remote repository that contains multiple branches (e.g., default branch `main` and feature branch `topic`):
+
+| Clone Command | Cloned Local Ref | Cloned Remote Tracking Ref | Unrelated Remote Branches (`topic`) | Commit Depth |
+| --- | --- | --- | --- | --- |
+| `git clone <url> --depth 1` | `refs/heads/main` | `refs/remotes/origin/main` | **Not fetched**: `refs/remotes/origin/topic` does not exist | Exactly 1 commit on `main` |
+| `git clone <url> --depth 1 --branch topic` | `refs/heads/topic` | `refs/remotes/origin/topic` | **Not fetched**: `refs/remotes/origin/main` does not exist | Exactly 1 commit on `topic` |
+
+**Key rules:**
+1. Git shallow clones default to `--single-branch` targeting the remote's `HEAD` (default branch).
+2. To fetch all branches at depth 1, pass `--no-single-branch`:
+   ```sh
+   git clone <url> --depth 1 --no-single-branch
+   ```
+
 
 ### Force push to Remote Repository
 ```sh
