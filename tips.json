@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -629,7 +631,8 @@
     {
         "title": "Prune all unreachable objects from the object database.",
         "tip": "git gc --prune=now --aggressive",
-        "category": "Miscellaneous"
+        "category": "Miscellaneous",
+        "description": "#### Recovery exercise: recovering from accidental reset before unreachable object pruning\n\n**Mistake scenario:**\nA developer accidentally runs `git reset --hard HEAD~1`, making the latest commit (commit C) seem lost. If `git gc --prune=now --aggressive` is executed subsequently:\n\n1. **Reversible state (standard Git behavior):**\n   - Git maintains a reflog (`.git/logs/HEAD` and `.git/logs/refs/heads/*`) tracking recent reference movements.\n   - Even when `git gc --prune=now` is called, Git preserves all objects reachable from reflogs.\n   - **Recovery method:**\n     ```sh\n     # Identify the lost commit in the reflog:\n     git reflog\n     # Restore the branch or commit state using the reflog identifier:\n     git reset --hard HEAD@{1}\n     # Alternatively, create a recovery branch:\n     git branch recovered HEAD@{1}\n     ```\n\n2. **Irreversible state (what cannot be recovered):**\n   - If reflogs were manually expired before garbage collection (e.g., `git reflog expire --expire=now --all && git gc --prune=now`), unreachable objects are permanently unlinked and deleted from `.git/objects`.\n   - Once deleted from the local object database with no remotes or external copies, those objects cannot be recovered by any Git command.\n\n**Verification:**\nAfter recovery via `git reset --hard HEAD@{1}`, the working tree and index tree hash exactly match the original tree before the accidental reset."
     },
     {
         "title": "Instantly browse your working repository in gitweb.",

@@ -1036,6 +1036,31 @@ git count-objects --human-readable
 ```sh
 git gc --prune=now --aggressive
 ```
+#### Recovery exercise: recovering from accidental reset before unreachable object pruning
+
+**Mistake scenario:**
+A developer accidentally runs `git reset --hard HEAD~1`, making the latest commit (commit C) seem lost. If `git gc --prune=now --aggressive` is executed subsequently:
+
+1. **Reversible state (standard Git behavior):**
+   - Git maintains a reflog (`.git/logs/HEAD` and `.git/logs/refs/heads/*`) tracking recent reference movements.
+   - Even when `git gc --prune=now` is called, Git preserves all objects reachable from reflogs.
+   - **Recovery method:**
+     ```sh
+     # Identify the lost commit in the reflog:
+     git reflog
+     # Restore the branch or commit state using the reflog identifier:
+     git reset --hard HEAD@{1}
+     # Alternatively, create a recovery branch:
+     git branch recovered HEAD@{1}
+     ```
+
+2. **Irreversible state (what cannot be recovered):**
+   - If reflogs were manually expired before garbage collection (e.g., `git reflog expire --expire=now --all && git gc --prune=now`), unreachable objects are permanently unlinked and deleted from `.git/objects`.
+   - Once deleted from the local object database with no remotes or external copies, those objects cannot be recovered by any Git command.
+
+**Verification:**
+After recovery via `git reset --hard HEAD@{1}`, the working tree and index tree hash exactly match the original tree before the accidental reset.
+
 
 ### Instantly browse your working repository in gitweb.
 ```sh
