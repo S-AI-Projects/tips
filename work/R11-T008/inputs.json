@@ -1,0 +1,4 @@
+{
+  "command": "git check-ignore debug.log tracked.txt",
+  "gitignore_pattern": "*.log"
+}
