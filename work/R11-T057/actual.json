@@ -1,0 +1,101 @@
+{
+  "commit_ids": {
+    "A": "202ce5fc24299a5be78701bd68bd81f96a1b085d",
+    "B": "348b0df5c73f5feec967b4cb21e22357b5e40c9a",
+    "C": "cb2560a15b68666a96c59d76fe226f3b089cc345"
+  },
+  "bad_case": {
+    "command": [
+      "git",
+      "stash",
+      "push",
+      "-m",
+      "save point"
+    ],
+    "working_directory": "temporary parent, outside repository",
+    "returncode": 128,
+    "stdout": "",
+    "stderr": "fatal: not a git repository (or any of the parent directories): .git\n",
+    "diagnostic_category": "Git reports that the current directory is not inside a repository; exact wording is intentionally not matched.",
+    "state_before": {
+      "head": "cb2560a15b68666a96c59d76fe226f3b089cc345",
+      "head_ref": "refs/heads/main",
+      "branch_refs": [
+        "refs/heads/main cb2560a15b68666a96c59d76fe226f3b089cc345",
+        "refs/heads/topic 348b0df5c73f5feec967b4cb21e22357b5e40c9a"
+      ],
+      "index_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+      "staged_files": [],
+      "unstaged_files": [],
+      "status": "",
+      "notes": "alpha\n",
+      "todo": "one\n"
+    },
+    "state_after": {
+      "head": "cb2560a15b68666a96c59d76fe226f3b089cc345",
+      "head_ref": "refs/heads/main",
+      "branch_refs": [
+        "refs/heads/main cb2560a15b68666a96c59d76fe226f3b089cc345",
+        "refs/heads/topic 348b0df5c73f5feec967b4cb21e22357b5e40c9a"
+      ],
+      "index_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+      "staged_files": [],
+      "unstaged_files": [],
+      "status": "",
+      "notes": "alpha\n",
+      "todo": "one\n"
+    }
+  },
+  "corrected_case": {
+    "command": [
+      "git",
+      "stash",
+      "push",
+      "-m",
+      "save point"
+    ],
+    "working_directory": "temporary repository root",
+    "returncode": 0,
+    "stash_list": [
+      "stash@{0} On main: save point"
+    ],
+    "stash_patch": "diff --git a/notes.txt b/notes.txt\nindex 4a58007..c447759 100644\n--- a/notes.txt\n+++ b/notes.txt\n@@ -1 +1,2 @@\n alpha\n+temporary edit to save",
+    "state_before": {
+      "head": "cb2560a15b68666a96c59d76fe226f3b089cc345",
+      "head_ref": "refs/heads/main",
+      "branch_refs": [
+        "refs/heads/main cb2560a15b68666a96c59d76fe226f3b089cc345",
+        "refs/heads/topic 348b0df5c73f5feec967b4cb21e22357b5e40c9a"
+      ],
+      "index_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+      "staged_files": [],
+      "unstaged_files": [
+        "notes.txt"
+      ],
+      "status": "M notes.txt",
+      "notes": "alpha\ntemporary edit to save\n",
+      "todo": "one\n"
+    },
+    "state_after": {
+      "head": "cb2560a15b68666a96c59d76fe226f3b089cc345",
+      "head_ref": "refs/heads/main",
+      "branch_refs": [
+        "refs/heads/main cb2560a15b68666a96c59d76fe226f3b089cc345",
+        "refs/heads/topic 348b0df5c73f5feec967b4cb21e22357b5e40c9a"
+      ],
+      "index_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+      "staged_files": [],
+      "unstaged_files": [],
+      "status": "",
+      "notes": "alpha\n",
+      "todo": "one\n"
+    }
+  },
+  "assertions": {
+    "bad_command_exits_nonzero": true,
+    "bad_command_leaves_repo_unchanged": true,
+    "corrected_command_succeeds_and_saves_edit": true,
+    "corrected_command_preserves_head_and_branch_refs": true,
+    "corrected_command_cleans_worktree": true
+  }
+}
