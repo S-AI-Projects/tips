@@ -949,6 +949,24 @@ git log --show-signature
 ```sh
 git diff --color-words
 ```
+#### Comparison: word-level diff (`--color-words`) vs plain word diff (`--word-diff=plain`)
+
+**Overview:**
+Both commands inspect inline word-level changes between commits, the index, or the working tree, but format differences differently for terminal displays versus scripts/logs:
+
+| Feature / Aspect | `git diff --color-words` | `git diff --word-diff=plain` | Standard `git diff` |
+| --- | --- | --- | --- |
+| Granularity | Word-level | Word-level | Line-level |
+| Delimiters | ANSI color escape sequences | Bracketed markers `[-deleted-]` and `{+added+}` | Prefixes `-` and `+` per line |
+| Terminal color required | Yes (raw ANSI colors) | No (plain text readable everywhere) | Optional |
+| Automation / Scripting | Harder to parse due to ANSI codes | Clean for regex / text processing | Standard patch format |
+| Repository state effect | **Read-only**: leaves HEAD, index, and worktree unchanged | **Read-only**: leaves HEAD, index, and worktree unchanged | **Read-only** |
+
+**Reproducible example:**
+Given a file `notes.txt` with line `alpha`: changing it to `alpha modified` yields:
+- `git diff --word-diff=plain` -> `alpha {+modified+}`
+- Standard `git diff` -> `-alpha` followed by `+alpha modified`
+
 **Alternatives:**
 ```sh
 git diff --word-diff=color
