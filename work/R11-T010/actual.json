@@ -1,0 +1,26 @@
+{
+  "query_after_returncode": 1,
+  "state_before": {
+    "head": "daf1b30f96a96d16ced250b4411e5cf8038a8c28",
+    "branches": [
+      "refs/heads/main daf1b30f96a96d16ced250b4411e5cf8038a8c28",
+      "refs/heads/topic b60cfe115a6a4b989a488411ac9b1c20111f7857"
+    ],
+    "index_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+    "status": ""
+  },
+  "state_after": {
+    "head": "daf1b30f96a96d16ced250b4411e5cf8038a8c28",
+    "branches": [
+      "refs/heads/main daf1b30f96a96d16ced250b4411e5cf8038a8c28",
+      "refs/heads/topic b60cfe115a6a4b989a488411ac9b1c20111f7857"
+    ],
+    "index_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+    "status": ""
+  },
+  "assertions_passed": [
+    "custom.setting is successfully removed from global config",
+    "git config --global --get returns exit code 1",
+    "HEAD, branch refs, index tree, and working tree files remain pristine"
+  ]
+}

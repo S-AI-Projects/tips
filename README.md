@@ -1180,6 +1180,27 @@ git config --global rerere.enabled 1
 ```sh
 git config --global --unset <entry-name>
 ```
+#### Prediction and verification exercise: unsetting a global config entry
+
+**Exercise Scenario:**
+A configuration key (e.g., `custom.setting`) was set in the global Git configuration. We run:
+```sh
+git config --global --unset custom.setting
+```
+
+**Step 1 — Predict the resulting Git state:**
+- **Configuration state:** The entry `custom.setting` will be removed from the global config file. Future queries (`git config --global --get custom.setting`) will return exit code `1`.
+- **Repository state:** `HEAD`, branch references (`refs/heads/*`), the commit graph, the index tree (`git write-tree`), and working-tree files will remain **100% untouched**.
+
+**Step 2 — Execute and verify:**
+```sh
+# Verify entry is removed:
+git config --global --get custom.setting  # Exits 1 (not found)
+
+# Verify repository refs and status remain pristine:
+git status --porcelain=v1                 # Outputs nothing (clean)
+```
+
 
 ### Ignore file mode changes on commits
 ```sh
