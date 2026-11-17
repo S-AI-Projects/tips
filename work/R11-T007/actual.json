@@ -1,0 +1,12 @@
+{
+  "bad_command_exit_code": 128,
+  "bad_command_stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'",
+  "corrected_command_exit_code": 0,
+  "corrected_command_output": "diff --git a/notes.txt b/notes.txt\nnew file mode 100644\nindex 0000000..4a58007\n--- /dev/null\n+++ b/notes.txt\n@@ -0,0 +1 @@\n+alpha",
+  "assertions_passed": [
+    "git diff HEAD fails with exit code 128 on unborn HEAD",
+    "fatal diagnostic confirms unknown revision 'HEAD'",
+    "diff against empty tree hash 4b825dc... succeeds with exit code 0",
+    "after initial commit, git diff HEAD succeeds and displays staged/unstaged changes"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "bad_case_fails": true,
+  "bad_case_exit_code": 128,
+  "corrected_case_succeeds": true
+}

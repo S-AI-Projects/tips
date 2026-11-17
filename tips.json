@@ -70,7 +70,8 @@
     {
         "title": "Show both staged and unstaged changes",
         "tip": "git diff HEAD",
-        "category": "Log and History"
+        "category": "Log and History",
+        "description": "#### Troubleshooting: command failure in repository before initial commit\n\n**Triggering state:**\nRunning `git diff HEAD` in a newly initialized Git repository where no commits have been made yet (an unborn branch with staged or unstaged files).\n\n**Error diagnostic:**\n```text\nfatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n```\nGit exits with status code `128` because the reference `HEAD` does not yet point to an existing commit object.\n\n**Smallest correction:**\n- To inspect changes against an empty repository state prior to initial commit, diff against Git's well-known empty tree SHA-1 hash (`4b825dc642cb6eb9a060e54bf8d69288fbee4904`):\n  ```sh\n  git diff 4b825dc642cb6eb9a060e54bf8d69288fbee4904\n  ```\n- Alternatively, create the initial commit (`git commit -m \"Initial commit\"`), after which `git diff HEAD` succeeds normally."
     },
     {
         "title": "List all branches that are already merged into master",
@@ -135,7 +136,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
