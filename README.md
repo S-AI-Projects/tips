@@ -1089,6 +1089,24 @@ git remote -v
 ```sh
 git ls-remote git://git.kernel.org/pub/scm/git/git.git
 ```
+#### Quoting and path handling with spaces and path patterns
+
+**Working with paths containing spaces:**
+When inspecting local remotes located in directories with spaces (such as `sample data/bare.git`), or when files like `release notes.txt` exist in the working directory:
+
+1. **Remote URL quoting:**
+   Remote URLs with spaces must be enclosed in double quotes in POSIX shells:
+   ```sh
+   git ls-remote "file://${PWD}/sample data/bare.git"
+   ```
+   Omitting quotes causes the shell to split arguments at the space, passing `sample` as the remote URL and `data/bare.git` as a ref pattern.
+
+2. **Ref pattern quoting vs filesystem path ambiguity:**
+   `git ls-remote` accepts `<repository> [<patterns>...]`. If querying references matching a pattern, quote the pattern to prevent shell glob expansion:
+   ```sh
+   git ls-remote "file://${PWD}/sample data/bare.git" "refs/heads/*"
+   ```
+
 
 ### Refresh the list of remote branches
 ```sh

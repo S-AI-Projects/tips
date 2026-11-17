@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -883,7 +885,8 @@
     {
         "title": "List references in a remote repository",
         "tip": "git ls-remote git://git.kernel.org/pub/scm/git/git.git",
-        "category": "Remotes"
+        "category": "Remotes",
+        "description": "#### Quoting and path handling with spaces and path patterns\n\n**Working with paths containing spaces:**\nWhen inspecting local remotes located in directories with spaces (such as `sample data/bare.git`), or when files like `release notes.txt` exist in the working directory:\n\n1. **Remote URL quoting:**\n   Remote URLs with spaces must be enclosed in double quotes in POSIX shells:\n   ```sh\n   git ls-remote \"file://${PWD}/sample data/bare.git\"\n   ```\n   Omitting quotes causes the shell to split arguments at the space, passing `sample` as the remote URL and `data/bare.git` as a ref pattern.\n\n2. **Ref pattern quoting vs filesystem path ambiguity:**\n   `git ls-remote` accepts `<repository> [<patterns>...]`. If querying references matching a pattern, quote the pattern to prevent shell glob expansion:\n   ```sh\n   git ls-remote \"file://${PWD}/sample data/bare.git\" \"refs/heads/*\"\n   ```"
     },
     {
         "title": "Backup untracked files.",

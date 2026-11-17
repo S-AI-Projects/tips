@@ -1,0 +1,8 @@
+{
+  "ls_remote_succeeds_with_quoted_url": true,
+  "contains_refs": [
+    "refs/heads/main",
+    "refs/heads/topic"
+  ],
+  "preserves_path_with_spaces": true
+}
