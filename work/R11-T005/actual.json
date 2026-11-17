@@ -1,0 +1,13 @@
+{
+  "remote_url": "file:///private/var/folders/j3/ys14wffd5hx88p9pl9tn8nk80000gn/T/R11-T005-8v9jqu3s/sample data/bare.git",
+  "refs_found": [
+    "be080c46d80e4e48b5b9c5afe1b902d8eedb654c\trefs/heads/main",
+    "d5cb214c197acb51f390a8eb95fd74a9f36e80cf\trefs/heads/topic"
+  ],
+  "assertions_passed": [
+    "ls-remote successfully queries remote in directory path containing spaces",
+    "correctly discovers refs/heads/main and refs/heads/topic",
+    "filtering by ref pattern accurately targets intended reference",
+    "presence of working file with spaces (release notes.txt) does not interfere"
+  ]
+}

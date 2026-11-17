@@ -1,0 +1,5 @@
+{
+  "command": "git ls-remote \"file://${PWD}/sample data/bare.git\"",
+  "directory_with_spaces": "sample data",
+  "file_with_spaces": "release notes.txt"
+}
