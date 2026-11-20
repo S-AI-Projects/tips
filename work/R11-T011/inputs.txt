@@ -1,0 +1,37 @@
+Task Inputs & Specifications:
+Task ID: R11-T011
+Task Name: Get first commit in a branch (from master)
+Repository: S-AI-Projects/tips
+Assigned Branch: student/e26b07f0791
+Branch Conflict Note: Prompt notes R11-T011 mentioned as branch in one step; student/e26b07f0791 is assigned and checked out.
+
+Temporary Repository Parameters:
+- Initial Branch: main (via git init -b main)
+- Author Name: Course Student
+- Author Email: student@example.invalid
+- Commit A:
+  - File: notes.txt
+  - Content: alpha\n
+  - Commit message: "Commit A"
+- Commit B:
+  - File: notes.txt
+  - Content appended: beta\n (cumulative content: alpha\nbeta\n)
+  - Commit message: "Commit B"
+- Branch Creation:
+  - Branch name: topic
+  - Fork point: Commit B (HEAD of main)
+  - Switch: git checkout topic
+- Commit C:
+  - File: todo.txt
+  - Content: one\n
+  - Commit message: "Commit C"
+
+Commands Under Verification:
+- git log --oneline main.. | tail -1
+- git log --reverse main.. | head -6
+- git log --oneline master.. | tail -1
+- git log --reverse master.. | head -6
+
+README Generation Input:
+- tips.json matching record title: "Get first commit in a branch (from master)"
+- Renderer script: node build-readme.js

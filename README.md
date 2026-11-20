@@ -801,11 +801,71 @@ git log --all --grep='<given-text>'
 
 ### Get first commit in a branch (from master)
 ```sh
-git log --oneline master..<branch-name> | tail -1
+# Setup a reproducible temporary repository on branch 'main'
+repo=$(mktemp -d) && cd "$repo"
+git init -b main
+git config user.name "Course Student"
+git config user.email "student@example.invalid"
+
+# Commit A: create notes.txt containing alpha\n
+printf "alpha\n" > notes.txt
+git add notes.txt
+git commit -m "Commit A"
+
+# Commit B: append beta\n
+printf "beta\n" >> notes.txt
+git add notes.txt
+git commit -m "Commit B"
+
+# Create branch topic at Commit B and switch to it
+git branch topic
+git checkout topic
+
+# Commit C on topic: create todo.txt containing one\n
+printf "one\n" > todo.txt
+git add todo.txt
+git commit -m "Commit C"
+
+# Verify repository state:
+# - Clean status: working tree and staging index are clean
+git status
+# - Ref pointers:
+#   'main' points to Commit B
+#   'topic' points to Commit C
+# - Two-dot range syntax ('main..')
+#   Shorthand for 'main..HEAD' (or 'main..topic').
+#   Selects commits reachable from 'topic' that are NOT reachable from 'main'.
+#   In this scenario, 'main..' contains only Commit C.
+# - Base-branch naming:
+#   Modern Git defaults to 'main' as the base branch name, while older repositories use 'master'.
+
+# Purpose and demonstration:
+# 'git log --oneline' outputs commits in reverse chronological order (newest first).
+# Piping to 'tail -1' extracts the earliest (first) commit introduced on the topic branch.
+git log --oneline main.. | tail -1
+
+# Dynamic expected output demonstration:
+echo "First commit (oneline): $(git log --oneline main.. | tail -1)"
 ```
 **Alternatives:**
 ```sh
-git log --reverse master..<branch-name> | head -6
+# Purpose and demonstration using --reverse:
+# 'git log --reverse' outputs commits in chronological order (oldest first).
+# Piping to 'head -6' extracts the first commit with its full metadata (commit ID, author, date, message).
+git log --reverse main.. | head -6
+
+# Dynamic expected output demonstration:
+echo "First commit (full header):"
+git log --reverse main.. | head -6
+
+# Master-based equivalents (when the base branch is named 'master' instead of 'main'):
+# 1. Compact oneline format:
+git log --oneline master.. | tail -1
+# 2. Full commit format using reverse:
+git log --reverse master.. | head -6
+# When specifying an explicit branch name instead of current HEAD:
+# git log --oneline master..<branch-name> | tail -1
+# git log --reverse master..<branch-name> | head -6
 ```
 
 ### Show the author, time and last revision made to each line of a given file

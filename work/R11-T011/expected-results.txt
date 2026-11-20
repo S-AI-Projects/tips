@@ -1,0 +1,39 @@
+Expected Results:
+
+1. Repository State & File Contents:
+- Branch main points to Commit B.
+- Branch topic points to Commit C.
+- File notes.txt exists with exact content:
+  alpha\nbeta\n
+- File todo.txt exists with exact content:
+  one\n
+- Working tree and staging area are completely clean (git status --porcelain is empty).
+
+2. Commit Range main.. / master..:
+- main.. (two-dot range comparing HEAD to main) evaluates to exactly [Commit C].
+- master.. evaluates to exactly [Commit C] when base is named master.
+
+3. Command Output Formats:
+- git log --oneline main.. | tail -1:
+  Outputs: <short-hash-of-Commit-C> Commit C
+- git log --reverse main.. | head -6:
+  Outputs 6-line commit header for Commit C:
+    commit <full-hash-of-Commit-C>
+    Author: Course Student <student@example.invalid>
+    Date:   <dynamic-timestamp>
+
+        Commit C
+- Master-based equivalents:
+  - git log --oneline master.. | tail -1 -> <short-hash-of-Commit-C> Commit C
+  - git log --reverse master.. | head -6 -> identical 6-line header for Commit C
+
+4. Automated Check Behavior:
+- check.py executes two independent runs in separate temporary directories.
+- Both runs verify identical assertion properties and dynamic object IDs.
+- Deliberate assertion failure test must exit with non-zero exit code (code 1).
+- Clean run must exit with exit code 0.
+
+5. Repository Changes:
+- Only matching tip in tips.json modified.
+- README.md regenerated cleanly via node build-readme.js.
+- Zero unrelated changes in git diff.

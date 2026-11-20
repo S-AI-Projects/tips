@@ -1,0 +1,53 @@
+=== Actual Verification Results ===
+
+--- 1. Clean check.py Execution ---
+Exit Code: 0
+STDOUT:
+Starting automated verification for R11-T011...
+=== Running Scenario 1 ===
+Scenario 1 PASSED.
+  Dynamic Commit A: c269be7ea3713b97d4995456b49164c9206b1a21
+  Dynamic Commit B (main): 8fbf38f1ed626b0956bf33797232eada9f166d3d
+  Dynamic Commit C (topic): f0b030d481fa0ff92ae0adc341bb40d5ba8d5772 (f0b030d)
+  Log oneline: f0b030d Commit C
+  Status: clean
+=== Running Scenario 2 ===
+Scenario 2 PASSED.
+  Dynamic Commit A: c91995490b0192f930c86d9e048a2d20839f744a
+  Dynamic Commit B (main): 2d60ad56b3e2e34112ec5f735156cb28e9618759
+  Dynamic Commit C (topic): 3d346df8a7744709f135e15a02b80bee1a8ec2df (3d346df)
+  Log oneline: 3d346df Commit C
+  Status: clean
+
+Consistency verification across runs:
+Run 1 topic commit: f0b030d481fa0ff92ae0adc341bb40d5ba8d5772
+Run 2 topic commit: 3d346df8a7744709f135e15a02b80bee1a8ec2df
+Both scenarios completed successfully with clean state and expected outputs.
+ALL CHECKS PASSED.
+
+--- 2. Deliberate Assertion Failure Test ---
+Exit Code: 1 (Expected non-zero: True)
+STDOUT:
+Starting automated verification for R11-T011...
+=== Running Scenario 1 ===
+
+STDERR:
+Assertion failed: oneline output '3d346df Commit C' != '3d346df DELIBERATE_FAILURE'
+
+Restored original check.py successfully.
+
+--- 3. README Generation Workflow ---
+Exit Code: 0
+STDOUT:
+README.md generated successfully!
+
+--- 4. Repository Git Status & Diff ---
+git diff --stat:
+ README.md | 64 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ tips.json |  4 ++--
+ 2 files changed, 64 insertions(+), 4 deletions(-)
+
+git status --short:
+ M README.md
+ M tips.json
+?? work/
