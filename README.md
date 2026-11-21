@@ -280,6 +280,20 @@ git cherry -v master
 ### Amend author.
 ```sh
 git commit --amend --author='Author Name <email@address.com>'
+
+# --- Handling Paths With Spaces & Non-ASCII UTF-8 Characters ---
+# Example:
+# 1. Stage and commit a file with spaces and UTF-8 characters:
+#    git add "release notes/v1.0.txt"
+#    git commit -m "Release notes v1.0"
+# 2. Amend the commit author while preserving exact commit tree:
+#    git commit --amend --author='New Author <newauthor@example.invalid>' --no-edit
+#
+# Verification:
+# - Author metadata is updated to 'New Author <newauthor@example.invalid>'.
+# - The path "release notes/v1.0.txt" is retained exactly without glob distortion:
+#   git ls-tree -r --name-only HEAD      # outputs: release notes/v1.0.txt
+# - Commit SHA is updated, replacing previous HEAD.
 ```
 
 ### Stage parts of a changed file, instead of the entire file

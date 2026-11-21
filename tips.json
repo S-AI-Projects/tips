@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -160,7 +162,7 @@
     },
     {
         "title": "Amend author.",
-        "tip": "git commit --amend --author='Author Name <email@address.com>'",
+        "tip": "git commit --amend --author='Author Name <email@address.com>'\n\n# --- Handling Paths With Spaces & Non-ASCII UTF-8 Characters ---\n# Example:\n# 1. Stage and commit a file with spaces and UTF-8 characters:\n#    git add \"release notes/v1.0.txt\"\n#    git commit -m \"Release notes v1.0\"\n# 2. Amend the commit author while preserving exact commit tree:\n#    git commit --amend --author='New Author <newauthor@example.invalid>' --no-edit\n#\n# Verification:\n# - Author metadata is updated to 'New Author <newauthor@example.invalid>'.\n# - The path \"release notes/v1.0.txt\" is retained exactly without glob distortion:\n#   git ls-tree -r --name-only HEAD      # outputs: release notes/v1.0.txt\n# - Commit SHA is updated, replacing previous HEAD.",
         "category": "Basic Operations"
     },
     {
@@ -506,7 +508,7 @@
         "category": "Log and History"
     },
     {
-        "title": "Don\u2019t consider changes for tracked file.",
+        "title": "Don’t consider changes for tracked file.",
         "tip": "git update-index --assume-unchanged <file_name>",
         "category": "Miscellaneous"
     },
@@ -950,7 +952,7 @@
     },
     {
         "title": "Send a collection of patches as emails",
-        "tip": "git send-email [<options>] <file|directory>\u2026\n\ngit send-email [<options>] <format-patch options>",
+        "tip": "git send-email [<options>] <file|directory>…\n\ngit send-email [<options>] <format-patch options>",
         "category": "Miscellaneous"
     },
     {
