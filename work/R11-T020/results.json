@@ -1,0 +1,79 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "author": "Course Student <student@example.invalid>",
+    "initial_branch": "main",
+    "commit_a": {
+      "file": "notes.txt",
+      "content": "alpha\n",
+      "message": "Commit A"
+    },
+    "commit_b": {
+      "file": "notes.txt",
+      "content_appended": "beta\n",
+      "message": "Commit B"
+    },
+    "branch_topic": {
+      "fork_point": "Commit B"
+    },
+    "commit_c": {
+      "branch": "main",
+      "file": "todo.txt",
+      "content": "one\n",
+      "message": "Commit C"
+    },
+    "worktree_modification": {
+      "file": "notes.txt",
+      "content": "header\nalpha\nbeta\ngamma\n"
+    },
+    "command": "git add -p notes.txt",
+    "interactive_input": "y\\nn\\n",
+    "environment_isolation": {
+      "GIT_CONFIG_NOSYSTEM": "1",
+      "isolated_HOME": "/var/folders/rn/xc72jf1j67b93c79mcjsrd140000gn/T/tmpw65dplty/fake_home"
+    }
+  },
+  "expected_results": {
+    "fact_1": "Branch refs main (HEAD) and topic stayed fixed at Commit C and Commit B",
+    "fact_2": "Index blob hash git rev-parse :notes.txt changed to new valid blob != HEAD:notes.txt, and git show :notes.txt equals 'header\\nalpha\\nbeta\\n'",
+    "fact_3": "git diff --cached contains '+header' and does NOT contain '+gamma'",
+    "fact_4": "Working tree notes.txt equals 'header\\nalpha\\nbeta\\ngamma\\n', git diff contains '+gamma' and NOT '+header', and git status --porcelain outputs 'MM notes.txt'",
+    "fact_5": "todo.txt untouched (git rev-parse :todo.txt == git rev-parse HEAD:todo.txt)"
+  },
+  "actual_results": {
+    "commit_ids": {
+      "commit_a": "7e1ebbae79c30b12fed0ae4e402e323f36b7347f",
+      "commit_b": "2e1463728368ba29b509097456b77fb7d754765a",
+      "commit_c": "3c3cd6d605068da5a6ce5ba9496b69e7637172ba"
+    },
+    "ref_verification": {
+      "head": "3c3cd6d605068da5a6ce5ba9496b69e7637172ba",
+      "main": "3c3cd6d605068da5a6ce5ba9496b69e7637172ba",
+      "topic": "2e1463728368ba29b509097456b77fb7d754765a"
+    },
+    "index_verification": {
+      "head_notes_blob": "fbbee861521bd5355538b096fa3998541cd33909",
+      "staged_notes_blob": "82adce33b9f0d26afd40acc285948e2f5b5f1ec7",
+      "staged_notes_content": "header\nalpha\nbeta\n",
+      "head_todo_blob": "5626abf0f72e58d7a153368ba57db4c673c0e171",
+      "staged_todo_blob": "5626abf0f72e58d7a153368ba57db4c673c0e171"
+    },
+    "diff_and_status": {
+      "cached_diff": "diff --git a/notes.txt b/notes.txt\nindex fbbee86..82adce3 100644\n--- a/notes.txt\n+++ b/notes.txt\n@@ -1,2 +1,3 @@\n+header\n alpha\n beta",
+      "worktree_diff": "diff --git a/notes.txt b/notes.txt\nindex 82adce3..9cbe2ec 100644\n--- a/notes.txt\n+++ b/notes.txt\n@@ -1,3 +1,4 @@\n header\n alpha\n beta\n+gamma",
+      "status_porcelain": "MM notes.txt"
+    },
+    "verifications": {
+      "fact_1_refs_fixed": true,
+      "fact_2_index_blob_staged_header_only": true,
+      "fact_3_cached_diff_header_only": true,
+      "fact_4_worktree_gamma_unstaged_status_MM": true,
+      "fact_5_todo_untouched": true
+    }
+  },
+  "status": "PASSED"
+}

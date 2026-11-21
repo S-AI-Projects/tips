@@ -284,7 +284,32 @@ git commit --amend --author='Author Name <email@address.com>'
 
 ### Stage parts of a changed file, instead of the entire file
 ```sh
-git add -p
+git add -p [file_name]
+
+# --- Prediction & Verification Exercise ---
+# Setup & Prompt (Predict Before Running):
+# Starting from commit C on main (where notes.txt has "alpha\nbeta\n"), suppose you prepend "header\n"
+# at the top of notes.txt and append "gamma\n" at the bottom (creating two distinct diff hunks in notes.txt),
+# then run `git add -p notes.txt` answering 'y' to the first hunk (+header) and 'n' to the second hunk (+gamma).
+#
+# Execution & Verification Commands:
+# 1. Interactively stage first hunk only (answering 'y' then 'n'):
+#    git add -p notes.txt
+# 2. Verify commit and branch refs remain untouched:
+#    git rev-parse HEAD                  # still points to Commit C
+#    git rev-parse refs/heads/topic      # still points to Commit B
+# 3. Verify staged index state:
+#    git diff --cached                   # shows only +header staged
+#    git ls-files -s notes.txt           # points to new staged blob SHA containing "header\nalpha\nbeta\n"
+# 4. Verify unstaged working tree state:
+#    git diff                            # shows only +gamma unstaged
+#    git status -s                       # reports 'MM notes.txt' (modified in index, modified in worktree)
+#
+# Answer Explanation (Naming Changed Objects):
+# - Branch refs (main, topic) and HEAD: Unchanged; no commit object is created or moved.
+# - Git Index (Staging area): notes.txt entry is updated to point to a newly created blob object
+#   containing "header\nalpha\nbeta\n"; other tracked entries (e.g. todo.txt) are untouched.
+# - Working tree: notes.txt on disk contains "header\nalpha\nbeta\ngamma\n", leaving +gamma unstaged.
 ```
 
 ### Pick commits across branches using cherry-pick
