@@ -1,0 +1,25 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]"
+  },
+  "inputs": {
+    "upstream_branch": "main (Commits A, B, C)",
+    "feature_branch": "topic (Commits A, B, D)",
+    "command": "git cherry -v main"
+  },
+  "expected_results": {
+    "fact_1": "git cherry -v main outputs '+ <Commit_D_SHA> Commit D'",
+    "fact_2": "Reverse cherry comparison outputs '+ <Commit_C_SHA> Commit C'",
+    "fact_3": "HEAD, refs/heads/topic, and refs/heads/main are completely unchanged",
+    "fact_4": "Working tree and index remain completely clean"
+  },
+  "actual_results": {
+    "commit_c": "73cefe892a29180e054ece18770a435fe06e7aca",
+    "commit_d": "244ce59ac358c6b7330fcb1ac5552f51212fd6db",
+    "cherry_out": "+ 244ce59ac358c6b7330fcb1ac5552f51212fd6db Commit D",
+    "status": ""
+  },
+  "status": "PASSED",
+  "reproducibility": "PASSED across two independent runs"
+}
