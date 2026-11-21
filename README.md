@@ -469,6 +469,16 @@ git rev-list --count <branch-name>
 ### Add object notes
 ```sh
 git notes add -m 'Note on the previous commit....'
+
+# Example (Attach a note to previous commit HEAD~1 without modifying commit history):
+# git notes add -m 'Note on the previous commit....' HEAD~1
+#
+# Inspect note:
+# git notes show HEAD~1
+#
+# Focused Guide Test:
+# Run the standalone integration test verifying positive workflow and negative control:
+# python3 tests/guides/test_add_object_notes.py
 ```
 
 ### Apply commit from another repository

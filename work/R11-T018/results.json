@@ -1,0 +1,60 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "test_file": "tests/guides/test_add_object_notes.py",
+    "author": "Course Student <student@example.invalid>",
+    "initial_branch": "main",
+    "commit_a": {
+      "file": "notes.txt",
+      "content": "alpha\n",
+      "message": "Commit A"
+    },
+    "commit_b": {
+      "file": "notes.txt",
+      "content_appended": "beta\n",
+      "message": "Commit B"
+    },
+    "branch_topic": {
+      "fork_point": "Commit B"
+    },
+    "commit_c": {
+      "branch": "main",
+      "file": "todo.txt",
+      "content": "one\n",
+      "message": "Commit C"
+    },
+    "decisive_command": "git notes add -m \"Note on the previous commit....\" HEAD~1",
+    "note_target": "Commit B (HEAD~1)"
+  },
+  "expected_results": {
+    "subproc_test": "python3 tests/guides/test_add_object_notes.py exits 0 with 2 passing tests",
+    "positive_verification": "refs/notes/commits exists, note text matches on Commit B, commits/ancestry unchanged, Commit C has no note",
+    "negative_verification": "verify_expected_state raises AssertionError when decisive command is omitted",
+    "cleanup": "Temporary directories are automatically removed upon context exit"
+  },
+  "actual_results": {
+    "subproc_exit_code": 0,
+    "subproc_stderr": "..\n----------------------------------------------------------------------\nRan 2 tests in 0.545s\n\nOK",
+    "positive_run": {
+      "commit_a": "52e6bb9b3c61ad20f47011297b290307e349e594",
+      "commit_b": "7af69e67fa626163490be9d41a837de9d29199dc",
+      "commit_c": "f85da7cc5ce3f70bbfa789de03c6544a7891dbdd",
+      "commit_b_tree": "f85b72cccab2aab0cfca333f78ab1ff302be5f7b",
+      "commit_b_parent": "52e6bb9b3c61ad20f47011297b290307e349e594",
+      "verified": true,
+      "temp_dir_cleaned": true
+    },
+    "negative_run": {
+      "commit_a": "b5efd405fbe7a4d92bc82296d541f2a2f897f315",
+      "commit_b": "de564e61e9dd2b30225f5281953a9508ebe22b0c",
+      "commit_c": "2b10ee8bba86064a70c90c3f3cd500971f16291d",
+      "raised_assertion_error": true,
+      "temp_dir_cleaned": true
+    },
+    "assertions_passed": true
+  }
+}

@@ -803,7 +803,7 @@
     },
     {
         "title": "Add object notes",
-        "tip": "git notes add -m 'Note on the previous commit....'",
+        "tip": "git notes add -m 'Note on the previous commit....'\n\n# Example (Attach a note to previous commit HEAD~1 without modifying commit history):\n# git notes add -m 'Note on the previous commit....' HEAD~1\n#\n# Inspect note:\n# git notes show HEAD~1\n#\n# Focused Guide Test:\n# Run the standalone integration test verifying positive workflow and negative control:\n# python3 tests/guides/test_add_object_notes.py",
         "category": "Basic Operations"
     },
     {
