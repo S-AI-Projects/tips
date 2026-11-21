@@ -275,6 +275,25 @@ git commit -v --amend
 ### See commit history for just the current branch
 ```sh
 git cherry -v master
+
+# --- Prediction & Verification Exercise ---
+# Exercise Scenario:
+# - Upstream branch: main (contains Commits A, B, C).
+# - Feature branch: topic (branched from Commit B, adds Commit D: feature.txt).
+#
+# Prediction (Before Running):
+# When running `git cherry -v main topic`, Git compares topic against main and outputs:
+#   + <Commit_D_SHA> Commit D
+# The '+' prefix indicates Commit D is present on the feature branch but absent from upstream.
+#
+# Execution Commands:
+#   git checkout topic
+#   git cherry -v main
+#
+# Answer Explanation & State Impact:
+# - Changed Objects: None; git cherry is a strictly read-only inspection command.
+# - Branch Refs & HEAD: refs/heads/topic, refs/heads/main, and HEAD remain unchanged.
+# - Index & Working Tree: Completely clean with zero modifications.
 ```
 
 ### Amend author.

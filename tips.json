@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -155,7 +157,7 @@
     },
     {
         "title": "See commit history for just the current branch",
-        "tip": "git cherry -v master",
+        "tip": "git cherry -v master\n\n# --- Prediction & Verification Exercise ---\n# Exercise Scenario:\n# - Upstream branch: main (contains Commits A, B, C).\n# - Feature branch: topic (branched from Commit B, adds Commit D: feature.txt).\n#\n# Prediction (Before Running):\n# When running `git cherry -v main topic`, Git compares topic against main and outputs:\n#   + <Commit_D_SHA> Commit D\n# The '+' prefix indicates Commit D is present on the feature branch but absent from upstream.\n#\n# Execution Commands:\n#   git checkout topic\n#   git cherry -v main\n#\n# Answer Explanation & State Impact:\n# - Changed Objects: None; git cherry is a strictly read-only inspection command.\n# - Branch Refs & HEAD: refs/heads/topic, refs/heads/main, and HEAD remain unchanged.\n# - Index & Working Tree: Completely clean with zero modifications.",
         "category": "Basic Operations"
     },
     {
@@ -506,7 +508,7 @@
         "category": "Log and History"
     },
     {
-        "title": "Don\u2019t consider changes for tracked file.",
+        "title": "Don’t consider changes for tracked file.",
         "tip": "git update-index --assume-unchanged <file_name>",
         "category": "Miscellaneous"
     },
@@ -950,7 +952,7 @@
     },
     {
         "title": "Send a collection of patches as emails",
-        "tip": "git send-email [<options>] <file|directory>\u2026\n\ngit send-email [<options>] <format-patch options>",
+        "tip": "git send-email [<options>] <file|directory>…\n\ngit send-email [<options>] <format-patch options>",
         "category": "Miscellaneous"
     },
     {
