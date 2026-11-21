@@ -1078,6 +1078,21 @@ git remote show
 ### Adding Remote name
 ```sh
 git remote add <remote-nickname> <remote-url>
+
+# --- Remote and Branch Behavior Guide ---
+# Context: Current checked-out branch is 'topic', default branch is 'main'.
+# Command:
+#    git remote add origin file:///path/to/bare-repo.git
+#
+# Behavior & State Impacts:
+# 1. Current Branch:
+#    - The checked-out branch remains 'topic'; HEAD continues pointing to refs/heads/topic.
+# 2. Local Refs:
+#    - Neither 'main' nor 'topic' is altered or published.
+# 3. Remote Configuration:
+#    - Configures section [remote "origin"] with URL and fetch refspec (+refs/heads/*:refs/remotes/origin/*).
+# 4. Remote-Tracking Refs:
+#    - No refs/remotes/origin/* refs are created until an explicit fetch or push is executed.
 ```
 
 ### List all currently configured remotes

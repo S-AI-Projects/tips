@@ -1,0 +1,27 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]"
+  },
+  "inputs": {
+    "remote_command": "git remote add origin <url>",
+    "active_branch": "topic",
+    "default_branch": "main"
+  },
+  "expected_results": {
+    "fact_1": "Active branch remains topic before and after remote add",
+    "fact_2": "remote.origin.url is correctly written to repo config",
+    "fact_3": "No remote-tracking refs exist prior to fetch/push",
+    "fact_4": "Pushing topic creates refs/remotes/origin/topic matching Commit B"
+  },
+  "actual_results": {
+    "commit_a": "6ae99507fa97daaec56cc0d80966f5e33f747188",
+    "commit_b": "16575d5df0354c2ced1c0b8d209bf4da9a74a2c1",
+    "commit_c": "c117091d7f80e25d9995ad433cfaab5886597dd8",
+    "remote_url": "file:///var/folders/83/j62mr0_j6j76sz831pp8kr380000gn/T/tmpdgm5g3tl/bare_remote.git",
+    "current_branch": "topic",
+    "remote_topic_sha": "16575d5df0354c2ced1c0b8d209bf4da9a74a2c1"
+  },
+  "status": "PASSED",
+  "reproducibility": "PASSED across two independent runs"
+}
