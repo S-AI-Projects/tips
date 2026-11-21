@@ -69,6 +69,43 @@ git stash push --all
 git stash list
 ```
 
+**Example:**
+
+```sh
+# Create a temporary repository
+mkdir -p /tmp/example-repo && cd /tmp/example-repo
+git init
+export GIT_AUTHOR_NAME="Course Student"
+export GIT_AUTHOR_EMAIL="student@example.invalid"
+export GIT_COMMITTER_NAME="Course Student"
+export GIT_COMMITTER_EMAIL="student@example.invalid"
+
+# Commit A – notes.txt with "alpha"
+echo "alpha" > notes.txt
+git add notes.txt
+git commit -m "A: add notes alpha"
+
+# Commit B – append "beta"
+echo "beta" >> notes.txt
+git add notes.txt
+git commit -m "B: append beta"
+
+# Create branch topic at B
+git branch topic
+
+# Commit C – add todo.txt
+echo "one" > todo.txt
+git add todo.txt
+git commit -m "C: add todo"
+
+# Make a stash to have something to list
+echo "gamma" >> notes.txt
+git stash push -m "test stash"
+
+# List stashes
+git stash list
+```
+
 ---
 
 ## Show the contents of any stash in patch form
