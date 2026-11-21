@@ -815,8 +815,19 @@ git blame <file-name>
 
 ### Show how many lines does an author contribute
 ```sh
-git log --author='_Your_Name_Here_' --pretty=tformat: --numstat | gawk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s removed lines: %s total lines: %s
-", add, subs, loc }' -
+git log --author='_Your_Name_Here_' --pretty=tformat: --numstat | gawk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s removed lines: %s total lines: %s\n", add, subs, loc }' -
+
+# --- Author Contribution Comparison Table & Alternatives ---
+# | Method | Command | Preconditions | Performance & Safety | State Impact |
+# |---|---|---|---|---|
+# | gawk Numstat (Primary) | git log --author='...' --pretty=tformat: --numstat \| gawk '...' | Awk/gawk installed; author query | Fast streaming; parses per-file numstat diffs | Read-only; 0 state changes |
+# | Shortstat (Alternative) | git log --author='...' --shortstat | Standard Git CLI; no awk required | Native Git formatting; summarizes per commit | Read-only; 0 state changes |
+#
+# Reproducible Example (Course Student):
+# - Commit A: +1 line (notes.txt)
+# - Commit B: +1 line (notes.txt)
+# - Commit C: +1 line (todo.txt)
+# Total added: 3 lines, removed: 0 lines, total: 3 lines.
 ```
 **Alternatives:**
 ```sh

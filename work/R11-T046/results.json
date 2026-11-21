@@ -1,0 +1,26 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]"
+  },
+  "inputs": {
+    "author": "Course Student <student@example.invalid>",
+    "commits": 3,
+    "command": "git log --author='Course Student' --pretty=tformat: --numstat"
+  },
+  "expected_results": {
+    "fact_1": "Total added lines calculated equals 3, removed lines equals 0",
+    "fact_2": "Alternative shortstat command confirms commit insertion counts",
+    "fact_3": "Query operation leaves HEAD, refs, index, and worktree untouched"
+  },
+  "actual_results": {
+    "commit_a": "f81fdccc88c5c59dfc60d78c3216aa1e8a7c74b1",
+    "commit_b": "f7b73b4b37a5049ae375ccb399de251571060775",
+    "commit_c": "9606eff419f2dbf753ae86c559e3874cb21c8bba",
+    "added_lines": 3,
+    "removed_lines": 0,
+    "status": ""
+  },
+  "status": "PASSED",
+  "reproducibility": "PASSED across two independent runs"
+}
