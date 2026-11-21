@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -506,7 +508,7 @@
         "category": "Log and History"
     },
     {
-        "title": "Don\u2019t consider changes for tracked file.",
+        "title": "Don’t consider changes for tracked file.",
         "tip": "git update-index --assume-unchanged <file_name>",
         "category": "Miscellaneous"
     },
@@ -663,7 +665,7 @@
     },
     {
         "title": "Change previous two commits with an interactive rebase.",
-        "tip": "git rebase --interactive HEAD~2",
+        "tip": "git rebase --interactive HEAD~2\n\n# --- Recovery Guide: Interactive Rebase ---\n# Recovery Points & Commands:\n# 1. Abort an in-progress interactive rebase:\n#    git rebase --abort\n#    - Restores HEAD and the current branch ref back to pre-rebase commit (ORIG_HEAD).\n#    - Removes transient state directory (.git/rebase-merge).\n#    - Leaves a completely clean working tree and index.\n#\n# 2. Undo a completed interactive rebase:\n#    git reset --hard ORIG_HEAD\n#    - Returns branch pointer to the exact pre-rebase commit recorded in ORIG_HEAD and reflog.\n#\n# Verification:\n#    git rev-parse HEAD                  # matches pre-rebase commit SHA\n#    git status --porcelain              # clean working directory\n#    git reflog -n 2                     # displays 'rebase (abort)' transition",
         "category": "Merging and Rebasing"
     },
     {
@@ -950,7 +952,7 @@
     },
     {
         "title": "Send a collection of patches as emails",
-        "tip": "git send-email [<options>] <file|directory>\u2026\n\ngit send-email [<options>] <format-patch options>",
+        "tip": "git send-email [<options>] <file|directory>…\n\ngit send-email [<options>] <format-patch options>",
         "category": "Miscellaneous"
     },
     {
