@@ -449,6 +449,40 @@ git clone https://github.com/user/repo.git --depth 1
 ### Force push to Remote Repository
 ```sh
 git push -f <remote-name> <branch-name>
+
+# Comparison: 'git push -f' vs 'git push --force-with-lease'
+#
+# +------------------------+-------------------------------------------------------+-------------------------------------------------------+
+# | Aspect                 | git push -f (--force)                                 | git push --force-with-lease                           |
+# +------------------------+-------------------------------------------------------+-------------------------------------------------------+
+# | Preconditions          | None (unconditionally forces push)                    | Remote-tracking ref must match actual remote ref      |
+# |                        |                                                       | (e.g. origin/main == expected commit C)               |
+# +------------------------+-------------------------------------------------------+-------------------------------------------------------+
+# | Resulting Remote Ref   | Overwritten to local commit (B_rewritten);            | If remote moved to D: push rejected (stale info);     |
+# |                        | concurrent remote commit D is dropped/lost            | remote ref stays at D (preserved)                     |
+# +------------------------+-------------------------------------------------------+-------------------------------------------------------+
+# | Local State            | Local commit, index, and worktree untouched           | Local commit, index, and worktree untouched           |
+# | (Commit/Index/Worktree)|                                                       |                                                       |
+# +------------------------+-------------------------------------------------------+-------------------------------------------------------+
+# | Observable Difference  | Blindly overwrites origin/main even if teammate       | Rejects with '(rejected) ... (stale info)' when       |
+# |                        | pushed commit D since last fetch, losing their work   | remote changed unexpectedly, protecting remote work   |
+# +------------------------+-------------------------------------------------------+-------------------------------------------------------+
+#
+# Reproducible Example (Fixture: main A -> B -> C pushed to origin/main):
+# 1. Local main is rewritten to diverge from C (e.g. reset to B and committed as B_rewritten).
+# 2. Concurrently, a remote update D was pushed to origin/main by another collaborator:
+#    - When origin/main has NOT moved (origin/main == C):
+#        Both 'git push -f' and 'git push --force-with-lease' succeed and update origin/main
+#        to local B_rewritten, leaving local commit, index, and worktree untouched.
+#    - Observable Difference when origin/main has moved (origin/main == D != C):
+#        git push -f origin main
+#        -> Overwrites origin/main unconditionally to B_rewritten (dropping D).
+#        git push --force-with-lease origin main
+#        -> Fails with 'stale info' (rejected), preserving D on origin/main.
+```
+**Alternatives:**
+```sh
+git push --force-with-lease <remote-name> <branch-name>
 ```
 
 ### Group commits by authors and title

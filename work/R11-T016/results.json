@@ -1,0 +1,80 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "author": "Course Student <student@example.invalid>",
+    "initial_branch": "main",
+    "commit_a": {
+      "file": "notes.txt",
+      "content": "alpha\n",
+      "message": "Commit A"
+    },
+    "commit_b": {
+      "file": "notes.txt",
+      "content_appended": "beta\n",
+      "message": "Commit B"
+    },
+    "branch_topic": {
+      "fork_point": "Commit B"
+    },
+    "commit_c": {
+      "branch": "main",
+      "file": "todo.txt",
+      "content": "one\n",
+      "message": "Commit C"
+    },
+    "commit_d_concurrent": {
+      "author": "Teammate",
+      "file": "concurrent.txt",
+      "content": "concurrent D\n",
+      "message": "Commit D"
+    },
+    "commit_b_rewritten": {
+      "reset_to": "Commit B",
+      "file": "rewritten.txt",
+      "content": "rewritten\n",
+      "message": "Commit B_rewritten"
+    },
+    "fixture_1_command": "git push -f origin main",
+    "fixture_2_command": "git push --force-with-lease origin main"
+  },
+  "expected_results": {
+    "fact_1": "Both fixtures start from identical commit/tree structures (A, B, C, D, B_rewritten)",
+    "fact_2": "In Fixture 1, git push -f exits 0 and remote main ref becomes B_rewritten (overwriting D)",
+    "fact_3": "In Fixture 2, git push --force-with-lease exits non-zero with 'stale info' and remote main ref stays at D",
+    "fact_4": "Local main (B_rewritten), topic (B), HEAD^{tree}, index, and git status --porcelain remain clean/unchanged after push attempts"
+  },
+  "actual_results": {
+    "fixture_commit_ids": {
+      "commit_a": "d80ed0076b5a5950ccc9836105d9a0d438e6e851",
+      "commit_b": "4e0ad52d51c68887e1bdfd6a8711f137261e94cc",
+      "commit_c": "94691f317925d6fb91adde5d2bb62aafd2706f55",
+      "commit_d": "3baf183964eecea663c17d2725e767a19d5e2eca",
+      "commit_b_rewritten": "dba549cf7a8d05557af38ca1a66da4bfc9c9c63b",
+      "tree_b_rewritten": "7753e3cb83f983444541607f587fcb14e7d46ae0"
+    },
+    "fixture_1": {
+      "command": "git push -f origin main",
+      "exit_code": 0,
+      "remote_main_after": "dba549cf7a8d05557af38ca1a66da4bfc9c9c63b",
+      "remote_overwritten_to_b_rewritten": true
+    },
+    "fixture_2": {
+      "command": "git push --force-with-lease origin main",
+      "exit_code": 1,
+      "stderr": "To file:///var/folders/rn/xc72jf1j67b93c79mcjsrd140000gn/T/tmpm26aj3c9/fixture_2/remote.git\n ! [rejected]        main -> main (stale info)\nerror: failed to push some refs to 'file:///var/folders/rn/xc72jf1j67b93c79mcjsrd140000gn/T/tmpm26aj3c9/fixture_2/remote.git'",
+      "remote_main_after": "3baf183964eecea663c17d2725e767a19d5e2eca",
+      "remote_preserved_at_d": true
+    },
+    "local_state_verification": {
+      "fixture_1_clean": true,
+      "fixture_2_clean": true,
+      "main_at_b_rewritten": true,
+      "topic_at_b": true
+    },
+    "assertions_passed": true
+  }
+}
