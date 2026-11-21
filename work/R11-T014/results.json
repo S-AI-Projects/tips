@@ -1,0 +1,81 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "bare_remote": "file:///var/folders/rn/xc72jf1j67b93c79mcjsrd140000gn/T/tmpacttu3_s/remote.git",
+    "author": "Course Student <student@example.invalid>",
+    "initial_branch": "main",
+    "commit_a": {
+      "file": "notes.txt",
+      "content": "alpha\n",
+      "message": "Commit A"
+    },
+    "commit_b": {
+      "file": "notes.txt",
+      "content_appended": "beta\n",
+      "message": "Commit B"
+    },
+    "branch_topic": {
+      "fork_point": "Commit B"
+    },
+    "commit_c": {
+      "branch": "main",
+      "file": "todo.txt",
+      "content": "one\n",
+      "message": "Commit C"
+    },
+    "remote_push": {
+      "branch": "main",
+      "remote_ref": "origin/main"
+    },
+    "modifications_on_topic": {
+      "tracked_file": {
+        "file": "notes.txt",
+        "appended": "wip modifications\n"
+      },
+      "untracked_extra_file": {
+        "file": "extra.txt",
+        "content": "extra un-stashed content\n"
+      }
+    },
+    "stash_command": "git stash push -m 'wip notes' -- notes.txt"
+  },
+  "expected_results": {
+    "fact_1": "refs/stash exists and git rev-parse stash^1 equals topic (Commit B)",
+    "fact_2": "notes.txt in working tree matches Commit B ('alpha\\nbeta\\n'), while extra.txt remains modified/un-stashed in git status --porcelain",
+    "fact_3": "Branch refs topic (at B), main (at C), and remote ref origin/main (at C) stayed fixed",
+    "fact_4": "git stash list contains 'wip notes' referencing topic"
+  },
+  "actual_results": {
+    "commit_ids": {
+      "commit_a": "36ead50bb99888932b8fa34dbecd3a62ddc095c6",
+      "commit_b": "78b94f8878d9586dca589ab9676f751255564a9a",
+      "commit_c": "8982c228b13e4244c12ee8e6d2f30fa0232fc8b8"
+    },
+    "refs_before": {
+      "topic": "78b94f8878d9586dca589ab9676f751255564a9a",
+      "main": "8982c228b13e4244c12ee8e6d2f30fa0232fc8b8",
+      "origin_main": "8982c228b13e4244c12ee8e6d2f30fa0232fc8b8"
+    },
+    "stash_info": {
+      "stash_output": "Saved working directory and index state On topic: wip notes",
+      "stash_commit": "1cd60d17dfff24a2c6ccb56070f346760e0fbef2",
+      "stash_parent1": "78b94f8878d9586dca589ab9676f751255564a9a",
+      "stash_list": "stash@{0}: On topic: wip notes"
+    },
+    "refs_after": {
+      "topic": "78b94f8878d9586dca589ab9676f751255564a9a",
+      "main": "8982c228b13e4244c12ee8e6d2f30fa0232fc8b8",
+      "origin_main": "8982c228b13e4244c12ee8e6d2f30fa0232fc8b8"
+    },
+    "working_tree_state": {
+      "notes_content": "alpha\nbeta\n",
+      "extra_content": "extra un-stashed content\n",
+      "status_porcelain": "?? extra.txt"
+    },
+    "assertions_passed": true
+  }
+}

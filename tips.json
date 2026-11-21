@@ -1085,7 +1085,7 @@
     },
     {
         "title": "Stash specific files",
-        "tip": "git stash push -m '<message>' <file1> <file2>",
+        "tip": "git stash push -m '<message>' -- <file1> <file2>\n\n# Example:\n# While on branch 'topic' (with default branch 'main' and remote 'origin/main'):\n# Suppose both 'notes.txt' and 'extra.txt' are modified:\ngit stash push -m 'wip notes' -- notes.txt\n\n# Ref & Remote Behavior:\n# - refs/stash: Created or updated with a stash commit whose parent is 'topic' (HEAD).\n# - Working tree & index: Tracked 'notes.txt' is reverted to match 'topic' (HEAD), while 'extra.txt' remains modified in the working tree.\n# - Branch & remote refs: 'topic', default branch 'main', and remote-tracking ref 'origin/main' remain completely unchanged (stashing is purely local and makes no network/remote changes).",
         "category": "Stashing"
     },
     {

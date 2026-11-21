@@ -1354,7 +1354,17 @@ git stash push --keep-index
 
 ### Stash specific files
 ```sh
-git stash push -m '<message>' <file1> <file2>
+git stash push -m '<message>' -- <file1> <file2>
+
+# Example:
+# While on branch 'topic' (with default branch 'main' and remote 'origin/main'):
+# Suppose both 'notes.txt' and 'extra.txt' are modified:
+git stash push -m 'wip notes' -- notes.txt
+
+# Ref & Remote Behavior:
+# - refs/stash: Created or updated with a stash commit whose parent is 'topic' (HEAD).
+# - Working tree & index: Tracked 'notes.txt' is reverted to match 'topic' (HEAD), while 'extra.txt' remains modified in the working tree.
+# - Branch & remote refs: 'topic', default branch 'main', and remote-tracking ref 'origin/main' remain completely unchanged (stashing is purely local and makes no network/remote changes).
 ```
 
 ### Show a diffstat summary of a stash
