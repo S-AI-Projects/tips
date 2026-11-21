@@ -1209,6 +1209,23 @@ git config [--global] --edit
 ### List all git aliases
 ```sh
 git config -l | grep alias | sed 's/^alias\.//g'
+
+# --- Recovery ---
+# Reversible Mistake:
+# Listing/inspecting aliases ('git config -l | grep alias...') and accidentally overwriting or unsetting a local repo alias:
+#   git config --local alias.<name> "<command>"      # or: git config --local --unset alias.<name>
+# Or running a destructive alias (e.g., wrapping 'git reset --hard' / 'git checkout --') on a tracked file/commit.
+#
+# Recovery Point & Commands:
+# 1. Restore prior alias definition saved from 'git config --local -l':
+#    git config --local alias.<name> "<original>"
+# 2. Recover modified/lost commit or file state via reflog:
+#    git reflog
+#    git reset --hard <saved-sha>                     # or: git checkout HEAD -- <file>
+#
+# Verification & Limitations:
+# - Verification: Confirm restored config via 'git config -l | grep alias' and verify tree/status with 'git rev-parse HEAD^{tree}' and 'git status'.
+# - Limitations: Global/system config outside local repo cannot be recovered if not backed up; untracked/uncommitted working-tree edits overwritten by a hard reset cannot be recovered; reflog entries that have expired or been pruned cannot be retrieved.
 ```
 **Alternatives:**
 ```sh

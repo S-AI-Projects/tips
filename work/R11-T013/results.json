@@ -1,0 +1,83 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "author": "Course Student <student@example.invalid>",
+    "initial_branch": "main",
+    "commit_a": {
+      "file": "notes.txt",
+      "content": "alpha\n",
+      "message": "Commit A"
+    },
+    "commit_b": {
+      "file": "notes.txt",
+      "content_appended": "beta\n",
+      "message": "Commit B"
+    },
+    "branch_topic": {
+      "fork_point": "Commit B"
+    },
+    "commit_c": {
+      "branch": "main",
+      "file": "todo.txt",
+      "content": "one\n",
+      "message": "Commit C"
+    },
+    "configured_alias": {
+      "name": "alias.wipe",
+      "command": "reset --hard HEAD~1"
+    },
+    "overwritten_alias": {
+      "name": "alias.wipe",
+      "command": "status"
+    },
+    "anchor_commands": {
+      "sed": "git config -l | grep alias | sed 's/^alias\\.//g'",
+      "cut": "git config -l | grep alias | cut -d '.' -f 2"
+    }
+  },
+  "expected_results": {
+    "fact_1_alias_anchors": "Listing anchors match 'wipe=reset --hard HEAD~1' when configured, 'wipe=status' when overwritten, and restored definition",
+    "fact_2_mistake_effect": "Invoking alias moves HEAD from Commit C to Commit B and removes todo.txt from working tree",
+    "fact_3_recovered_head": "Recovery via reflog + git reset --hard restores HEAD to dynamic Commit C SHA",
+    "fact_4_recovered_tree_and_files": "Recovered HEAD^{tree} matches original tree_c; notes.txt contains 'alpha\\nbeta\\n', todo.txt contains 'one\\n'"
+  },
+  "actual_results": {
+    "commit_ids": {
+      "commit_a": "7ee12442c9bf17afa1a93aff2ae7bd5295528758",
+      "commit_b": "0a221e99f7aeeb50012de2a42691224b868bdcc7",
+      "commit_c": "1a8ff4efa669504e133c586b431796f2b633dc9c",
+      "tree_c": "70d571a7a75867c09d38254b1252d5e2402adaa6"
+    },
+    "anchor_outputs": {
+      "configured_sed": "wipe=reset --hard HEAD~1",
+      "configured_cut": "wipe=reset --hard HEAD~1",
+      "overwritten_sed": "wipe=status",
+      "overwritten_cut": "wipe=status",
+      "restored_sed": "wipe=reset --hard HEAD~1",
+      "restored_cut": "wipe=reset --hard HEAD~1"
+    },
+    "mistake_state": {
+      "head": "0a221e99f7aeeb50012de2a42691224b868bdcc7",
+      "tree": "f85b72cccab2aab0cfca333f78ab1ff302be5f7b",
+      "todo_exists": false
+    },
+    "recovered_state": {
+      "head": "1a8ff4efa669504e133c586b431796f2b633dc9c",
+      "tree": "70d571a7a75867c09d38254b1252d5e2402adaa6",
+      "todo_exists": true,
+      "notes_content": "alpha\nbeta\n",
+      "todo_content": "one\n"
+    },
+    "reflog_sample": [
+      "0a221e9 HEAD@{0}: reset: moving to HEAD~1",
+      "1a8ff4e HEAD@{1}: commit: Commit C",
+      "0a221e9 HEAD@{2}: commit: Commit B",
+      "7ee1244 HEAD@{3}: commit (initial): Commit A"
+    ],
+    "assertions_passed": true
+  }
+}
