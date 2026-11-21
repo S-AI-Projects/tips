@@ -1,0 +1,28 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]"
+  },
+  "inputs": {
+    "prerequisites": [
+      "user.name/email",
+      "clean worktree",
+      "non-empty range topic..main",
+      "patch generation"
+    ]
+  },
+  "expected_results": {
+    "fact_1": "user.name and user.email are properly configured in local repo config",
+    "fact_2": "Working tree is verified clean via git status --porcelain",
+    "fact_3": "topic..main commit range contains exactly Commit C",
+    "fact_4": "git format-patch generates valid patch file containing Commit C diff and headers"
+  },
+  "actual_results": {
+    "author_email": "student@example.invalid",
+    "commit_count": 1,
+    "patch_file": "0001-Commit-C.patch",
+    "status": ""
+  },
+  "status": "PASSED",
+  "reproducibility": "PASSED across two independent runs"
+}

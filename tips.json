@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -506,7 +508,7 @@
         "category": "Log and History"
     },
     {
-        "title": "Don\u2019t consider changes for tracked file.",
+        "title": "Don’t consider changes for tracked file.",
         "tip": "git update-index --assume-unchanged <file_name>",
         "category": "Miscellaneous"
     },
@@ -950,7 +952,7 @@
     },
     {
         "title": "Send a collection of patches as emails",
-        "tip": "git send-email [<options>] <file|directory>\u2026\n\ngit send-email [<options>] <format-patch options>",
+        "tip": "git send-email [<options>] <file|directory>…\n\ngit send-email [<options>] <format-patch options>\n\n# --- Explicit Prerequisites & Verification Commands ---\n# Verify all four prerequisites prior to invoking git send-email:\n# 1. Configured Author Identity:\n#    git config user.name && git config user.email\n# 2. Clean Working Tree:\n#    git status --porcelain               # must return clean (empty)\n# 3. Non-Empty Target Commit Range:\n#    git rev-list --count topic..main     # must be >= 1\n# 4. Patch Generation & Dry-Run Preview:\n#    git format-patch topic..main -o /tmp/patches/\n#    git send-email --dry-run /tmp/patches/",
         "category": "Miscellaneous"
     },
     {
