@@ -1,0 +1,25 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]"
+  },
+  "inputs": {
+    "command": "git rebase --onto main Commit_B topic",
+    "old_base": "Commit B",
+    "new_base": "main (Commit C)"
+  },
+  "expected_results": {
+    "fact_1": "Parent of rebased topic commit is Commit C",
+    "fact_2": "Commit D changes (feature.txt) preserved on topic branch",
+    "fact_3": "todo.txt from Commit C is now present in working tree",
+    "fact_4": "refs/heads/main remains unchanged at Commit C"
+  },
+  "actual_results": {
+    "commit_c": "74581343e59462560479c2412b91ae6851bd6668",
+    "commit_d": "780234e183d357b3836c69dc978a166dd4249861",
+    "rebased_topic_head": "1707da0b4d973e847daea9ffd1aefcc73505f5d1",
+    "parent_of_rebased": "74581343e59462560479c2412b91ae6851bd6668"
+  },
+  "status": "PASSED",
+  "reproducibility": "PASSED across two independent runs"
+}

@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -506,7 +508,7 @@
         "category": "Log and History"
     },
     {
-        "title": "Don\u2019t consider changes for tracked file.",
+        "title": "Don’t consider changes for tracked file.",
         "tip": "git update-index --assume-unchanged <file_name>",
         "category": "Miscellaneous"
     },
@@ -920,7 +922,7 @@
     },
     {
         "title": "Change a branch base",
-        "tip": "git rebase --onto <new_base> <old_base>",
+        "tip": "git rebase --onto <new_base> <old_base>\n\n# --- Guide Integration Test: Change a Branch Base ---\n# Scenario: Rebase topic branch from old base (Commit B) onto new base (main / Commit C).\n# Initial Topology:\n#   main:  A -> B -> C\n#   topic: A -> B -> D\n#\n# Rebase Command:\n#   git rebase --onto main B topic\n#\n# Resulting Topology:\n#   topic: A -> B -> C -> D' (Commit D reapplied directly on Commit C)\n#\n# How to run integration test:\n#   python3 work/R11-T048/check.py",
         "category": "Merging and Rebasing"
     },
     {
@@ -950,7 +952,7 @@
     },
     {
         "title": "Send a collection of patches as emails",
-        "tip": "git send-email [<options>] <file|directory>\u2026\n\ngit send-email [<options>] <format-patch options>",
+        "tip": "git send-email [<options>] <file|directory>…\n\ngit send-email [<options>] <format-patch options>",
         "category": "Miscellaneous"
     },
     {
