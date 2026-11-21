@@ -1,0 +1,26 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]"
+  },
+  "inputs": {
+    "branch_main": "Commit C",
+    "branch_topic": "Commit B",
+    "command": "git merge-base main topic"
+  },
+  "expected_results": {
+    "fact_1": "git merge-base main topic output equals Commit B SHA",
+    "fact_2": "Commit B is verified as direct parent of Commit C",
+    "fact_3": "refs/heads/main, refs/heads/topic, and HEAD are completely unchanged",
+    "fact_4": "Working tree and staging index remain clean"
+  },
+  "actual_results": {
+    "commit_a": "f7aa4feee9076f0c774e994f39427b62ff815379",
+    "commit_b": "faaaf10ec921f1499d643dd646375af29d5381f0",
+    "commit_c": "4a1a925e81be0326e453e66026b0b80d390b1ccd",
+    "merge_base": "faaaf10ec921f1499d643dd646375af29d5381f0",
+    "status": ""
+  },
+  "status": "PASSED",
+  "reproducibility": "PASSED across two independent runs"
+}
