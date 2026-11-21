@@ -304,6 +304,37 @@ git checkout stash@{0} -- <file_path>
 ### Create new working tree from a repository (git 2.5)
 ```sh
 git worktree add -b <branch-name> <path> <start-point>
+
+# --- Prerequisites & Minimal Setup ---
+# 1. Repository State:
+#    - Must be inside an initialized, non-bare Git repository:
+#      git rev-parse --is-inside-work-tree    # returns 'true'
+#      git rev-parse --is-bare-repository     # returns 'false'
+#    - Must contain at least one commit so HEAD resolves to a valid commit object;
+#      otherwise 'git worktree add -b' fails on an unborn branch.
+#    - Target filesystem path (<path>) must not already exist (or must be empty).
+#
+# 2. Current Branch & New Branch Name:
+#    - Any valid commit/ref may be checked out in the primary worktree ('main' or 'topic').
+#    - The new branch name passed to '-b <new-branch>' must NOT already exist in refs/heads/
+#      (and no existing worktree may already have that branch checked out).
+#
+# 3. Staged Changes & Working Tree:
+#    - Staged or unstaged modifications in the primary working tree are NOT copied into the new worktree.
+#    - The new linked worktree starts with a clean index and working tree matching the <start-point> commit (defaulting to HEAD).
+#
+# 4. Required Config:
+#    - Local user.name and user.email are only needed if creating commits;
+#      git worktree add -b itself requires no special global config (keep test config strictly local/environment-scoped).
+#
+# Minimal Setup Example:
+# Verify HEAD resolves to a valid commit:
+git rev-parse --verify HEAD
+# Check branch absence:
+git show-ref --verify --quiet refs/heads/hotfix || echo "Branch hotfix does not exist"
+# Run git worktree add creating branch hotfix at topic in ../wt-hotfix:
+git worktree add -b hotfix ../wt-hotfix topic
+# Leaves primary worktree's branch, staged index, and working tree untouched.
 ```
 
 ### Create new working tree from HEAD state

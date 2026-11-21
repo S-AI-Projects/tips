@@ -1,0 +1,78 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "author": "Course Student <student@example.invalid>",
+    "initial_branch": "main",
+    "commit_a": {
+      "file": "notes.txt",
+      "content": "alpha\n",
+      "message": "Commit A"
+    },
+    "commit_b": {
+      "file": "notes.txt",
+      "content_appended": "beta\n",
+      "message": "Commit B"
+    },
+    "branch_topic": {
+      "fork_point": "Commit B"
+    },
+    "commit_c": {
+      "branch": "main",
+      "file": "todo.txt",
+      "content": "one\n",
+      "message": "Commit C"
+    },
+    "primary_staged_change": {
+      "file": "notes.txt",
+      "appended": "staged modification\n"
+    },
+    "worktree_command": "git worktree add -b wt-branch \"/var/folders/rn/xc72jf1j67b93c79mcjsrd140000gn/T/tmp5f62tiwo/wt_linked\" topic",
+    "environment_isolation": {
+      "GIT_CONFIG_NOSYSTEM": "1",
+      "isolated_HOME": "/var/folders/rn/xc72jf1j67b93c79mcjsrd140000gn/T/tmp5f62tiwo/fake_home"
+    }
+  },
+  "expected_results": {
+    "fact_1": "Prerequisites hold (--is-inside-work-tree == true, --is-bare-repository == false, HEAD == Commit C, wt-branch did not exist prior)",
+    "fact_2": "git worktree list --porcelain lists both primary worktree (main at Commit C) and new linked worktree (wt-branch at Commit B)",
+    "fact_3": "Inside <wt_dir>, HEAD equals Commit B, status is clean, notes.txt is 'alpha\\nbeta\\n' (primary staged edit not leaked)",
+    "fact_4": "Inside primary worktree, main is at Commit C, topic is at Commit B, staged modification on notes.txt remains intact",
+    "fact_5": "User's global Git configuration was untouched (GIT_CONFIG_NOSYSTEM=1 + isolated HOME confirmed)"
+  },
+  "actual_results": {
+    "commit_ids": {
+      "commit_a": "3c1e28db55b705a9cba21a8c92eb26222f3829b8",
+      "commit_b": "fcb0aa4f12d8b966f648d9de5c64fd8838a8f5c0",
+      "commit_c": "e1edfb673ce09180f819b123db1bd96bd126153c"
+    },
+    "precondition_failure_check": {
+      "command": "git worktree add -b wt-fail \"/var/folders/rn/xc72jf1j67b93c79mcjsrd140000gn/T/tmp5f62tiwo/wt_fail_dir\" HEAD",
+      "exit_code": 128,
+      "stderr": "fatal: invalid reference: HEAD"
+    },
+    "prerequisites_check": {
+      "is_inside_work_tree": "true",
+      "is_bare_repository": "false",
+      "head_commit": "e1edfb673ce09180f819b123db1bd96bd126153c",
+      "branch_did_not_exist_prior": true
+    },
+    "worktree_list_porcelain": "worktree /private/var/folders/rn/xc72jf1j67b93c79mcjsrd140000gn/T/tmp5f62tiwo/primary_repo\nHEAD e1edfb673ce09180f819b123db1bd96bd126153c\nbranch refs/heads/main\n\nworktree /private/var/folders/rn/xc72jf1j67b93c79mcjsrd140000gn/T/tmp5f62tiwo/wt_linked\nHEAD fcb0aa4f12d8b966f648d9de5c64fd8838a8f5c0\nbranch refs/heads/wt-branch",
+    "linked_worktree_state": {
+      "path": "/var/folders/rn/xc72jf1j67b93c79mcjsrd140000gn/T/tmp5f62tiwo/wt_linked",
+      "head_sha": "fcb0aa4f12d8b966f648d9de5c64fd8838a8f5c0",
+      "status_clean": true,
+      "notes_content": "alpha\nbeta\n"
+    },
+    "primary_worktree_state": {
+      "main_sha": "e1edfb673ce09180f819b123db1bd96bd126153c",
+      "topic_sha": "fcb0aa4f12d8b966f648d9de5c64fd8838a8f5c0",
+      "cached_diff": "notes.txt"
+    },
+    "global_isolation_confirmed": true,
+    "assertions_passed": true
+  }
+}
