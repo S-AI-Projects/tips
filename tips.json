@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -277,7 +279,7 @@
     },
     {
         "title": "Show list of all saved stashes",
-        "tip": "git stash list",
+        "tip": "git stash list\n\n# --- Reproducible Example: Show list of all saved stashes ---\n# 1. Setup in a repository with commits A -> B -> C on main and branch topic at B:\n#    echo \"work in progress\" >> notes.txt\n#    echo \"new patch\" > patch.txt\n# 2. Save working changes to stash with message:\n#    git stash push -u -m \"WIP: save notes and patch\"\n# 3. Execute command:\n#    git stash list\n# Expected Output:\n#    stash@{0}: On main: WIP: save notes and patch\n# Expected Git State:\n#    - HEAD and branch refs (main, topic) remain unchanged.\n#    - Working tree and index are restored to clean commit C state.\n#    - Ref refs/stash points to the new stash commit object.",
         "category": "Stashing"
     },
     {
@@ -506,7 +508,7 @@
         "category": "Log and History"
     },
     {
-        "title": "Don\u2019t consider changes for tracked file.",
+        "title": "Don’t consider changes for tracked file.",
         "tip": "git update-index --assume-unchanged <file_name>",
         "category": "Miscellaneous"
     },
@@ -950,7 +952,7 @@
     },
     {
         "title": "Send a collection of patches as emails",
-        "tip": "git send-email [<options>] <file|directory>\u2026\n\ngit send-email [<options>] <format-patch options>",
+        "tip": "git send-email [<options>] <file|directory>…\n\ngit send-email [<options>] <format-patch options>",
         "category": "Miscellaneous"
     },
     {

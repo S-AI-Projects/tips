@@ -1317,6 +1317,21 @@ git stash push --all
 ### Show list of all saved stashes
 ```sh
 git stash list
+
+# --- Reproducible Example: Show list of all saved stashes ---
+# 1. Setup in a repository with commits A -> B -> C on main and branch topic at B:
+#    echo "work in progress" >> notes.txt
+#    echo "new patch" > patch.txt
+# 2. Save working changes to stash with message:
+#    git stash push -u -m "WIP: save notes and patch"
+# 3. Execute command:
+#    git stash list
+# Expected Output:
+#    stash@{0}: On main: WIP: save notes and patch
+# Expected Git State:
+#    - HEAD and branch refs (main, topic) remain unchanged.
+#    - Working tree and index are restored to clean commit C state.
+#    - Ref refs/stash points to the new stash commit object.
 ```
 
 ### Show the contents of any stash in patch form
