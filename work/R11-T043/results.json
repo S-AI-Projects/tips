@@ -1,0 +1,29 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]"
+  },
+  "inputs": {
+    "initial_commits": [
+      "A",
+      "B",
+      "C"
+    ],
+    "command": "git rebase --interactive HEAD~2",
+    "recovery_command": "git rebase --abort"
+  },
+  "expected_results": {
+    "fact_1": "HEAD after abort resolves to exact pre-rebase Commit C SHA",
+    "fact_2": ".git/rebase-merge state directory is fully removed",
+    "fact_3": "Working tree and staging index are clean",
+    "fact_4": "Reflog records rebase recovery transition"
+  },
+  "actual_results": {
+    "initial_head": "93eaea5c008ac4c3c4067262e28c9679e37cf210",
+    "head_after_abort": "93eaea5c008ac4c3c4067262e28c9679e37cf210",
+    "reflog_entry": "93eaea5 HEAD@{0}: rebase (abort): returning to refs/heads/main",
+    "status": ""
+  },
+  "status": "PASSED",
+  "reproducibility": "PASSED across two independent runs"
+}

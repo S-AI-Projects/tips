@@ -974,6 +974,23 @@ git rebase -i --autosquash
 ### Change previous two commits with an interactive rebase.
 ```sh
 git rebase --interactive HEAD~2
+
+# --- Recovery Guide: Interactive Rebase ---
+# Recovery Points & Commands:
+# 1. Abort an in-progress interactive rebase:
+#    git rebase --abort
+#    - Restores HEAD and the current branch ref back to pre-rebase commit (ORIG_HEAD).
+#    - Removes transient state directory (.git/rebase-merge).
+#    - Leaves a completely clean working tree and index.
+#
+# 2. Undo a completed interactive rebase:
+#    git reset --hard ORIG_HEAD
+#    - Returns branch pointer to the exact pre-rebase commit recorded in ORIG_HEAD and reflog.
+#
+# Verification:
+#    git rev-parse HEAD                  # matches pre-rebase commit SHA
+#    git status --porcelain              # clean working directory
+#    git reflog -n 2                     # displays 'rebase (abort)' transition
 ```
 
 ### Find common ancestor of two branches
