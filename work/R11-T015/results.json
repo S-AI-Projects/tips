@@ -1,0 +1,69 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "bare_remote": "file:///var/folders/rn/xc72jf1j67b93c79mcjsrd140000gn/T/tmpdes50s_c/remote.git",
+    "author": "Course Student <student@example.invalid>",
+    "initial_branch": "main",
+    "commit_a": {
+      "file": "notes.txt",
+      "content": "alpha\n",
+      "message": "Commit A"
+    },
+    "commit_b": {
+      "file": "notes.txt",
+      "content_appended": "beta\n",
+      "message": "Commit B"
+    },
+    "branch_topic": {
+      "fork_point": "Commit B"
+    },
+    "commit_c": {
+      "branch": "main",
+      "file": "todo.txt",
+      "content": "one\n",
+      "message": "Commit C"
+    },
+    "pr_ref": "refs/pull/15/head",
+    "pr_files_with_spaces": [
+      "release notes.txt",
+      "sample data/release notes.txt"
+    ],
+    "anchor_fetch_command": "git fetch origin pull/15/head:pr-15",
+    "checkout_command": "git checkout pr-15 -- \"sample data/release notes.txt\""
+  },
+  "expected_results": {
+    "fact_1": "git rev-parse pr-15 matches exact dynamic commit SHA pushed to refs/pull/15/head",
+    "fact_2": "git diff --name-only main pr-15 with quoted paths preserves spaces and returns 'sample data/release notes.txt' and 'release notes.txt'",
+    "fact_3": "Unquoted split command fails with non-zero exit code and 'ambiguous argument' error in stderr",
+    "fact_4": "Checking out pr-15 -- 'sample data/release notes.txt' materializes file with spaces while main stays at Commit C and topic stays at Commit B"
+  },
+  "actual_results": {
+    "commit_ids": {
+      "commit_a": "267093abe92a07982dc071b7c9f80bd48d717470",
+      "commit_b": "6afd35b8d9202dd2f255e005f57aa7adb2a9bf50",
+      "commit_c": "ddecbcd1583575a8466fbd2b68a19993044fadad",
+      "pr_commit": "367fd79da576b07e6832f4f3cdfc737e51b5a939",
+      "pr15_ref_sha": "367fd79da576b07e6832f4f3cdfc737e51b5a939"
+    },
+    "diff_outputs": {
+      "sample_data_file": "sample data/release notes.txt",
+      "root_file": "release notes.txt"
+    },
+    "ambiguity_test": {
+      "command": "git diff main pr-15 release notes.txt",
+      "exit_code": 128,
+      "stderr": "fatal: ambiguous argument 'release': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'"
+    },
+    "ref_and_tree_state": {
+      "materialized_file": "sample data/release notes.txt",
+      "materialized_content": "sample data release notes content v1.5\n",
+      "main_ref": "ddecbcd1583575a8466fbd2b68a19993044fadad",
+      "topic_ref": "6afd35b8d9202dd2f255e005f57aa7adb2a9bf50"
+    },
+    "assertions_passed": true
+  }
+}

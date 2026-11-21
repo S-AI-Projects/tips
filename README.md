@@ -362,6 +362,27 @@ git update-index --assume-unchanged Changelog; git commit -a; git update-index -
 ### Fetch pull request by ID to a local branch
 ```sh
 git fetch origin pull/<id>/head:<branch-name>
+
+# Example (Inspecting and checking out PR files with spaces in paths):
+# 1. Fetch pull request into local branch:
+#    git fetch origin pull/15/head:pr-15
+# 2. Inspect changes with quoted paths and '--' separator:
+#    git diff main pr-15 -- "sample data/release notes.txt"
+#    git diff main pr-15 -- "release notes.txt"
+# 3. Checkout specific path with spaces from fetched PR branch:
+#    git checkout pr-15 -- "sample data/release notes.txt"
+#
+# Path Quoting & '--' Separator:
+# - Shell Quoting: Enclosing paths with spaces in quotes (e.g., "release notes.txt" or "sample data/release notes.txt") is mandatory so the shell does not split whitespace into multiple arguments ('release' and 'notes.txt').
+# - '--' Disambiguation: The '--' separator explicitly disambiguates pathspecs from revisions or branch/ref names (e.g., git diff main pr-15 -- "sample data/release notes.txt" or git checkout pr-15 -- "release notes.txt").
+#
+# Exact Errors & Ambiguity:
+# - Unquoted paths with spaces cause Git to receive split tokens, triggering:
+#     fatal: ambiguous argument 'release': unknown revision or path not in the working tree
+# - Omitting '--' when a path matches a ref/branch name causes revision-vs-path ambiguity:
+#     fatal: ambiguous argument ...: both revision and filename
+# - Refspecs ('pull/<id>/head:<branchname>') cannot contain spaces, triggering:
+#     fatal: invalid refspec
 ```
 **Alternatives:**
 ```sh
