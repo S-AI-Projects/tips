@@ -1199,6 +1199,15 @@ git config --global <specific command e.g branch, diff> <true, false or always>
 ### Alias: git undo
 ```sh
 git config --global alias.undo '!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f'
+
+# --- Troubleshooting: Known Failure Modes & Corrected Command ---
+# 1. Known Failure Mode: Nonexistent Reflog Entry or Detached HEAD
+#    - Triggering State: Invoking `git undo 50` when the reflog has fewer entries, or in detached HEAD.
+#    - Error Category & Output:
+#      fatal: Log for 'HEAD' only has N entries.
+#
+# 2. Corrected Command (Safeguarded alias with error check):
+#    git config --global alias.undo '!f() { target=$(git rev-parse --abbrev-ref HEAD)@{${1-1}}; git rev-parse -q --verify "$target" >/dev/null || { echo "fatal: target reflog entry $target does not exist" >&2; exit 1; }; git reset --hard "$target"; }; f'
 ```
 
 ### Edit [local/global] git config

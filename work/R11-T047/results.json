@@ -1,0 +1,23 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]"
+  },
+  "inputs": {
+    "alias": "git undo",
+    "failure_trigger": "git undo 99 (requesting nonexistent reflog entry)"
+  },
+  "expected_results": {
+    "fact_1": "git undo correctly resets branch HEAD to previous reflog entry",
+    "fact_2": "Invoking git undo with missing reflog index exits non-zero and captures fatal error",
+    "fact_3": "Safe alias validates target ref before attempting destructive reset"
+  },
+  "actual_results": {
+    "commit_c": "fab12f15ec9a37ea3730ffbbc270720267a14e4a",
+    "head_after_undo": "2cd1e170c4a8ebd4a3ecb521cfb996c043818a6a",
+    "failure_exit_code": 128,
+    "failure_stderr": "fatal: log for 'main' only has 4 entries"
+  },
+  "status": "PASSED",
+  "reproducibility": "PASSED across two independent runs"
+}

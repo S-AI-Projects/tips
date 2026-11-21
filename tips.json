@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -506,7 +508,7 @@
         "category": "Log and History"
     },
     {
-        "title": "Don\u2019t consider changes for tracked file.",
+        "title": "Don’t consider changes for tracked file.",
         "tip": "git update-index --assume-unchanged <file_name>",
         "category": "Miscellaneous"
     },
@@ -798,7 +800,7 @@
     },
     {
         "title": "Alias: git undo",
-        "tip": "git config --global alias.undo '!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f'",
+        "tip": "git config --global alias.undo '!f() { git reset --hard $(git rev-parse --abbrev-ref HEAD)@{${1-1}}; }; f'\n\n# --- Troubleshooting: Known Failure Modes & Corrected Command ---\n# 1. Known Failure Mode: Nonexistent Reflog Entry or Detached HEAD\n#    - Triggering State: Invoking `git undo 50` when the reflog has fewer entries, or in detached HEAD.\n#    - Error Category & Output:\n#      fatal: Log for 'HEAD' only has N entries.\n#\n# 2. Corrected Command (Safeguarded alias with error check):\n#    git config --global alias.undo '!f() { target=$(git rev-parse --abbrev-ref HEAD)@{${1-1}}; git rev-parse -q --verify \"$target\" >/dev/null || { echo \"fatal: target reflog entry $target does not exist\" >&2; exit 1; }; git reset --hard \"$target\"; }; f'",
         "category": "Setup and Config"
     },
     {
@@ -950,7 +952,7 @@
     },
     {
         "title": "Send a collection of patches as emails",
-        "tip": "git send-email [<options>] <file|directory>\u2026\n\ngit send-email [<options>] <format-patch options>",
+        "tip": "git send-email [<options>] <file|directory>…\n\ngit send-email [<options>] <format-patch options>",
         "category": "Miscellaneous"
     },
     {
