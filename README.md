@@ -1015,6 +1015,25 @@ git rm --cached -r <directory_path>
 ### Don’t consider changes for tracked file.
 ```sh
 git update-index --assume-unchanged <file_name>
+
+# State Diagram (Before vs After):
+#
+# +-----------------------------------------------------------------------------------+
+# | Component       | Before assume-unchanged        | After assume-unchanged         |
+# +-----------------+--------------------------------+--------------------------------+
+# | Refs & Ancestry | A -> B (main) -> C (topic/HEAD)| A -> B (main) -> C (topic/HEAD)|
+# |                 | (Unchanged)                    | (Unchanged)                    |
+# | Index           | H <blob-SHA> <file>            | h <blob-SHA> <file>            |
+# |                 | (Flag H = tracked)             | (Blob SHA unchanged; flag h)   |
+# | Working Tree    | Modified content on disk       | Local edits retained on disk   |
+# | git status/diff | M <file> (dirty)               | Clean (working tree changes    |
+# |                 |                                | ignored by git status/diff)    |
+# +-----------------------------------------------------------------------------------+
+#
+# Explanation:
+# - Refs & Ancestry: HEAD, branch refs ('main' at B, 'topic' at C), and commit ancestry (A->B->C) remain unchanged.
+# - Index: The staged blob SHA is untouched; only the assume-unchanged bit is set (marked by 'h' in 'git ls-files -v').
+# - Working Tree: Local modifications remain intact on disk, while 'git status' and 'git diff' report clean.
 ```
 
 ### Check if the change was a part of a release.

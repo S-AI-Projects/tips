@@ -1,0 +1,81 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "author": "Course Student <student@example.invalid>",
+    "initial_branch": "main",
+    "commit_a": {
+      "file": "notes.txt",
+      "content": "alpha\n",
+      "message": "Commit A"
+    },
+    "commit_b": {
+      "file": "notes.txt",
+      "content_appended": "beta\n",
+      "message": "Commit B"
+    },
+    "branch_topic": {
+      "fork_point": "Commit B"
+    },
+    "commit_c": {
+      "branch": "topic",
+      "file": "todo.txt",
+      "content": "one\n",
+      "message": "Commit C"
+    },
+    "local_edit": {
+      "file": "notes.txt",
+      "content_appended": "local modification\n"
+    },
+    "command": "git update-index --assume-unchanged notes.txt"
+  },
+  "expected_results": {
+    "refs_and_ancestry": "HEAD, main, topic refs and A->B->C commit ancestry remain unchanged",
+    "index_blob_sha": "Index blob SHA remains identical before and after",
+    "index_flag": "Index flag changes from 'H' (tracked) to 'h' (assume-unchanged)",
+    "working_tree": "Local edits retained on disk (alpha\\nbeta\\nlocal modification\\n)",
+    "status_clean": "git status --porcelain is empty and git diff is empty"
+  },
+  "actual_results": {
+    "commit_ids": {
+      "commit_a": "b906a5d9c3dbc12cc16930cdf35009b5d7c5ca31",
+      "commit_b": "e1b9f9c63ddf5e11482c8190d1f8216a8e9ffe2b",
+      "commit_c": "293e9a4dfd865c0661c9a29ee15d4c343abaa94d"
+    },
+    "before": {
+      "head": "293e9a4dfd865c0661c9a29ee15d4c343abaa94d",
+      "main": "e1b9f9c63ddf5e11482c8190d1f8216a8e9ffe2b",
+      "topic": "293e9a4dfd865c0661c9a29ee15d4c343abaa94d",
+      "ancestry": [
+        "293e9a4dfd865c0661c9a29ee15d4c343abaa94d",
+        "e1b9f9c63ddf5e11482c8190d1f8216a8e9ffe2b",
+        "b906a5d9c3dbc12cc16930cdf35009b5d7c5ca31"
+      ],
+      "ls_files": "H 100644 fbbee861521bd5355538b096fa3998541cd33909 0\tnotes.txt",
+      "flag": "H",
+      "blob_sha": "fbbee861521bd5355538b096fa3998541cd33909",
+      "status_porcelain": "M notes.txt",
+      "disk_content": "alpha\nbeta\nlocal modification\n"
+    },
+    "after": {
+      "head": "293e9a4dfd865c0661c9a29ee15d4c343abaa94d",
+      "main": "e1b9f9c63ddf5e11482c8190d1f8216a8e9ffe2b",
+      "topic": "293e9a4dfd865c0661c9a29ee15d4c343abaa94d",
+      "ancestry": [
+        "293e9a4dfd865c0661c9a29ee15d4c343abaa94d",
+        "e1b9f9c63ddf5e11482c8190d1f8216a8e9ffe2b",
+        "b906a5d9c3dbc12cc16930cdf35009b5d7c5ca31"
+      ],
+      "ls_files": "h 100644 fbbee861521bd5355538b096fa3998541cd33909 0\tnotes.txt",
+      "flag": "h",
+      "blob_sha": "fbbee861521bd5355538b096fa3998541cd33909",
+      "status_porcelain": "",
+      "diff": "",
+      "disk_content": "alpha\nbeta\nlocal modification\n"
+    },
+    "assertions_passed": true
+  }
+}

@@ -507,7 +507,7 @@
     },
     {
         "title": "Don\u2019t consider changes for tracked file.",
-        "tip": "git update-index --assume-unchanged <file_name>",
+        "tip": "git update-index --assume-unchanged <file_name>\n\n# State Diagram (Before vs After):\n#\n# +-----------------------------------------------------------------------------------+\n# | Component       | Before assume-unchanged        | After assume-unchanged         |\n# +-----------------+--------------------------------+--------------------------------+\n# | Refs & Ancestry | A -> B (main) -> C (topic/HEAD)| A -> B (main) -> C (topic/HEAD)|\n# |                 | (Unchanged)                    | (Unchanged)                    |\n# | Index           | H <blob-SHA> <file>            | h <blob-SHA> <file>            |\n# |                 | (Flag H = tracked)             | (Blob SHA unchanged; flag h)   |\n# | Working Tree    | Modified content on disk       | Local edits retained on disk   |\n# | git status/diff | M <file> (dirty)               | Clean (working tree changes    |\n# |                 |                                | ignored by git status/diff)    |\n# +-----------------------------------------------------------------------------------+\n#\n# Explanation:\n# - Refs & Ancestry: HEAD, branch refs ('main' at B, 'topic' at C), and commit ancestry (A->B->C) remain unchanged.\n# - Index: The staged blob SHA is untouched; only the assume-unchanged bit is set (marked by 'h' in 'git ls-files -v').\n# - Working Tree: Local modifications remain intact on disk, while 'git status' and 'git diff' report clean.",
         "category": "Miscellaneous"
     },
     {
