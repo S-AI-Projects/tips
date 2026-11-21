@@ -984,6 +984,21 @@ git merge-base <branch-name> <other-branch-name>
 ### Change a branch base
 ```sh
 git rebase --onto <new_base> <old_base>
+
+# --- Guide Integration Test: Change a Branch Base ---
+# Scenario: Rebase topic branch from old base (Commit B) onto new base (main / Commit C).
+# Initial Topology:
+#   main:  A -> B -> C
+#   topic: A -> B -> D
+#
+# Rebase Command:
+#   git rebase --onto main B topic
+#
+# Resulting Topology:
+#   topic: A -> B -> C -> D' (Commit D reapplied directly on Commit C)
+#
+# How to run integration test:
+#   python3 work/R11-T048/check.py
 ```
 
 ### Create a fixup commit and auto-squash
