@@ -1,0 +1,31 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]"
+  },
+  "inputs": {
+    "author": "Course Student <student@example.invalid>",
+    "commits": [
+      "Commit A",
+      "Commit B",
+      "Commit C"
+    ],
+    "stash_message": "WIP: save notes and patch"
+  },
+  "expected_results": {
+    "fact_1": "git stash list outputs stash@{0}: On main: WIP: save notes and patch",
+    "fact_2": "refs/heads/main == Commit C and refs/heads/topic == Commit B",
+    "fact_3": "Working tree is clean and untracked patch.txt is stashed",
+    "fact_4": "refs/stash resolves to valid commit SHA"
+  },
+  "actual_results": {
+    "commit_a": "994314ce90fcd67adf58b89207586bb6116422aa",
+    "commit_b": "ac92fa98d5c5a7aed3ec4743d2a5dfa4c7a3ffcb",
+    "commit_c": "51426407501b303de6c3764ecf6d8ddd1375be38",
+    "stash_sha": "91a038f2194320242dd19bc5854534a91392bcc3",
+    "stash_list": "stash@{0}: On main: WIP: save notes and patch",
+    "status": ""
+  },
+  "status": "PASSED",
+  "reproducibility": "PASSED across two independent runs"
+}
