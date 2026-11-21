@@ -979,6 +979,20 @@ git rebase --interactive HEAD~2
 ### Find common ancestor of two branches
 ```sh
 git merge-base <branch-name> <other-branch-name>
+
+# --- Before/After State Diagram & Transition Analysis ---
+# State Topology:
+#   Commit A <-- Commit B (topic, merge-base) <-- Commit C (main, HEAD)
+#
+# Execution:
+#   git merge-base main topic
+# Output:
+#   <Commit_B_SHA>
+#
+# State Transition Facts:
+# - Operation is a non-destructive query;
+# - HEAD, refs/heads/main, and refs/heads/topic remain strictly unchanged;
+# - Staging area (index) and working tree remain completely untouched.
 ```
 
 ### Change a branch base

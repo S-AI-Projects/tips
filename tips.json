@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -506,7 +508,7 @@
         "category": "Log and History"
     },
     {
-        "title": "Don\u2019t consider changes for tracked file.",
+        "title": "Don’t consider changes for tracked file.",
         "tip": "git update-index --assume-unchanged <file_name>",
         "category": "Miscellaneous"
     },
@@ -823,7 +825,7 @@
     },
     {
         "title": "Find common ancestor of two branches",
-        "tip": "git merge-base <branch-name> <other-branch-name>",
+        "tip": "git merge-base <branch-name> <other-branch-name>\n\n# --- Before/After State Diagram & Transition Analysis ---\n# State Topology:\n#   Commit A <-- Commit B (topic, merge-base) <-- Commit C (main, HEAD)\n#\n# Execution:\n#   git merge-base main topic\n# Output:\n#   <Commit_B_SHA>\n#\n# State Transition Facts:\n# - Operation is a non-destructive query;\n# - HEAD, refs/heads/main, and refs/heads/topic remain strictly unchanged;\n# - Staging area (index) and working tree remain completely untouched.",
         "category": "Merging and Rebasing"
     },
     {
@@ -950,7 +952,7 @@
     },
     {
         "title": "Send a collection of patches as emails",
-        "tip": "git send-email [<options>] <file|directory>\u2026\n\ngit send-email [<options>] <format-patch options>",
+        "tip": "git send-email [<options>] <file|directory>…\n\ngit send-email [<options>] <format-patch options>",
         "category": "Miscellaneous"
     },
     {
