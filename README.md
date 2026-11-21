@@ -1057,6 +1057,18 @@ git ls-files --others -i --exclude-standard | xargs zip untracked.zip
 git send-email [<options>] <file|directory>…
 
 git send-email [<options>] <format-patch options>
+
+# --- Explicit Prerequisites & Verification Commands ---
+# Verify all four prerequisites prior to invoking git send-email:
+# 1. Configured Author Identity:
+#    git config user.name && git config user.email
+# 2. Clean Working Tree:
+#    git status --porcelain               # must return clean (empty)
+# 3. Non-Empty Target Commit Range:
+#    git rev-list --count topic..main     # must be >= 1
+# 4. Patch Generation & Dry-Run Preview:
+#    git format-patch topic..main -o /tmp/patches/
+#    git send-email --dry-run /tmp/patches/
 ```
 
 ## Remotes
