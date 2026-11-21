@@ -1,0 +1,29 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]"
+  },
+  "inputs": {
+    "file_with_spaces_and_utf8": "release notes/v1.0.txt",
+    "amended_author": "Updated Author <updated@example.invalid>"
+  },
+  "expected_results": {
+    "fact_1": "Commit author is amended to Updated Author <updated@example.invalid>",
+    "fact_2": "Literal path 'release notes/v1.0.txt' is retained in git tree without glob expansion",
+    "fact_3": "UTF-8 file content is preserved bit-for-bit",
+    "fact_4": "Commit SHA changes while parent remains Commit C"
+  },
+  "actual_results": {
+    "commit_before_amend": "b17bbe52113ba4462ab9e70e1abd332c5972cdb6",
+    "commit_after_amend": "0559c8aa4b880df03110ebed6950ab944246f6c4",
+    "author_name": "Updated Author",
+    "author_email": "updated@example.invalid",
+    "tracked_files": [
+      "notes.txt",
+      "release notes/v1.0.txt",
+      "todo.txt"
+    ]
+  },
+  "status": "PASSED",
+  "reproducibility": "PASSED across two independent runs"
+}
