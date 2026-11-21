@@ -135,7 +135,9 @@
     {
         "title": "Undo local changes with the content in index(staging)",
         "tip": "git checkout -- <file_name>",
-        "alternatives": ["git restore <file_name>"],
+        "alternatives": [
+            "git restore <file_name>"
+        ],
         "category": "Basic Operations"
     },
     {
@@ -506,7 +508,7 @@
         "category": "Log and History"
     },
     {
-        "title": "Don\u2019t consider changes for tracked file.",
+        "title": "Don’t consider changes for tracked file.",
         "tip": "git update-index --assume-unchanged <file_name>",
         "category": "Miscellaneous"
     },
@@ -755,7 +757,7 @@
     },
     {
         "title": "Adding Remote name",
-        "tip": "git remote add <remote-nickname> <remote-url>",
+        "tip": "git remote add <remote-nickname> <remote-url>\n\n# --- Remote and Branch Behavior Guide ---\n# Context: Current checked-out branch is 'topic', default branch is 'main'.\n# Command:\n#    git remote add origin file:///path/to/bare-repo.git\n#\n# Behavior & State Impacts:\n# 1. Current Branch:\n#    - The checked-out branch remains 'topic'; HEAD continues pointing to refs/heads/topic.\n# 2. Local Refs:\n#    - Neither 'main' nor 'topic' is altered or published.\n# 3. Remote Configuration:\n#    - Configures section [remote \"origin\"] with URL and fetch refspec (+refs/heads/*:refs/remotes/origin/*).\n# 4. Remote-Tracking Refs:\n#    - No refs/remotes/origin/* refs are created until an explicit fetch or push is executed.",
         "category": "Remotes"
     },
     {
@@ -950,7 +952,7 @@
     },
     {
         "title": "Send a collection of patches as emails",
-        "tip": "git send-email [<options>] <file|directory>\u2026\n\ngit send-email [<options>] <format-patch options>",
+        "tip": "git send-email [<options>] <file|directory>…\n\ngit send-email [<options>] <format-patch options>",
         "category": "Miscellaneous"
     },
     {
