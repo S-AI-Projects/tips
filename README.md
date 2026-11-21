@@ -1332,6 +1332,23 @@ git stash apply <stash@{n}>
 ### Apply last stashed state and delete it from stashed list
 ```sh
 git stash pop
+
+# --- Troubleshooting ---
+# Triggering State (Violated Precondition):
+# A stash (stash@{0}) modifies a tracked file (e.g., 'notes.txt'), but the working tree currently has uncommitted local changes to 'notes.txt' (or an empty stash stack / conflicting merge). Running 'git stash pop' (or 'git stash apply stash@{0} && git stash drop stash@{0}') fails with a non-zero exit code.
+#
+# Error Category (Version-Independent):
+# Local working-tree overwrite / merge conflict rejection: Git refuses to clobber uncommitted changes in 'notes.txt' (or aborts with a conflict during apply) and preserves stash@{0} on the stash stack instead of dropping it (and short-circuits '&&' before 'git stash drop').
+#
+# Smallest Correction:
+# Preserve or clear the conflicting working-tree modification on the target file:
+# 1. To preserve the uncommitted edit:
+#    git stash push -m "local-wip" -- notes.txt
+#    git stash apply stash@{1} && git stash drop stash@{1}
+# 2. Or if the local edit is disposable:
+#    git restore notes.txt    # or: git checkout -- notes.txt
+#    git stash pop
+# The stashed changes apply cleanly and stash@{0} is dropped.
 ```
 **Alternatives:**
 ```sh

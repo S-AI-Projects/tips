@@ -1,0 +1,72 @@
+{
+  "tool_versions": {
+    "git": "git version 2.55.0",
+    "python": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "author": "Course Student <student@example.invalid>",
+    "initial_branch": "main",
+    "commit_a": {
+      "file": "notes.txt",
+      "content": "alpha\n",
+      "message": "Commit A"
+    },
+    "commit_b": {
+      "file": "notes.txt",
+      "content_appended": "beta\n",
+      "message": "Commit B"
+    },
+    "branch_topic": {
+      "fork_point": "Commit B"
+    },
+    "commit_c": {
+      "branch": "main",
+      "file": "todo.txt",
+      "content": "one\n",
+      "message": "Commit C"
+    },
+    "stashed_change": {
+      "file": "notes.txt",
+      "appended": "stashed-line\n"
+    },
+    "conflicting_local_edit": {
+      "file": "notes.txt",
+      "appended": "uncommitted-conflict\n"
+    },
+    "trigger_command": "git stash pop",
+    "repair_command": "git checkout -- notes.txt && git stash pop"
+  },
+  "expected_results": {
+    "fact_1": "Initial branch refs: main at Commit C, topic at Commit B",
+    "fact_2": "Bad case: git stash pop fails with exit code != 0, notes.txt indicated in overwrite/conflict stderr, and stash@{0} is preserved",
+    "fact_3": "Smallest correction: clearing conflicting edit allows git stash pop to exit 0, notes.txt contains 'stashed-line', and stash@{0} is dropped",
+    "fact_4": "Ref persistence: main (Commit C) and topic (Commit B) remain unchanged throughout"
+  },
+  "actual_results": {
+    "commit_ids": {
+      "commit_a": "4a976a1f4260602d089b42736bbe144a6c864c92",
+      "commit_b": "761ba17da54ef26928aeebe8978e0e9c55351cf1",
+      "commit_c": "29e8e1acd1bf0de44d5d80a21de66811dcfc87d0",
+      "original_stash_sha": "b39487883e5f5d5ec73340eb80848af6f0381490"
+    },
+    "bad_case": {
+      "exit_code": 1,
+      "stderr": "error: Your local changes to the following files would be overwritten by merge:\n\tnotes.txt\nPlease commit your changes or stash them before you merge.\nAborting",
+      "stash_still_present": true
+    },
+    "correction_case": {
+      "exit_code": 0,
+      "notes_content_has_stashed_line": true,
+      "notes_content": "alpha\nbeta\nstashed-line\n",
+      "stash_dropped": true
+    },
+    "ref_persistence": {
+      "main_final": "29e8e1acd1bf0de44d5d80a21de66811dcfc87d0",
+      "topic_final": "761ba17da54ef26928aeebe8978e0e9c55351cf1",
+      "main_matched": true,
+      "topic_matched": true
+    },
+    "assertions_passed": true
+  }
+}
