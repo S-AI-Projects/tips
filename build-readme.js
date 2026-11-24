@@ -43,6 +43,7 @@ Object.keys(categories).sort().forEach(cat => {
                 content += `\`\`\`sh\n${alt}\n\`\`\`\n`;
             });
         }
+        if (tip.description) content += `${tip.description}\n\n`;
     });
 });
 

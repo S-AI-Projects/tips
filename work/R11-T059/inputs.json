@@ -1,0 +1,26 @@
+{
+  "author": {
+    "name": "Course Student",
+    "email": "student@example.invalid"
+  },
+  "history": {
+    "A": "main creates notes.txt containing alpha\\n",
+    "B": "topic appends beta\\n to notes.txt",
+    "C": "main creates todo.txt containing one\\n"
+  },
+  "current_branch": "topic at commit B; main points to commit C",
+  "remote": "second local bare repository configured as origin using file:// URL",
+  "staged_change": "notes.txt includes a staged local draft after commit B; it must not be sent by the push",
+  "local_config": [
+    "user.name",
+    "user.email",
+    "remote.origin.url"
+  ],
+  "global_config": "isolated with GIT_CONFIG_GLOBAL pointing at the null device; no global config writes",
+  "operation": [
+    "git",
+    "push",
+    "origin",
+    "HEAD"
+  ]
+}
