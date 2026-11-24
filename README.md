@@ -501,6 +501,50 @@ git checkout master@{yesterday}
 git push origin HEAD
 ```
 
+#### Before you push
+
+Check each prerequisite:
+
+| Check | What must be true | How to check or fix it |
+| --- | --- | --- |
+| Repository | You are inside the intended Git repository. | Run `git rev-parse --show-toplevel`. |
+| Current branch | `HEAD` is attached to the named branch whose commits you want to publish. | Run `git branch --show-current`; this example uses `topic`. An empty result means detached `HEAD`, so switch to the intended branch first. |
+| Commit to publish | The changes you want to send are committed. A push does not include staged or unstaged edits. | Run `git status --short`; stage and commit intended changes before pushing. |
+| Remote | `origin` exists, points to the intended repository, and you have permission to push there. | Run `git remote get-url origin` and confirm the URL and access. |
+| Push configuration | No upstream tracking setting is required because this command names `origin` explicitly. | If `origin` is missing, add it with `git remote add origin <remote-url>` using the correct URL. |
+
+Git identity (`user.name` and `user.email`) is needed if you need to create a commit; it is not needed just to push an existing commit. Configure identity locally with `git config --local user.name "Your Name"` and `git config --local user.email "you@example.invalid"` so the repository's `.git/config` is used instead of changing global settings.
+
+#### Minimal example
+
+The test setup has `main` at commit C and the current branch `topic` at commit B. It configures `origin` to a second local bare repository using a `file://` URL. A staged edit to `notes.txt` is present to make clear that staged content is not sent by this push. In your own repository, commit the changes you intend to publish first. If `origin` is missing, add it once with the correct remote URL; this example uses a placeholder URL.
+
+```sh
+# Only if origin is not configured yet:
+git remote add origin <remote-url>
+
+# Check the current branch, pending edits, and destination:
+git branch --show-current
+git status --short
+git remote get-url origin
+
+# Push the committed tip of the current branch:
+git push origin HEAD
+```
+
+The push creates or updates remote branch `topic` at the current committed `HEAD` (B). The staged edit stays in the local index and working tree; it is not part of the pushed commit.
+
+| State | Before | After |
+| --- | --- | --- |
+| Local `HEAD` | `topic` at B | `topic` at B |
+| Local branches | `main` at C; `topic` at B | unchanged |
+| Local index | `notes.txt` has a staged edit | unchanged; staged edit is still local |
+| Local working tree | no unstaged edits | unchanged |
+| Remote `origin` | no branch refs | `topic` points to B; staged edit is absent |
+
+Run the focused check from the repository root with `python3 work/R11-T059/check.py`. It creates the commits and bare remote in temporary directories, checks these prerequisites, performs the named push, and verifies the resulting remote and local state.
+
+
 ### Push a new local branch to remote repository and track
 ```sh
 git push -u origin <branch_name>

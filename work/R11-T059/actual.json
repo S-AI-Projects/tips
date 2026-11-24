@@ -1,0 +1,77 @@
+{
+  "commit_ids": {
+    "A": "0a8b9b6e62685ff19f758ec576ae32cd3ddab2de",
+    "B": "569a6fb9ec0b7f0ae70495c457802cb7bacd69d1",
+    "C": "dde90cfceb283be5ebe17c138b148e31281a180b"
+  },
+  "remote_url": "file://<temporary>/remote.git",
+  "push_command": [
+    "git",
+    "push",
+    "origin",
+    "HEAD"
+  ],
+  "push_returncode": 0,
+  "push_stdout": "",
+  "push_stderr": "To file://<temporary>/remote.git\n * [new branch]      HEAD -> topic\n",
+  "state_before": {
+    "head": "569a6fb9ec0b7f0ae70495c457802cb7bacd69d1",
+    "head_ref": "refs/heads/topic",
+    "branch_refs": [
+      "refs/heads/main dde90cfceb283be5ebe17c138b148e31281a180b",
+      "refs/heads/topic 569a6fb9ec0b7f0ae70495c457802cb7bacd69d1"
+    ],
+    "index_tree": "495c2b22372ce0a61f9b8532ead4c17d1bbe2d6a",
+    "staged_files": [
+      "notes.txt"
+    ],
+    "unstaged_files": [],
+    "status": "M  notes.txt",
+    "notes": "alpha\nbeta\nstaged local draft\n",
+    "todo": null,
+    "local_user_name": "Course Student",
+    "local_user_email": "student@example.invalid",
+    "origin_url": "file://<temporary>/remote.git",
+    "topic_tracking": "",
+    "remote_refs": []
+  },
+  "state_after": {
+    "head": "569a6fb9ec0b7f0ae70495c457802cb7bacd69d1",
+    "head_ref": "refs/heads/topic",
+    "branch_refs": [
+      "refs/heads/main dde90cfceb283be5ebe17c138b148e31281a180b",
+      "refs/heads/topic 569a6fb9ec0b7f0ae70495c457802cb7bacd69d1"
+    ],
+    "index_tree": "495c2b22372ce0a61f9b8532ead4c17d1bbe2d6a",
+    "staged_files": [
+      "notes.txt"
+    ],
+    "unstaged_files": [],
+    "status": "M  notes.txt",
+    "notes": "alpha\nbeta\nstaged local draft\n",
+    "todo": null,
+    "local_user_name": "Course Student",
+    "local_user_email": "student@example.invalid",
+    "origin_url": "file://<temporary>/remote.git",
+    "topic_tracking": "",
+    "remote_refs": [
+      "refs/heads/topic 569a6fb9ec0b7f0ae70495c457802cb7bacd69d1"
+    ]
+  },
+  "remote_result": {
+    "topic_ref": "569a6fb9ec0b7f0ae70495c457802cb7bacd69d1",
+    "topic_files": [
+      "notes.txt"
+    ],
+    "notes_txt": "alpha\nbeta"
+  },
+  "assertions": {
+    "repository_and_named_current_branch": true,
+    "required_local_identity_and_origin_configured": true,
+    "staged_change_present_before_push": true,
+    "push_succeeded_and_remote_topic_is_B": true,
+    "staged_edit_was_not_pushed": true,
+    "local_state_unchanged": true,
+    "upstream_tracking_not_required": true
+  }
+}
