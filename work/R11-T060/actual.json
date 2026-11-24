@@ -1,0 +1,77 @@
+{
+  "commit_ids": {
+    "A": "0a8b9b6e62685ff19f758ec576ae32cd3ddab2de",
+    "B": "569a6fb9ec0b7f0ae70495c457802cb7bacd69d1",
+    "C": "dde90cfceb283be5ebe17c138b148e31281a180b"
+  },
+  "tag": "demo-v1",
+  "tag_target": "569a6fb9ec0b7f0ae70495c457802cb7bacd69d1",
+  "remote_url": "file://<temporary>/remote.git",
+  "prediction": "Only remote refs/tags/demo-v1 is removed. Local tag, branches, HEAD, index, and working tree stay unchanged.",
+  "command": [
+    "git",
+    "push",
+    "origin",
+    ":refs/tags/demo-v1"
+  ],
+  "command_returncode": 0,
+  "command_stdout": "",
+  "command_stderr": "To file://<temporary>/remote.git\n - [deleted]         demo-v1\n",
+  "local_before": {
+    "head": "dde90cfceb283be5ebe17c138b148e31281a180b",
+    "head_ref": "refs/heads/main",
+    "branch_refs": [
+      "refs/heads/main dde90cfceb283be5ebe17c138b148e31281a180b",
+      "refs/heads/topic 569a6fb9ec0b7f0ae70495c457802cb7bacd69d1"
+    ],
+    "tag_refs": [
+      "refs/tags/demo-v1 569a6fb9ec0b7f0ae70495c457802cb7bacd69d1"
+    ],
+    "index_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+    "staged_files": [],
+    "unstaged_files": [],
+    "status": "",
+    "notes": "alpha\n",
+    "todo": "one\n"
+  },
+  "local_after": {
+    "head": "dde90cfceb283be5ebe17c138b148e31281a180b",
+    "head_ref": "refs/heads/main",
+    "branch_refs": [
+      "refs/heads/main dde90cfceb283be5ebe17c138b148e31281a180b",
+      "refs/heads/topic 569a6fb9ec0b7f0ae70495c457802cb7bacd69d1"
+    ],
+    "tag_refs": [
+      "refs/tags/demo-v1 569a6fb9ec0b7f0ae70495c457802cb7bacd69d1"
+    ],
+    "index_tree": "77a5d3e4ecc58b05a8062d4a97a03ff689c24731",
+    "staged_files": [],
+    "unstaged_files": [],
+    "status": "",
+    "notes": "alpha\n",
+    "todo": "one\n"
+  },
+  "remote_branches_before": [
+    "refs/heads/main dde90cfceb283be5ebe17c138b148e31281a180b",
+    "refs/heads/topic 569a6fb9ec0b7f0ae70495c457802cb7bacd69d1"
+  ],
+  "remote_branches_after": [
+    "refs/heads/main dde90cfceb283be5ebe17c138b148e31281a180b",
+    "refs/heads/topic 569a6fb9ec0b7f0ae70495c457802cb7bacd69d1"
+  ],
+  "remote_tags_before": [
+    "refs/tags/demo-v1 569a6fb9ec0b7f0ae70495c457802cb7bacd69d1"
+  ],
+  "remote_tags_after": [],
+  "remote_topic_commit_after": "569a6fb9ec0b7f0ae70495c457802cb7bacd69d1",
+  "remote_commit_B_still_exists": true,
+  "changed_object": "refs/tags/demo-v1 on origin",
+  "answer": "Deleted origin's refs/tags/demo-v1; the local tag still points to B, and HEAD, branches, index, working tree, and remote branches are unchanged.",
+  "assertions": {
+    "remote_tag_ref_was_present_before_and_absent_after": true,
+    "local_tag_still_points_to_B": true,
+    "local_HEAD_branches_index_and_worktree_unchanged": true,
+    "remote_branches_unchanged": true,
+    "commit_B_still_exists_and_is_topic_tip": true
+  }
+}

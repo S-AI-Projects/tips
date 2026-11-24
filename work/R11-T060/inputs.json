@@ -1,0 +1,22 @@
+{
+  "author": {
+    "name": "Course Student",
+    "email": "student@example.invalid"
+  },
+  "history": {
+    "A": "main creates notes.txt containing alpha\\n",
+    "B": "topic appends beta\\n to notes.txt",
+    "C": "main creates todo.txt containing one\\n"
+  },
+  "tag": "demo-v1",
+  "tag_target": "topic at commit B",
+  "current_branch": "main at commit C",
+  "remote": "second local bare repository configured as origin using file:// URL",
+  "operation": [
+    "git",
+    "push",
+    "origin",
+    ":refs/tags/demo-v1"
+  ],
+  "prediction": "Only remote refs/tags/demo-v1 is removed. Local tag, branches, HEAD, index, and working tree stay unchanged."
+}

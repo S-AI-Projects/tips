@@ -1,0 +1,7 @@
+{
+  "remote_tag_ref_deleted": true,
+  "local_tag_still_points_to_B": true,
+  "local_branches_head_index_worktree_unchanged": true,
+  "remote_branch_refs_unchanged": true,
+  "commit_B_remains_reachable_from_remote_topic": true
+}
