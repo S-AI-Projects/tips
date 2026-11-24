@@ -1,0 +1,65 @@
+{
+  "commit_ids": {
+    "A": "88cf1969325735bdb9b4bac81cb445997c56f3bb",
+    "B": "4317e081f59ab54dc3c6b82525df94ca03caeb55",
+    "C": "2401c5e4a754fb21d03c89dcbc180ad3d951d6ab"
+  },
+  "search_command": [
+    "git",
+    "grep",
+    "--heading",
+    "--line-number",
+    "beta"
+  ],
+  "search_returncode": 0,
+  "search_stdout": "notes.txt\n2:beta\n",
+  "search_stderr": "",
+  "state_before": {
+    "head": "4317e081f59ab54dc3c6b82525df94ca03caeb55",
+    "head_ref": "refs/heads/topic",
+    "branch_refs": [
+      "refs/heads/main 2401c5e4a754fb21d03c89dcbc180ad3d951d6ab",
+      "refs/heads/topic 4317e081f59ab54dc3c6b82525df94ca03caeb55"
+    ],
+    "index_tree": "f85b72cccab2aab0cfca333f78ab1ff302be5f7b",
+    "staged_files": [],
+    "unstaged_files": [],
+    "untracked_files": [
+      "scratch.txt"
+    ],
+    "status": "?? scratch.txt",
+    "notes": "alpha\nbeta\n",
+    "todo": null,
+    "scratch": "beta\n"
+  },
+  "state_after": {
+    "head": "4317e081f59ab54dc3c6b82525df94ca03caeb55",
+    "head_ref": "refs/heads/topic",
+    "branch_refs": [
+      "refs/heads/main 2401c5e4a754fb21d03c89dcbc180ad3d951d6ab",
+      "refs/heads/topic 4317e081f59ab54dc3c6b82525df94ca03caeb55"
+    ],
+    "index_tree": "f85b72cccab2aab0cfca333f78ab1ff302be5f7b",
+    "staged_files": [],
+    "unstaged_files": [],
+    "untracked_files": [
+      "scratch.txt"
+    ],
+    "status": "?? scratch.txt",
+    "notes": "alpha\nbeta\n",
+    "todo": null,
+    "scratch": "beta\n"
+  },
+  "omission_probe": {
+    "command_omitted": true,
+    "returncode": 1,
+    "rejected_before_search": true
+  },
+  "assertions": {
+    "expected_filename_heading_and_line": true,
+    "untracked_match_is_excluded": true,
+    "HEAD_and_branch_refs_unchanged": true,
+    "index_and_worktree_unchanged": true,
+    "omitted_command_is_rejected": true
+  }
+}

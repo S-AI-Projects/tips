@@ -723,6 +723,7 @@
     {
         "title": "Find lines matching the pattern (regex or string) in tracked files",
         "tip": "git grep --heading --line-number 'foo bar'",
+        "description": "Search tracked files in the current working tree for a string or regular expression:\n\n```sh\ngit grep --heading --line-number 'beta'\n```\n\n`git grep` searches tracked files by default. `--heading` groups matches under each filename, and `--line-number` shows the matching line number. In the example, check out `topic` at commit B before searching; the result is:\n\n```text\nnotes.txt\n2:beta\n```\n\nA matching `scratch.txt` that is untracked is not included by this default search. The search is read-only. It leaves HEAD, branch references, the index, and working-tree files unchanged:\n\n```text\nBefore search                       After search\nHEAD: topic (B)                     HEAD: topic (B)\nmain -> C, topic -> B               main -> C, topic -> B\nStaged/index files: none            Staged/index files: none\nTracked working-tree files: clean   Tracked working-tree files: clean\nUntracked: scratch.txt (beta)       Untracked: scratch.txt (beta)\n```\n\nRun the focused integration check from the repository root with `python3 work/R11-T058/check.py`. It creates the example in a temporary repository, checks the output and unchanged Git state, and verifies that omitting the required search command makes the checker fail.",
         "category": "Miscellaneous"
     },
     {
