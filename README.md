@@ -257,6 +257,30 @@ git branch -dr <remote/branch>
 ```sh
 git push origin :refs/tags/<tag-name>
 ```
+#### Predict first
+
+The example repository has `main` checked out at commit C and `topic` pointing to commit B. A lightweight local tag `demo-v1` points to B, and `origin` is a second local bare repository with the same tag. Before running the deletion command, predict: which exact remote ref will change? Will the local tag disappear? What happens to HEAD, branch refs, the index, and working files?
+
+```sh
+git push origin :refs/tags/demo-v1
+```
+
+#### Verify the result
+
+The answer is that only the remote ref `refs/tags/demo-v1` is deleted. The local tag still points to commit B. The commit itself remains reachable from `topic`, and the push does not change local branches, HEAD, the index, or working-tree contents. The remote branch refs also stay in place.
+
+| State | Before | After |
+| --- | --- | --- |
+| Local `HEAD` | `main` at C | `main` at C |
+| Local branches | `main` at C; `topic` at B | unchanged |
+| Local tag | `refs/tags/demo-v1` points to B | still points to B |
+| Index | no staged files | unchanged |
+| Working tree | `notes.txt` has `alpha`; `todo.txt` has `one`; clean | unchanged |
+| Remote branches | `main` at C; `topic` at B | unchanged |
+| Remote tag | `refs/tags/demo-v1` points to B | deleted |
+
+The leading colon means the source ref is empty, so Git deletes the named destination ref on `origin`. It deletes the remote tag reference, not the commit or the local tag. To repeat this exercise, create and push `demo-v1` first; the check sets this up in temporary local repositories. Run it from the project root with `python3 work/R11-T060/check.py`.
+
 
 ### Undo local changes with the content in index(staging)
 ```sh
