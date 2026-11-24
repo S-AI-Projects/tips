@@ -1,8 +1,8 @@
 {
   "commit_ids": {
-    "A": "88cf1969325735bdb9b4bac81cb445997c56f3bb",
-    "B": "4317e081f59ab54dc3c6b82525df94ca03caeb55",
-    "C": "2401c5e4a754fb21d03c89dcbc180ad3d951d6ab"
+    "A": "0a8b9b6e62685ff19f758ec576ae32cd3ddab2de",
+    "B": "569a6fb9ec0b7f0ae70495c457802cb7bacd69d1",
+    "C": "dde90cfceb283be5ebe17c138b148e31281a180b"
   },
   "search_command": [
     "git",
@@ -15,11 +15,11 @@
   "search_stdout": "notes.txt\n2:beta\n",
   "search_stderr": "",
   "state_before": {
-    "head": "4317e081f59ab54dc3c6b82525df94ca03caeb55",
+    "head": "569a6fb9ec0b7f0ae70495c457802cb7bacd69d1",
     "head_ref": "refs/heads/topic",
     "branch_refs": [
-      "refs/heads/main 2401c5e4a754fb21d03c89dcbc180ad3d951d6ab",
-      "refs/heads/topic 4317e081f59ab54dc3c6b82525df94ca03caeb55"
+      "refs/heads/main dde90cfceb283be5ebe17c138b148e31281a180b",
+      "refs/heads/topic 569a6fb9ec0b7f0ae70495c457802cb7bacd69d1"
     ],
     "index_tree": "f85b72cccab2aab0cfca333f78ab1ff302be5f7b",
     "staged_files": [],
@@ -33,11 +33,11 @@
     "scratch": "beta\n"
   },
   "state_after": {
-    "head": "4317e081f59ab54dc3c6b82525df94ca03caeb55",
+    "head": "569a6fb9ec0b7f0ae70495c457802cb7bacd69d1",
     "head_ref": "refs/heads/topic",
     "branch_refs": [
-      "refs/heads/main 2401c5e4a754fb21d03c89dcbc180ad3d951d6ab",
-      "refs/heads/topic 4317e081f59ab54dc3c6b82525df94ca03caeb55"
+      "refs/heads/main dde90cfceb283be5ebe17c138b148e31281a180b",
+      "refs/heads/topic 569a6fb9ec0b7f0ae70495c457802cb7bacd69d1"
     ],
     "index_tree": "f85b72cccab2aab0cfca333f78ab1ff302be5f7b",
     "staged_files": [],

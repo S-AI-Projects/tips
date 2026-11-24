@@ -83,6 +83,10 @@ def make_repository(repo):
             "GIT_AUTHOR_EMAIL": AUTHOR_EMAIL,
             "GIT_COMMITTER_NAME": AUTHOR_NAME,
             "GIT_COMMITTER_EMAIL": AUTHOR_EMAIL,
+            # Fixed metadata makes saved evidence stable across checker runs.
+            # Commit IDs are still captured dynamically from Git below.
+            "GIT_AUTHOR_DATE": "2001-01-01T00:00:00+00:00",
+            "GIT_COMMITTER_DATE": "2001-01-01T00:00:00+00:00",
             "GIT_CONFIG_NOSYSTEM": "1",
         }
     )
