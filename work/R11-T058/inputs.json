@@ -1,0 +1,14 @@
+{
+  "author": {
+    "name": "Course Student",
+    "email": "student@example.invalid"
+  },
+  "history": {
+    "A": "main creates notes.txt containing alpha\\n",
+    "B": "topic appends beta\\n to notes.txt",
+    "C": "main creates todo.txt containing one\\n"
+  },
+  "search": "git grep --heading --line-number 'beta'",
+  "search_branch": "topic at commit B",
+  "untracked_match": "scratch.txt contains beta but is excluded from default tracked-file search"
+}

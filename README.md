@@ -1046,6 +1046,32 @@ git instaweb [--local] [--httpd=<httpd>] [--port=<port>] [--browser=<browser>]
 ```sh
 git grep --heading --line-number 'foo bar'
 ```
+Search tracked files in the current working tree for a string or regular expression:
+
+```sh
+git grep --heading --line-number 'beta'
+```
+
+`git grep` searches tracked files by default. `--heading` groups matches under each filename, and `--line-number` shows the matching line number. In the example, check out `topic` at commit B before searching; the result is:
+
+```text
+notes.txt
+2:beta
+```
+
+A matching `scratch.txt` that is untracked is not included by this default search. The search is read-only. It leaves HEAD, branch references, the index, and working-tree files unchanged:
+
+```text
+Before search                       After search
+HEAD: topic (B)                     HEAD: topic (B)
+main -> C, topic -> B               main -> C, topic -> B
+Staged/index files: none            Staged/index files: none
+Tracked working-tree files: clean   Tracked working-tree files: clean
+Untracked: scratch.txt (beta)       Untracked: scratch.txt (beta)
+```
+
+Run the focused integration check from the repository root with `python3 work/R11-T058/check.py`. It creates the example in a temporary repository, checks the output and unchanged Git state, and verifies that omitting the required search command makes the checker fail.
+
 
 ### Backup untracked files.
 ```sh

@@ -1,0 +1,9 @@
+{
+  "matches": [
+    "notes.txt",
+    "2:beta"
+  ],
+  "untracked_file_is_not_reported": true,
+  "state_unchanged": "HEAD, branch refs, index tree/files, and working-tree state/content are identical before and after the search.",
+  "omission_test": "Running the checker with the decisive git grep command omitted exits nonzero before any search runs."
+}
